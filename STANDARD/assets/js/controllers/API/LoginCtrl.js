@@ -21,10 +21,10 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
             // alert(response.ID_CLIENT);
 
             if (response.status == "loggedin") {
-                                        user.saveData(response);
+                user.saveData(response);
 
                 // user.userLoggedIn();
-                
+
                 // user.setName(response.PRENOM_CLIENT);
                 // if (user.isUserLoggedIn()) {
                 //     // $window.location.href = '#/login/signin';
@@ -32,35 +32,24 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
                 //     $window.location.href = '#/app/BdClients';
                 // }
 
-                     alert(user.getName());
+                alert(user.getName());
                 alert(user.getIdLocalTempclient());
                 alert(user.getRole());
 
                 alert(user.isUserLoggedIn());
 
-                if(user.getRole() ==="Client")
-                {
-                  $window.location.href='#/app/CommandesEnCours';
-                }
-                else if(user.getRole() === "Service Clients")
-                {
-                  $window.location.href='#/app/BdClients';
-                }
-                else if ( user.getRole()==="Service Livraison")
-               {
-                $window.location.href='#/app/Calendrier';
-               }
-               else if (user.getRole()==="Service Production")
-               {
-                $window.location.href='#/app/cmdp';
-               } 
-               else if (user.getRole()==="livreur")
-                {
-                  $window.location.href='#/app/ToCollecte';
-                }
-                else if (user.getRole()==="admin")
-                {
-                  $window.location.href='#/app/dashboard';
+                if (user.getRole() === "Client") {
+                    $window.location.href = '#/app/CommandesEnCours';
+                } else if (user.getRole() === "Service Clients") {
+                    $window.location.href = '#/app/BdClients';
+                } else if (user.getRole() === "Service Livraison") {
+                    $window.location.href = '#/app/Calendrier';
+                } else if (user.getRole() === "Service Production") {
+                    $window.location.href = '#/app/cmdp';
+                } else if (user.getRole() === "livreur") {
+                    $window.location.href = '#/app/ToCollecte';
+                } else if (user.getRole() === "admin") {
+                    $window.location.href = '#/app/dashboard';
                 }
                 // alert("ok");
                 // alert(user.getRole());
@@ -71,9 +60,9 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
                 // }
                 // else
                 // {
-                    // $window.location.href = '#/app/dashboard';
+                // $window.location.href = '#/app/dashboard';
                 // }
-                
+
 
 
 
@@ -86,47 +75,47 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
 
     $scope.LockedScreen = function() {
 
-        var number = user.getName();
-        var pass = $scope.passwd;
+            var number = user.getName();
+            var pass = $scope.passwd;
 
-        // alert(number);
-        // alert(pass);
-        $http({
-            url: 'http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Login/login.php',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            data: 'number=' + number + '&pass=' + pass
-        }).success(function(response) {
-            // alert(response.status);
-            // alert(response.ID_CLIENT);
+            // alert(number);
+            // alert(pass);
+            $http({
+                url: 'http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Login/login.php',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: 'number=' + number + '&pass=' + pass
+            }).success(function(response) {
+                // alert(response.status);
+                // alert(response.ID_CLIENT);
 
-            if (response.status == "loggedin") {
-                                        user.saveData(response);
+                if (response.status == "loggedin") {
+                    user.saveData(response);
 
-                // user.userLoggedIn();
-                
-                // user.setName(response.PRENOM_CLIENT);
-                // if (user.isUserLoggedIn()) {
-                //     // $window.location.href = '#/login/signin';
-                //     // $location.path('/signin');
-                //     $window.location.href = '#/app/BdClients';
-                // }
+                    // user.userLoggedIn();
 
-                alert(user.getName());
-                alert(user.getIdLocalTempclient());
+                    // user.setName(response.PRENOM_CLIENT);
+                    // if (user.isUserLoggedIn()) {
+                    //     // $window.location.href = '#/login/signin';
+                    //     // $location.path('/signin');
+                    //     $window.location.href = '#/app/BdClients';
+                    // }
 
-                alert(user.isUserLoggedIn());
-                alert("ok");
-                $window.location.href = '#/app/dashboard';
+                    alert(user.getName());
+                    alert(user.getIdLocalTempclient());
+
+                    alert(user.isUserLoggedIn());
+                    alert("ok");
+                    $window.location.href = '#/app/dashboard';
 
 
 
-            }
-        })
-    }
-     // Localistion 
+                }
+            })
+        }
+        // Localistion 
     $scope.getadresse = function() {
 
         if (!!navigator.geolocation) {
@@ -190,7 +179,7 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
     //     var adresse; 
     //     var email;
     //     var password; 
-        
+
 
     // }
 
