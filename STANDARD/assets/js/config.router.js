@@ -69,7 +69,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 }
             }).state('app.BdClients', {
                 url: "/BdClients",
-                templateUrl: "assets/views/ServiceClients/TableauSC_clients.html",
+                templateUrl: "assets/views/ServiceClients/TableauSC_Clients.html",
                 resolve: {
                     check: function($window, user) {
                         if (!user.isUserLoggedIn()) {
@@ -235,7 +235,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 }
             }).state('app.HistoriqueCmd', {
                 url: "/HitoriqueCmd",
-                templateUrl: "assets/views/client/HistoriqueCmd.html",
+                templateUrl: "assets/views/Client/HistoriqueCmd.html",
                 resolve: {
                     check: function($window, user) {
                         if (!user.isUserLoggedIn()) {
@@ -308,7 +308,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             templateUrl: "assets/views/login_forgot.html"
         }).state('login.registration', {
             url: '/registration',
-            templateUrl: "assets/views/client/createAccount.html"
+            templateUrl: "assets/views/Client/createAccount.html"
         }).state('login.lockscreen', {
             url: '/lock',
             templateUrl: "assets/views/login_lock_screen.html"
