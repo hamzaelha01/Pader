@@ -1,0 +1,105 @@
+<!-- start: REGISTRATION -->
+<div class="row">
+	<div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+		<div class="logo">
+			<img ng-src="{{app.layout.logo}}" alt="{{app.name}}"/>
+		</div>
+		<!-- start: REGISTER BOX -->
+		<div class="box-register">
+			<form class="form-register">
+					<fieldset>
+							<legend>
+								Client Inscription
+							</legend>
+							<p>
+								Veuillez Remplir Tous Les Champs:
+							</p>
+							<div class="form-group">
+								<input type="text" class="form-control" name="nom" placeholder="Nom">
+							</div>
+							<div class="form-group">
+									<input type="text" class="form-control" name="prenom" placeholder="Prenom">
+							</div>
+			
+							<div class="form-group">
+									<div class="input-group">
+										<input type="text" class="form-control" name="prenom" placeholder="Localisez Moi">
+							
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-primary" ng-click="">
+												<i class="fa fa-map-marker" ></i>
+											</button>
+										 </span>
+									</div>
+							</div>
+			
+							<div class="form-group">
+								<input type="text" class="form-control" name="address" placeholder="Addresse Complete">
+							</div>
+							<!-- <div class="form-group">
+								<input type="text" class="form-control" name="city" placeholder="City">
+							</div> -->
+							<!-- <div class="form-group">
+								<label class="block">
+									Gender
+								</label>
+								<div class="clip-radio radio-primary">
+									<input type="radio" id="rg-female" name="gender" value="female">
+									<label for="rg-female">
+										Female
+									</label>
+									<input type="radio" id="rg-male" name="gender" value="male">
+									<label for="rg-male">
+										Male
+									</label>
+								</div>
+							</div> -->
+							<p>
+								Renseigner Les details suivants:
+							</p>
+							<div class="form-group">
+								<span class="input-icon">
+									<input type="email" class="form-control" name="email" placeholder="Email">
+									<i class="fa fa-envelope"></i> </span>
+							</div>
+							<div class="form-group">
+								<span class="input-icon">
+									<input type="password" class="form-control" id="password" name="password" placeholder="Mot De Passe">
+									<i class="fa fa-lock"></i> </span>
+							</div>
+							<div class="form-group">
+								<span class="input-icon">
+									<input type="password" class="form-control" name="password_again" placeholder="Mot De Passe Confirmation">
+									<i class="fa fa-lock"></i> </span>
+							</div>
+							<div class="form-group">
+								<div class="checkbox clip-check check-primary">
+									<input type="checkbox" id="agree" value="Accepter">
+									<label for="agree">
+										Confirmer
+									</label>
+								</div>
+							</div>
+							<div class="form-actions">
+								<p>
+									Avez-Vous Deja Un Compte?
+									<a ui-sref="login.signin" href="#/login/signin">
+										Se Connecter
+									</a>
+								</p>
+								<button type="submit" class="btn btn-primary pull-right">
+									S'inscrire <i class="fa fa-arrow-circle-right"></i>
+								</button>
+							</div>
+					</fieldset>
+			</form>
+			<!-- start: COPYRIGHT -->
+			<div class="copyright">
+				{{app.year}} &copy; {{ app.name }} by {{ app.author }}.
+			</div>
+			<!-- end: COPYRIGHT -->
+		</div>
+		<!-- end: REGISTER BOX -->
+	</div>
+</div>
+<!-- end: REGISTRATION -->

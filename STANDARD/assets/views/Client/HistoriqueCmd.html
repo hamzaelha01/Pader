@@ -1,0 +1,190 @@
+<!-- start: PAGE TITLE -->
+<section id="page-title" class="page-title-center">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h1 class="mainTitle">Historique des commandes</h1>
+            <div ncy-breadcrumb></div>
+        </div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<div class="container">
+    <div ng-controller="TabsDemoCtrl">
+        <div class="container-fluid container-fullw">
+            <div ng-controller="dynamicTableCtrl" class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <h5 class="over-title margin-bottom-15"><span class="text-bold">L'historique de mes commandes</span></h5>
+                        <!-- <p>
+                                        Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you
+                                        will not see any difference in these tables.
+                                    </p>
+                                    <div class="alert alert-info">
+                                        Please try to re-size your browser window in order to see the tables in responsive mode.
+                                    </div> -->
+                        <!-- ng-controller="dynamicTableCtrl"      -->
+                        <div ng-init="getHistorique()" class="table-responsive">
+                            <!--     <table class="table table-bordered table-hover" id="sample-table-1">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ref Commande</th>
+                                                   
+                                                    <th>Date Commande</th>
+                                                    <th>Date Livraison</th>
+                                                    <th>Montant</th>
+                                               
+                                                    <th> Notation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="y in historique track by $index">
+
+                                                    <td>{{y.ID_COMMANDE}}</td>
+                                                    <td>{{y.DD_COMMANDE}}</td>
+                                                    <td>{{y.DF_COMMANDE}}</td>
+                                                    <td>{{y.MONTANT}}</td>
+                                                    <td>
+                                                        <button  class="btn btn-primary btn-o pull-right" ng-click="open('sm',$index)">
+                                                            Notez   
+                                                        </button>
+                                                    </td>
+                                                    <script type="text/ng-template" id="myModalContent.html">
+                                                        <div class="modal-header">
+                                                                <h3 class="modal-title">
+                                                                Noter le service
+                                                                </h3>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <label for="form-field-select-1">
+                                                                        Noter la livraison
+                                                                    </label>
+                                                                    <select ng-model="ComLiv" class="cs-select cs-skin-slide">
+                                                                        <option value=""></option>
+                                                                        <option value="Trés Satisfaisant">Trés Satisfaisant</option>
+                                                                        <option value="Moyennement Satisfaisant">Moyennement Satisfaisant</option>
+                                                                        <option value="Satisfaisant">Satisfaisant</option>
+                                                                        <option value="Peu Satisfaisant">Peu Satisfaisant</option>
+                                                                        <option value="Pas Satisfaisant">Pas Satisfaisant</option>
+                                                                    </select>
+                                                                </div>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <label for="form-field-select-1">
+                                                                        Noter le service
+                                                                    </label>
+                                                                    <select ng-model="ComSer" class="cs-select cs-skin-slide">
+                                                                        <option value=""></option>
+                                                                        <option value="Trés Satisfaisant">Trés Satisfaisant</option>
+                                                                        <option value="Moyennement Satisfaisant">Moyennement Satisfaisant</option>
+                                                                        <option value="Satisfaisant">Satisfaisant</option>
+                                                                        <option value="Peu Satisfaisant">Peu Satisfaisant</option>
+                                                                        <option value="Pas Satisfaisant">Pas Satisfaisant</option>
+                                                                    </select>
+                                                                </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <button class="btn btn-primary" ng-click="ok()">OK</button>
+                                                        <button class="btn btn-primary btn-o" ng-click="cancel()">Cancel</button>
+                                                        </div>
+                                                    </script>
+                                                        </tr>
+                                                    </tbody>
+                                       
+                                        </table> -->
+
+
+                            <!-- Debut : Table2 -->
+                            <table class="table table-striped table-hover" id="sample-table-2">
+                                <thead>
+                                    <tr>
+
+                                        <th>Ref Commande</th>
+                                        <th class="hidden-xs">Date Commande</th>
+                                        <th class="hidden-xs">Date Livraison</th>
+                                        <th class="hidden-xs">Montant</th>
+                                        <th>Notation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="y in historique track by $index">
+                                        <td>{{y.ID_COMMANDE}}</td>
+                                        <td class="hidden-xs">{{y.DD_COMMANDE}}</td>
+                                        <td class="hidden-xs">{{y.DF_COMMANDE}}</td>
+                                        <td class="hidden-xs">{{y.MONTANT}}</td>
+                                        <td class="center">
+                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                <a ng-click="open('sm',$index)" class="btn btn-transparent btn-xs" tooltip-placement="top" uib-tooltip="Review"><i class="fa fa-thumbs-o-up"></i></a>
+                                            </div>
+                                            <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                                <div class="btn-group" uib-dropdown>
+                                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" uib-dropdown-toggle>
+                                                        <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu pull-right dropdown-light" role="menu">
+                                                        <li>
+                                                            <a ng-click="open('sm',$index)">
+                                                                Review
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <script type="text/ng-template" id="myModalContent.html">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title">
+                                                        Noter le service
+                                                    </h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="form-field-select-1">
+                                                                                        Noter la livraison
+                                                                                    </label>
+                                                        <select ng-model="ComLiv" class="cs-select cs-skin-slide">
+                                                                                        <option value=""></option>
+                                                                                        <option value="Trés Satisfaisant">Trés Satisfaisant</option>
+                                                                                        <option value="Moyennement Satisfaisant">Moyennement Satisfaisant</option>
+                                                                                        <option value="Satisfaisant">Satisfaisant</option>
+                                                                                        <option value="Peu Satisfaisant">Peu Satisfaisant</option>
+                                                                                        <option value="Pas Satisfaisant">Pas Satisfaisant</option>
+                                                                                    </select>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="form-field-select-1">
+                                                                                        Noter le service
+                                                                                    </label>
+                                                        <select ng-model="ComSer" class="cs-select cs-skin-slide">
+                                                                                        <option value=""></option>
+                                                                                        <option value="Trés Satisfaisant">Trés Satisfaisant</option>
+                                                                                        <option value="Moyennement Satisfaisant">Moyennement Satisfaisant</option>
+                                                                                        <option value="Satisfaisant">Satisfaisant</option>
+                                                                                        <option value="Peu Satisfaisant">Peu Satisfaisant</option>
+                                                                                        <option value="Pas Satisfaisant">Pas Satisfaisant</option>
+                                                                                    </select>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                                                    <button class="btn btn-primary btn-o" ng-click="cancel()">Cancel</button>
+                                                </div>
+                                            </script>
+                                        </td>
+                                    </tr>
+
+
+
+
+                                </tbody>
+                            </table>
+                            <!-- Fin : Table2 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

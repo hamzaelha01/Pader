@@ -1,0 +1,193 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title" class="page-title-center">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h1 class="mainTitle">CATOLOGUE DE PRODUITS</h1>
+            <input ng-model="searchText" class="form-control text-center margin-top-15" type="text" placeholder="Rechercher un produit">
+            <div ncy-breadcrumb></div>
+        </div>
+    </div>
+</section>
+<!-- start: YOUR CONTENT HERE -->
+<!-- start: TABLE WITH FILTERS -->
+<div class="container " ng-controller="MyCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <div  ng-controller="vAccordionCtrl" class="panel-body">
+                        <v-accordion  class="vAccordion--default" control="firstAccordionControl">
+                            <v-pane ng-repeat="pane in allcat" expanded="$last">
+                                <v-pane-header>
+                                    <h5>{{ pane.DESGINATION_CAT }}</h5>
+                                </v-pane-header>
+                                <v-pane-content>
+                                    <!-- <p>
+                                        {{ pane.DESGINATION_CAT }}
+                                    </p> -->
+                                   
+                                    <!-- <v-accordion ng-if="pane.subpanes">
+                                        <v-pane ng-repeat="subpane in pane.subpanes">
+                                            <v-pane-header>
+                                                <h5>{{ subpane.ID_CATEGORIE }}</h5>
+                                            </v-pane-header>
+                                            <v-pane-content>
+                                                <p>
+                                                    {{ subpane.PRIX }}
+                                                </p>
+                                            </v-pane-content>
+                                        </v-pane>
+                                    </v-accordion> -->
+
+                                    <table class="table table-striped table-hover" id="sample-table-2" ng-init="show_cmdacollecter('null')">
+                                    <thead>
+                                        <tr >
+                                            <th>#</th>
+                                            <th>Designation</th>
+                                            <th>Prix</th>
+                                            <!-- <th>Categorie</th> -->
+                                            <th class="center">Commander</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="p in allproducts | filter:searchText   ">
+                                            <td ng-if="pane.ID_CATEGORIE === p.ID_CATEGORIE" >
+                                                <a href="#">
+                                            {{p.ID_PRODUIT}}
+                                        </a></td>
+                                            <td ng-if="pane.ID_CATEGORIE === p.ID_CATEGORIE" >{{p.DESIGNATION}}</td>
+                                            <td ng-if="pane.ID_CATEGORIE === p.ID_CATEGORIE" >{{p.PRIX}}</td>
+                                            <!-- <td ng-if="pane.ID_CATEGORIE === p.ID_CATEGORIE">{{p.DESGINATION_CAT}}</td> -->
+                                            <td class="center" ng-if="pane.ID_CATEGORIE === p.ID_CATEGORIE"> 
+                                                <button type="button" class="btn btn-wide btn-o btn-primary" ng-click="addToCart(p)">
+                                                <span class="fa fa-plus">
+
+                                                </span>
+                                            </button>
+                                            </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-wide btn-success" ng-click="myallproducts('lg')">
+                                Mon Panier
+                            </button>
+                                <script type="text/ng-template" id="asideContent1.html" ng-controller="MyCtrl">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">Mon Panier</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table ng-table="tableParams" class="table">
+                                            <tr>
+                                                <td>#</td>
+                                                <td>Designation</td>
+                                                <td>Prix</td>
+                                                <td>Quantite</td>
+                                                <td>Total</td>
+                                                <td>Effacer</td>
+                                            </tr>
+                                            <tr ng-repeat="c in cart">
+                                                <td>{{c.ID_PRODUIT}}</td>
+                                                <td> {{c.DESIGNATION}} </td>
+                                                <td> {{c.PRIX}} </td>
+                                                <td>{{c.count}}</td>
+                                                <td>{{c.count*c.PRIX | currency}}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-wide btn-o btn-danger" ng-click="removeItemCart(c)">
+                                                    <span class="fa fa-minus">
+
+                                                    </span>
+                                                </button>
+                                                </td>
+
+                                            </tr>
+                                            Total : {{total | currency}}
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" ng-click="ok($event)">Ajouter Au Panier</button>
+                                        <button class="btn btn-primary" ng-click="cancel($event)">Annuler</button>
+                                    </div>
+                                </script>
+
+                                </v-pane-content>
+                            </v-pane>
+                        </v-accordion>
+                    </div>
+         
+           <!--  <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="sample-table-1" ng-init="show_cmdacollecter('null')">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Designation</th>
+                            <th>Prix</th>
+                            <th>Categorie</th>
+                            <th>Commander</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="p in allproducts | filter:searchText    ">
+                            <td>
+                                <a href="#">
+                            {{p.ID_PRODUIT}}
+                        </a></td>
+                            <td>{{p.DESIGNATION}}</td>
+                            <td>{{p.PRIX}}</td>
+                            <td>{{p.DESGINATION_CAT}}</td>
+                            <td>
+                                <button type="button" class="btn btn-wide btn-o btn-primary" ng-click="addToCart(p)">
+                                <span class="fa fa-plus">
+
+                                </span>
+                            </button>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-wide btn-success" ng-click="myallproducts('lg')">
+                Mon Panier
+            </button>
+                <script type="text/ng-template" id="asideContent1.html" ng-controller="MyCtrl">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Mon Panier</h3>
+                    </div>
+                    <div class="modal-body">
+                        <table ng-table="tableParams" class="table">
+                            <tr>
+                                <td>#</td>
+                                <td>Designation</td>
+                                <td>Prix</td>
+                                <td>Quantite</td>
+                                <td>Total</td>
+                                <td>Effacer</td>
+                            </tr>
+                            <tr ng-repeat="c in cart">
+                                <td>{{c.ID_PRODUIT}}</td>
+                                <td> {{c.DESIGNATION}} </td>
+                                <td> {{c.PRIX}} </td>
+                                <td>{{c.count}}</td>
+                                <td>{{c.count*c.PRIX | currency}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-wide btn-o btn-danger" ng-click="removeItemCart(c)">
+                                    <span class="fa fa-minus">
+
+                                    </span>
+                                </button>
+                                </td>
+
+                            </tr>
+                            Total : {{total | currency}}
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-click="ok($event)">Ajouter Au Panier</button>
+                        <button class="btn btn-primary" ng-click="cancel($event)">Annuler</button>
+                    </div>
+                </script>
+
+               
+            </div> -->
+        </div>
+    </div>
+</div>

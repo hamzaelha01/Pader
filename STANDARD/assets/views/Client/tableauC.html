@@ -1,0 +1,432 @@
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle">Espace Client</h1>
+            <!-- <span class="mainDescription">Use this page to start from scratch and put your custom content</span> -->
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: YOUR CONTENT HERE -->
+<div class="container">
+    <div ng-controller="TabsDemoCtrl">
+        <div class="container-fluid container-fullw">
+            <div ng-controller="dynamicTableCtrl" class="row">
+                <div class="col-lg-12">
+                    <!-- <h5 class="over-title margin-bottom-15">Justified <span class="text-bold">Tabs</span></h5> -->
+                    <!-- <p>
+                        Easily make tabs or pills equal widths of their parent. On smaller screens, the nav links are stacked.
+                    </p> -->
+                    <uib-tabset justified="true" class="tabbable">
+                        <uib-tab heading="Reserver">
+                            <!-- Reserver -->
+                            <div class="container-fluid container-fullw bg-white">
+                                <div ng-controller="DatepickerDemoCtrl" class="row">
+                                    <div class="col-md-12">
+
+                                        <h5 class="over-title">Nouvelle <span class="text-bold">Reservation</span></h5>
+                                        <p class="margin-bottom-30">
+                                        </p>
+                                        <div class="row">
+                                            <form ng-controller="dynamicTableCtrl" ng-init="selectdate()">
+                                                <!-- Debut table -->
+                                                <!-- <table class="table table-bordered visible">
+                                                    <tr>
+                                                        <th>ID </th>
+                                                    </tr>
+                                                    <tr ng-repeat="x in dates track by $index">
+                                                        <td>{{x.ID_DATE}}</td>
+                                                    </tr>
+                                                </table> -->
+                                                <!-- Fin table -->
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <legend>
+                                                            Articles
+                                                        </legend>
+                                                        <div class="form-group">
+                                                            <label>
+                                                                           Nombre d'articles <span class="symbol required"></span>
+                                                                    </label>
+                                                            <div class="form-group">
+                                                                <input type="text" value="0" ng-model="nbrd" name="nbr" touchspin data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down">
+                                                            </div>
+
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <legend>
+                                                            Adresse de collecte
+                                                        </legend>
+                                                        <div class="form-group">
+                                                            <label>
+                                                                        Adresse
+                                                                    </label>
+                                                            <input type="text" class="form-control" ng-model="adr1"  placeholder="Adresse Complete">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <!-- id="google_canvas" -->
+                                                                <input  id="google_canvas"  type="text" class="form-control" name="prenom" value="{{myadress}}" placeholder="Localisez Moi">
+
+                                                                <span class="input-group-btn">
+                                                                                    <button type="button" class="btn btn-primary" ng-click="getadresse()">
+                                                                                        <i class="fa fa-map-marker" ></i>
+                                                                                    </button>
+                                                                                 </span>
+                                                            </div>
+                                                        </div>
+                                                       <!--  <div class="form-group">
+                                                            <div class="checkbox clip-check check-primary">
+                                                                <input type="checkbox" id="checkbox6" value="1">
+                                                                <label for="checkbox6">
+                                                                                        Cochez Si La Meme Adresse Pour La Livraison
+                                                                                    </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>
+                                                                                Quartier
+                                                                            </label>
+                                                                                <select name="country" class="form-control">
+                                                                                <option value="">&nbsp;</option>
+                                                                                <option value="AL">Alabama</option>
+                                                                                <option value="AK">Alaska</option>
+                                                                                <option value="AZ">Arizona</option>
+                                                                            </select>
+                                                                            </div>
+                                                                        </div>
+                                                        </div>
+                                                    </fieldset> -->
+                                                   <!--  <fieldset>
+                                                        <legend>
+                                                            Adresse de Livraison
+                                                        </legend>
+                                                        <div class="form-group">
+                                                            <label>
+                                                                        Adresse
+                                                                    </label>
+                                                            <input type="text" class="form-control" placeholder="Adresse Complete">
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>
+                                                                                Quartier
+                                                                            </label>
+                                                                                <select name="country" class="form-control">
+                                                                                <option value="">&nbsp;</option>
+                                                                                <option value="AL">Alabama</option>
+                                                                                <option value="AK">Alaska</option>
+                                                                                <option value="AZ">Arizona</option>
+                                                                            </select>
+                                                                            </div>
+                                                                        </div>
+                                                        </div>
+                                                    </fieldset> -->
+
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <legend>
+                                                            Date Collecte
+                                                        </legend>
+                                                        <div class="form-group">
+                                                            <label> Jour </label>
+                                                            <input type="text" id="dit1" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="inputopened" ng-init="inputopened = false" ng-click="inputopened = !inputopened" datepicker-options="datepickerOptions" ng-required="true" close-text="Close"
+                                                            />
+
+                                                            <!-- <button ng-click="dtclick()" class="btn btn-o btn-primary">date</button> -->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Heure</label>
+                                                            <uib-timepicker ng-model="timecmd" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+                                                        </div>
+
+                                                    </fieldset>
+                                                    <div align="right">
+                                                        <button type="submit" ng-click="ReserConfirm()" class="btn btn-o btn-primary">Reserver</button>
+
+                                                    </div>
+
+                                                    <!-- Lock Screen For Everyone  -->
+                                                    <!-- <div align="right">
+                                                        <button type="submit" ui-sref="login.lockscreen" class="btn btn-o btn-primary">LockScreen</button>
+
+                                                    </div> -->
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </uib-tab>
+                        <uib-tab heading="Commandes En Cours">
+                            <!-- Commandes En Cours -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="over-title margin-bottom-15"><span class="text-bold">Suivi de mes Commandes</span></h5>
+                                   <!--  <p>
+                                        Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you
+                                        will not see any difference in these tables.
+                                    </p> -->
+                                    <!-- <div class="alert alert-info">
+                                        Please try to re-size your browser window in order to see the tables in responsive mode.
+                                    </div> -->
+                                    <!-- ng-controller="dynamicTableCtrl"      -->
+                                    <!-- <div class="col-lg-12"> -->
+                                    <!-- <h5 class="over-title margin-bottom-15">Left <span class="text-bold">Tabs</span></h5>
+                                    <p>
+                                        Add class <code>tabs-left</code> to <code>&lt;tabset&gt;</code>.
+                                    </p> -->
+                                    <uib-tabset class="tabbable tabs-left">
+                                        <uib-tab>
+                                            <uib-tab-heading>
+                                               En attente
+                                            </uib-tab-heading>
+                                              <div class="table-responsive" ng-init="getCommandesEncours()">
+                                                            <table class="table table-bordered table-hover" id="sample-table-1">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Ref Commande</th>
+                                                                        <!-- <th>Nombre Articles</th> -->
+                                                                        <th>Date Commande</th>
+                                                                        <!-- <th>Date Fin Commande</th> -->
+                                                                        <!-- <th>Quantité</th> -->
+                                                                        <th>Statut</th>
+                                                                        <!-- <th>Montant</th> -->
+                                                                        <!-- <th><i class="fa fa-time"></i> Update </th>
+                                                                        <th><i class="fa fa-trush"></i> Delete </th>
+                                                                        <th>Status</th> -->
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr ng-repeat="x in names track by $index">
+                                                                        <td>
+                                                                            
+                                                                                        {{x.ID_COMMANDE}}
+                                                                                    </td>
+                                                                        <!-- <td>{{x.NBR_ARTICLES}}</td> -->
+                                                                        <td>{{x.DD_COMMANDE}}</td>
+                                                                        <!-- <td>{{x.QUANITE}}</td> -->
+                                                                        <td>{{x.STATUS}}</td>
+                                                                        <!-- <td>{{x.MONTANT}}</td> -->
+                                                                        <!-- <td><span class="label label-sm label-success">Registered</span></td>
+                                                                                    <td><span class="label label-sm label-danger">Expired</span></td>
+                                                                                    <td><span class="label label-sm label-inverse">Flagged</span></td> -->
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                        </uib-tab>
+                                        <uib-tab>
+                                            <uib-tab-heading>
+                                                En cours 
+                                            </uib-tab-heading>
+                                            <div class="table-responsive" ng-init="getCommandesRecu()">
+                                                            <table class="table table-bordered table-hover" id="sample-table-1">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Ref Commande</th>
+                                                                        <th>Date Commande</th>
+                                                                        <th>Date Livraison</th>
+                                                                        <th>Nombre Articles</th>
+                                                                        <th>Statut</th>
+                                                                        
+                                                                        <th><i class="fa fa-time"></i> Modifier </th>
+                                                                        <th>Montant</th>
+                                                                        
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr ng-repeat="r in recu track by $index">
+                                                                        <td>{{r.ID_COMMANDE}}</td>
+                                                                        <td>{{r.DD_COMMANDE}}</td>
+                                                                        <td>{{r.DF_COMMANDE}}</td>
+                                                                        <td>{{r.QUANTITE}}</td>
+                                                                        <td>{{r.STATUS}}</td>
+                                                                        <td>{{r.MONTANT}}</td>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-primary btn-wide btn-scroll btn-scroll-top ti-shopping-cart" ng-click="RedirectR($index)">
+                                                                            <span>Reçu</span>
+                                                                        </button>
+                                                                        </td> 
+                                                                        <td>
+                                                                        <!-- Script du Modal -->
+                                                                        <script type="text/ng-template" id="asideContent.html">
+                                                                            <div class="modal-header">
+                                                                                <h3 class="modal-title">Modification du temps</h3>
+                                                                            </div>                                                    
+                                                                            <div ng-controller="dynamicTableCtrl">
+                                                                                <div class="modal-body">
+
+                                                                                    <input type="text" id="dit1" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dated" is-open="inputopened" ng-init="inputopened = false" ng-click="inputopened = !inputopened" datepicker-options="datepickerOptions" ng-required="true" close-text="Close"
+                                                                                    />
+                                                                                    <uib-timepicker ng-model="houred" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+
+                                                                                </div>
+                                                                                <div class="modal-header">
+                                                                                         <h3 class="modal-title">Modification de l'adresse</h3>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                        <div class="form-group">
+                                                                                        <div class="input-group">
+                                                                                            <!--  -->
+                                                                                          
+                                                                                           <div class="radio clip-radio radio-primary radio-inline">
+                                                                                                <input type="radio" id="radio1"  name="inline" value="true">
+                                                                                                <label for="radio1">
+                                                                                                    La meme adresse de collecte
+                                                                                                </label>
+                                                                                            </div>
+                                                                                            
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <input type="text" class="form-control" placeholder="Adresse Complete" ng-model="adrz1">
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <div class="modal-footer">
+                                                                                    <button class="btn btn-primary" ng-click="ChangeDateClt($index)">OK</button>
+                                                                                    <button class="btn btn-primary" ng-click="cancel($event)">Cancel</button>
+                                                                                </div>
+                                                                            <div>
+
+                                                                        </script>
+
+                                                                        <button ng-if="r.STATUS === 'PRETE'" type="button" class="btn btn-primary btn-block btn-scroll btn-scroll-top ti-arrow-left" ng-click="OpenModif('left',$index)">
+                                                                        <span>Modifier</span>
+                                                                    </button>
+                                                                        <!-- </div> -->
+                                                                    </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                        </uib-tab>
+                                        
+                                    </uib-tabset>
+                                   <!--  </div> -->
+                                </div>
+                            </div>
+                        </uib-tab>
+                        <uib-tab heading="Historique">
+                            <!-- Historique -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="over-title margin-bottom-15"><span class="text-bold">L'historique de mes commandes</span></h5>
+                                    <!-- <p>
+                                        Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you
+                                        will not see any difference in these tables.
+                                    </p>
+                                    <div class="alert alert-info">
+                                        Please try to re-size your browser window in order to see the tables in responsive mode.
+                                    </div> -->
+                                    <!-- ng-controller="dynamicTableCtrl"      -->
+                                    <div ng-init="getHistorique()" class="table-responsive">
+                                        <table class="table table-bordered table-hover" id="sample-table-1">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ref Commande</th>
+                                                    <!-- <th>Nombre Articles</th> -->
+                                                    <th>Date Commande</th>
+                                                    <th>Date Livraison</th>
+                                                    <th>Montant</th>
+                                                    <!-- <th>Quantité</th> -->
+                                                    <!-- <th><i class="fa fa-time"></i> Update </th>
+                                                    <th><i class="fa fa-trush"></i> Delete </th> -->
+
+                                                    <!-- Phase test -->
+                                                    <!-- <th>#</th>
+                                                    <th>Date Debut Commande</th>
+                                                    <th>Status</th> -->
+                                                    <!--  Fin : Phase test -->
+                                                    <th> Notation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="y in historique track by $index">
+
+                                                    <td>{{y.ID_COMMANDE}}</td>
+                                                    <!-- <td>{{y.NBR_ARTICLES}}</td> -->
+                                                    <td>{{y.DD_COMMANDE}}</td>
+                                                    <td>{{y.DF_COMMANDE}}</td>
+                                                    <td>{{y.MONTANT}}</td>
+                                                    <!-- <td>{{y.QUANTITE}}</td> -->
+                                                    <td>
+                                                        <button  class="btn btn-primary btn-o pull-right" ng-click="open('sm',$index)">
+                                                            Notez   
+                                                        </button>
+                                                    </td>
+                                                    <script type="text/ng-template" id="myModalContent.html">
+                                                        <div class="modal-header">
+                                                                <h3 class="modal-title">
+                                                                Noter le service
+                                                                </h3>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <label for="form-field-select-1">
+                                                                        Noter la livraison
+                                                                    </label>
+                                                                    <select ng-model="ComLiv" class="cs-select cs-skin-slide">
+                                                                        <option value=""></option>
+                                                                        <option value="Trés Satisfaisant">Trés Satisfaisant</option>
+                                                                        <option value="Moyennement Satisfaisant">Moyennement Satisfaisant</option>
+                                                                        <option value="Satisfaisant">Satisfaisant</option>
+                                                                        <option value="Peu Satisfaisant">Peu Satisfaisant</option>
+                                                                        <option value="Pas Satisfaisant">Pas Satisfaisant</option>
+                                                                    </select>
+                                                                </div>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <label for="form-field-select-1">
+                                                                        Noter le service
+                                                                    </label>
+                                                                    <select ng-model="ComSer" class="cs-select cs-skin-slide">
+                                                                        <option value=""></option>
+                                                                        <option value="Trés Satisfaisant">Trés Satisfaisant</option>
+                                                                        <option value="Moyennement Satisfaisant">Moyennement Satisfaisant</option>
+                                                                        <option value="Satisfaisant">Satisfaisant</option>
+                                                                        <option value="Peu Satisfaisant">Peu Satisfaisant</option>
+                                                                        <option value="Pas Satisfaisant">Pas Satisfaisant</option>
+                                                                    </select>
+                                                                </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <button class="btn btn-primary" ng-click="ok()">OK</button>
+                                                        <button class="btn btn-primary btn-o" ng-click="cancel()">Cancel</button>
+                                                        </div>
+                                                    </script>
+                                                        </tr>
+                                                    </tbody>
+                                            <!--  -->
+
+                                            <!--  -->
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </uib-tab>
+                        
+                    </uib-tabset>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</div>
+<!-- end: YOUR CONTENT HERE

@@ -1,0 +1,227 @@
+<!-- start: PAGE TITLE -->
+<!-- <section id="page-title">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1 class="mainTitle" >Catalogue de Produits</h1>
+                <span class="mainDescription">Use this page to start from scratch and put your custom content</span>
+            </div>
+            <div ncy-breadcrumb></div>
+        </div>
+</section> -->
+<!-- end: PAGE TITLE -->
+<!-- start: PAGE TITLE -->
+<section id="page-title" class="page-title-center" ng-controller="MyCtrl" >
+    <div class="row" >
+        <div class="col-sm-8 col-sm-offset-2">
+            <h1 class="mainTitle" >MA COMMANDE </h1>
+            <!-- <span class="mainDescription">Themify Icons is a complete set of icons for use in web design and apps, consisting of 320+ pixel-perfect, hand-crafted icons that draw inspiration from Apple iOS 7</span>
+            <input ng-model="search" class="form-control text-center margin-top-15" type="text" placeholder="Search {{icons.name}} icons...">
+            <div ncy-breadcrumb></div> -->
+        </div>
+    </div>
+</section>
+<!-- start: YOUR CONTENT HERE -->
+<!-- start: TABLE WITH FILTERS -->
+<div class="container"  ng-controller="MyCtrl"  >
+<!-- start: YOUR CONTENT HERE -->
+<!-- <div class="row">
+    <div class="col-md-12"> -->
+        <!-- <h5 class="over-title margin-bottom-15">Responsive <span class="text-bold">Table</span></h5>
+        <p>
+            Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.
+        </p>
+        <div class="alert alert-info">
+            Please try to re-size your browser window in order to see the tables in responsive mode.
+        </div> -->
+        <!-- <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="sample-table-1" ng-init="MyAllBasketsX()">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Designation</th>
+                        <th>Quantite</th>
+                        <th>Montant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="p in MyAllBasketsX track by $index">
+                        <td>
+                        <a href="#">
+                            {{p.ID_PRODUIT}}
+                        </a></td>
+                        <td>{{p.DESIGNATION}}</td>
+                        <td>{{p.QUANITE}}</td>
+                        <td>{{p.MONTANT}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-wide btn-success" ng-click = "">
+                Print All
+            </button>
+        </div> -->
+        <div ng-init="MyAllBasketsX()" id="allInvoices" >
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-striped"  >
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Produit </th>
+                                <!-- <th class="hidden-480"> Description </th> -->
+                                <th class="hidden-480"> Quantity </th>
+                                <!-- <th class="hidden-480"> Unit Cost </th> -->
+                                <th> Total </th>
+                                <th> Recu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="p in MyAllBasketsX track by $index">
+                                <td> {{p.ID_PRODUIT}} </td>
+                                <td> {{p.DESIGNATION}} </td>
+                                <!-- <td class="hidden-480"> Drem psum dolor </td> -->
+                                <td class="hidden-480"> {{p.QUANITE}} </td>
+                                <!-- <td class="hidden-480">  </td> -->
+                                <td> {{p.MONTANT}} DH</td>
+                                <td>
+                                    <button class="btn btn-success" ng-click="imprimer('lg',p);">
+                                        Imprimer
+                                    </button>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 invoice-block">
+                    <ul class="list-unstyled amounts text-small">
+                        <li>
+                            <strong>Client:</strong> {{Myname}}
+                        </li>
+                        <li>
+                            <strong>Nb Articles:</strong> {{MyNbArticles}}
+                        </li>
+                        <li>
+                            <strong>TVA:</strong> 20%
+                        </li>
+                        <li class="text-extra-large text-dark margin-top-15">
+                            <strong >Total:</strong> {{MyTotal}} DH
+                        </li>
+                    </ul>
+                    <br>
+                    <a onclick="pdfToHTML1()" class="btn btn-lg btn-primary hidden-print">
+                        Imprimer <i class="fa fa-print"></i>
+                    </a>
+                    <!-- <a class="btn btn-lg btn-primary btn-o hidden-print">
+                        Submit Your Invoice <i class="fa fa-check"></i>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+        <script type="text/ng-template" id="invoice.html" ng-controller="MyCtrl" >
+            <div class="row" ng-init="MyAllBasketsY()" id="contentPdf" >
+                <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <address>
+                                <strong>{{Myname}} </strong>
+                                <br>
+                                2135 Sunset Blvd
+                                <br>
+                                Los Angeles, CA 90026
+                                <br>
+                                <abbr title="Phone">P:</abbr> (213) 484-6829
+                            </address>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                            <p>
+                                <em>Date: 1st November, 2013</em>
+                            </p>
+                            <p>
+                                <em>Reçu #: {{MyProductInfo.ID_COMMANDE}}</em>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="text-center">
+                            <h1>Reçu</h1>
+                        </div>
+                        </span>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>#</th>
+                                    <th class="text-center">Prix</th>
+                                    <th class="text-center">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-md-9"><em>{{MyProductInfo.DESIGNATION}}</em></h4></td>
+                                    <td class="col-md-1" style="text-align: center"> {{MyProductInfo.ID_PRODUIT}} </td>
+                                    <td class="col-md-1 text-center">{{MyProductInfo.PRIX}} DH</td>
+                                    <td class="col-md-1 text-center">{{MyProductInfo.MyTotal}} DH</td>
+                                </tr>
+                                <tr>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td class="text-right">
+                                    <p>
+                                        <strong>Subtotal: </strong>
+                                    </p>
+                                    <p>
+                                        <strong>TVA: </strong>
+                                    </p></td>
+                                    <td class="text-center">
+                                    <p>
+                                        <strong>6.94 DH</strong>
+                                    </p>
+                                    <p>
+                                        <strong>20%</strong>
+                                    </p></td>
+                                </tr>
+                                <tr>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td class="text-right"><h4><strong>Total: </strong></h4></td>
+                                    <td class="text-center text-danger"><h4><strong>{{MyProductInfo.MyTotal}}DH</strong></h4></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-success btn-lg btn-block" onclick="pdfToHTML()" >
+                            <!-- <a href="javascript:pdfFromHTML()">Imprimer </a> -->
+                            <span class="fa fa-print">
+                            </span>
+                        </button></td>
+                    </div>
+                </div>
+            
+    </script>
+    </div>
+<!-- </div>
+</div> -->
+<!-- end: YOUR CONTENT HERE -->
+<!-- <div class="container-fluid container-fullw" ng-controller="MyCtrl">
+<div class="row">
+    <div class="col-md-12">
+        <h5 class="over-title margin-bottom-15">Table <span class="text-bold">with filters</span></h5>
+        /// controller:  'ngTableCtrl3' -  localtion: assets/js/controllers/ngTableCtrl.js ///
+        <div >
+            <strong>Filter:</strong> {{tableParams.filter()|json}}
+            <table ng-table="tableParams" show-filter="true" class="table table-striped">
+                <tr ng-repeat="user in $data">
+                    <td data-title="'Name'" filter="{ 'name': 'text' }"> {{user.name}} </td>
+                    <td data-title="'Alias'">{{user.alias}}</td>
+                    <td data-title="'Publisher'">{{user.publisher}}</td>
+                    <td data-title="'Gender'">{{user.gender}}</td>
+                </tr>
+            </table>
+            
+        </div>
+        <button ng-click="tester()" >Tester</button>
+    </div>
+</div>
+</div> -->
+<!-- end: TABLE WITH FILTERS -->

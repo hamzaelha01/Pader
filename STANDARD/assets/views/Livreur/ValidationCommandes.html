@@ -1,0 +1,67 @@
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle">Commandes a collecter </h1>
+            <!-- <span class="mainDescription">Use this page to start from scratch and put your custom content</span> -->
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: YOUR CONTENT HERE -->
+<div class="container">
+    <div ng-controller="LivreurCtrl" class="row">
+        <div class="col-md-12">
+           <!--  <h5 class="over-title margin-bottom-15">Responsive <span class="text-bold">Table</span></h5>
+            <p>
+                Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference
+                in these tables.
+            </p>
+            <div class="alert alert-info">
+                Please try to re-size your browser window in order to see the tables in responsive mode.
+            </div> -->
+            <div ng-init="toCollecte()" class="table-responsive">
+                <div class=" table-responsive">
+                     <!-- <label>Search: <input ng-model="searchText"></label> -->
+                    <table class="table table-stripped table-hover" id="sample-table-2">
+                        <thead>
+                            <tr>
+                                <th class="hidden-xs" >#</th>
+                                <th>NOM CLIENT </th>
+                                <th class="hidden-xs">PRENOM CLIENT</th>
+                                <th class="hidden-xs" >TELEPHONE CLIENT</th>
+                                <th>ADRESSE COMPLETE </th>
+                                <th class="hidden-xs" >DATE PASSAGE </th>
+                                <th class="hidden-xs" >NOMBRE D'ARTICLES</th>
+                                <th class="center"><i class="fa fa-trush"></i> Panier </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in toC track by $index">
+                                <td class="hidden-xs" >{{x.ID_COMMANDE}}</td>
+                                <td>{{x.NOM_CLIENT}}</td>
+                                <td class="hidden-xs">{{x.PRENOM_CLIENT}}</td>
+                                <td class="hidden-xs" >{{x.TELEPHONE_CLIENT}}</td>
+                                <td>{{x.Adresse_Complete_Collect}}</td>
+                                <td class="hidden-xs">{{x.DD_COMMANDE}}</td>
+                                <td class="hidden-xs" >{{x.NBR_ARTICLES}}</td>
+                                <td>
+                                    <div class="center">
+                                        <button type="button" ng-click="RedirectL($index)" class="btn btn-wide btn-success">
+                                        Panier
+                                         </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- end: YOUR CONTENT HERE -->-

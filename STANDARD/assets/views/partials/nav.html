@@ -1,0 +1,237 @@
+<!-- start: SEARCH FORM --> 
+
+<!-- end: SEARCH FORM -->
+<!-- start: MAIN NAVIGATION MENU -->
+
+<div class="navbar-title">
+
+	<!-- document.querySelector("#admin").style.display= "none"; -->
+	
+</div>
+<ul  class="main-navigation-menu" ng-controller="SparklineCtrl">
+	<li id="admin" ui-sref-active="active">
+		<a ui-sref="app.dashboard">
+			<div class="item-content">
+				<div class="item-media">
+					<i class="ti-home"></i>
+				</div>
+				<div class="item-inner">
+					<span > {{userC}}  </span>
+				</div>
+			</div>
+		</a>
+	</li>
+	<!-- Debut : Liste des clients -->
+	 <li ui-sref-active="active">
+        <a id="serviceClients" ui-sref="app.BdClients">
+        	<!-- ng-if="userR === 'Service Clients'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title">  Liste des Clients </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Liste des clients  -->
+	<!-- Debut : Reservation -->
+   <li  ui-sref-active="active">
+        <a id="client" ui-sref="app.Reservation">
+        	<!-- ng-if="userR === 'Client'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Reservation </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Reservation -->
+	<!-- Debut : Service clients : commandes en attentes  -->
+	 <li ui-sref-active="active">
+        <a id="serviceClients" ui-sref="app.BdCommandes">
+        	<!-- ng-if="userR === 'Service Clients'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-pause" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Commandes en attente </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Service clients : commandes en attentes -->
+	<!-- Debut : Service clients : Livraisons en attents -->
+	    <li ui-sref-active="active">
+        <a id="serviceClients" ui-sref="app.BdCommandesDone">
+        	<!-- ng-if="userR === 'Service Clients'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Livraisons en attente </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Service clients : Livraisons en attentes  -->
+	<!-- Debut : Service Livraison : Commandes confirmés   -->
+	 <li ui-sref-active="active">
+        <a id="serviceLivraisons" ui-sref="app.BdLSC">
+        	<!-- ng-if="userR === 'Service Livraison'"  -->
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title">  Commandes confirmées </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Service Livraison : Commandes confirmés   -->
+	<!-- Debut : Service Livraison : Livraisons confirmées -->
+	  <li ui-sref-active="active">
+        <a id="serviceLivraisons"  ui-sref="app.SLSP">
+        	<!-- ng-if="userR === 'Service Livraison'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Livraisons confirmées </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Service Livraison : Livraison confirmées -->
+	<!-- Debut : Service clients : Calendrier  -->
+	<li ui-sref-active="active">
+        <a id="serviceClients" ui-sref="app.calendrier">
+        	<!-- ng-if="userR === 'Service Clients'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Calendrier </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Service clients : Calendrier  -->
+	<!-- Debut : Service Livraisons : Calendrier  -->
+	<li ui-sref-active="active">
+        <a id="serviceLivraisons" ui-sref="app.calendrier">
+        	<!-- ng-if="userR === 'Service Livraison'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Calendrier </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Service Livraisons : Calendrier  -->
+	<!-- Debut : Commandes a livrer -->
+	<li ui-sref-active="active">
+        <a id="serviceProductions" ui-sref="app.cmdl">
+        	<!-- ng-if="userR === 'Service Production'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Commandes a livrer  </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Commandes a livrer  -->
+	<!-- Debut : Commandes a collecter -->
+	<li ui-sref-active="active">
+        <a id="livreur" ui-sref="app.ToCollecte">
+        	<!-- ng-if="userR === 'livreur'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-truck" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Commandes a collecter  </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Commandes a collected -->
+	<!-- Debut : Commandes a livrer -->
+	  <li ui-sref-active="active">
+        <a id="livreur" ui-sref="app.ToDeliver">
+        	<!-- ng-if="userR === 'livreur'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-rocket" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Commandes a livrer  </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Commandes a livrer -->
+	<!-- Debut : Commandes en cours -->
+	<li ui-sref-active="active">
+        <a id="client" ui-sref="app.CmdEnCours">
+        	<!-- ng-if="userR === 'Client'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Vos commandes  </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Commandes en cours -->
+	<!-- Debut : Historique des clients  -->
+	<li ui-sref-active="active">
+        <a id="client" ui-sref="app.HistoriqueCmd">
+        	<!-- ng-if="userR === 'Client'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-history"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Historique des commandes  </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!-- Fin : Historiques des clients  -->
+	<!-- Debut : Commandes a preparer -->
+	<li  ui-sref-active="active">
+        <a id="serviceProductions" ui-sref="app.cmdp">
+        	<!-- ng-if="userR === 'Service Production'" -->
+            <div  class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-tasks" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Commandes a preparer </span>
+                </div>
+            </div>
+        </a>
+    </li>
+	<!--  Fin : Commandes a preparer -->
+</ul>
+
+
+

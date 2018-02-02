@@ -1,0 +1,140 @@
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+	<div class="row">
+		<div class="col-sm-8">
+			<h1 class="mainTitle" translate="sidebar.nav.tables.DYNAMIC">DYNAMIC TABLES</h1>
+			<span class="mainDescription">Rremove/delete a table row dynamically</small></span>
+		</div>
+		<div ncy-breadcrumb></div>
+	</div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: Nouvelle Annonce-->
+<div ng-controller="TabsDemoCtrl">
+	<div class="container-fluid container-fullw bg-white">
+		<div class="row">
+			<div class="col-md-12">
+				<h5 class="over-title margin-bottom-15">Togglable <span class="text-bold">Tabs</span></h5>
+				<p>
+					Add quick, dynamic tab functionality to transition through panes of content, even via dropdown menus.
+				</p>
+				<uib-tabset class="tabbable">
+					<uib-tab heading="Nouvelle Annonce">
+						<h4>Nouvelle Annonce</h4>
+						<!--Debut Table -->
+						<div class="container-fluid container-fullw bg-white">
+							<div class="row">
+								<div class="col-md-12">
+									<!-- /// controller:  'ValidationCtrl' -  localtion: assets/js/controllers/validationCtrl.js /// -->
+									<div ng-controller="ValidationCtrl">
+										<form name="Form" id="form1" novalidate ng-submit="form.submit(Form)">
+											<div class="row">
+												<div class="col-md-6">
+													<fieldset>
+														<legend>
+															Nouvelle Annonce
+														</legend>
+															<div class="form-group">
+																<h5 class="text-bold margin-top-25 margin-bottom-15">Titre de l'annonce </h5>
+																<input type="text" placeholder="Small Text Field" id="form-field-13" class="form-control input-sm">
+															</div>
+															<div class="panel-body">
+																	<div class="form-group">
+																	<h5 class="text-bold margin-top-25 margin-bottom-15">L'annonce </h5>
+																		<div class="note-editor">
+																			<textarea class="form-control"></textarea>
+																		</div>
+																	</div>
+															</div>
+															<div ng-controller="DatepickerDemoCtrl">
+																<h5 class="text-bold margin-top-25 margin-bottom-15">Jour </h5>
+																	<uib-timepicker ng-model="dt" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+															
+															<div class="col-md-6">
+																<h5 class="text-bold margin-top-25 margin-bottom-15">Heure </h5>
+																<div class="inline-block min-height-180">
+																	<uib-datepicker ng-model="dt" class="well well-sm clip-datepicker" datepicker-options="datepickerOptions"></uib-datepicker>
+																</div>
+															</div>
+															<div class="col-md-12">
+																<pre>Date : {{dt | date:'MM/dd/yyyy  h:mma' }}</pre>
+															</div>
+															</div>
+
+													</fieldset>
+												
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="pull-right">
+														<button type="submit" class="btn btn-primary">
+															Ajouter Une nouvele annonce 
+														</button>
+														<button type="reset" class="btn btn-primary btn-o" ng-click="form.reset(Form)">
+															Vider
+														</button>
+														
+													</div>
+												</div>
+											</div>
+											<!--provisoire pour verification -->
+											
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--Fin Table -->	
+					</uib-tab>
+<!-- end: Nouveau annonce -->
+					
+					<uib-tab heading="Details annonce">
+						<h4>Details annonce</h4>
+						<!--Debut Table -->
+							<!-- start: INLINE EDIT EXAMPLE -->
+<div class="container-fluid container-fullw">
+	<div class="row">
+		<div class="col-md-12">
+			<h5 class="over-title margin-bottom-15"><span class="text-bold">Listes Des Annonces </span></h5>
+			<!-- /// controller:  'ngTableCtrl6' -  localtion: assets/js/controllers/ngTableCtrl.js /// -->
+			<div ng-controller="ngTableCtrl6">
+				<div class="row margin-bottom-10">
+					<div class="col-md-12">
+						<button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">
+							Clear sorting
+						</button>
+					</div>
+				</div>
+				<strong>Trier:</strong> {{tableParams.sorting()|json}}
+				<div class="table-responsive">
+					<table ng-table="tableParams" class="table">
+						<tbody ng-repeat="p in $data">
+							<tr id="tr{{p.id}}" ng-class-odd="'odd'" ng-class-even="'even'">
+								<td class="rowTd" data-title="'ID'"          sortable="'id'">{{p.id}}</td>
+								<td class="rowTd" data-title="'Prenom'"   sortable="'fn'">{{p.fn}}</td>
+								<td class="rowTd" data-title="'Nom'"    sortable="'ln'">{{p.ln}}</td>
+								<td class="rowTd" data-title="'Classe'" sortable="'dc'">{{p.dc}}</td>
+								<td class="rowTd" data-title="'Email'"       sortable="'em'">{{p.em}}</td>
+								<td class="rowTd" data-title="'Telephone'"       sortable="'ph'">{{p.ph}}</td>
+								<td class="rowTd" >
+								<div class="pull-right margin-right-10">
+									<input type=button class="btn btn-primary btn-o btn-sm" id="editRowBtn{{p.id}}" value="edit"
+									ng-click="setEditId(p.id)">
+								</div></td>
+							</tr>
+							<tr ng-show="editId===p.id" ng-if="editId===p.id">
+								<td colspan="7" ng-include src="'assets/views/editRow.html'"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end: INLINE EDIT EXAMPLE -->
+						<!--Fin Table -->	
+					</uib-tab>
+					<!--Fin Tab -->
+
