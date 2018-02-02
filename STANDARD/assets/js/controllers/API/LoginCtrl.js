@@ -32,11 +32,11 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
                 //     $window.location.href = '#/app/BdClients';
                 // }
 
-                alert(user.getName());
-                alert(user.getIdLocalTempclient());
-                alert(user.getRole());
+                // alert(user.getName());
+                // alert(user.getIdLocalTempclient());
+                // alert(user.getRole());
 
-                alert(user.isUserLoggedIn());
+                // alert(user.isUserLoggedIn());
 
                 if (user.getRole() === "Client") {
                     $window.location.href = '#/app/CommandesEnCours';
@@ -103,12 +103,25 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
                     //     $window.location.href = '#/app/BdClients';
                     // }
 
-                    alert(user.getName());
-                    alert(user.getIdLocalTempclient());
+                    // alert(user.getName());
+                    // alert(user.getIdLocalTempclient());
 
-                    alert(user.isUserLoggedIn());
-                    alert("ok");
-                    $window.location.href = '#/app/dashboard';
+                    // alert(user.isUserLoggedIn());
+                    // alert("ok");
+                    // $window.location.href = '#/app/dashboard';
+                    if (user.getRole() === "Client") {
+                        $window.location.href = '#/app/CommandesEnCours';
+                    } else if (user.getRole() === "Service Clients") {
+                        $window.location.href = '#/app/BdClients';
+                    } else if (user.getRole() === "Service Livraison") {
+                        $window.location.href = '#/app/Calendrier';
+                    } else if (user.getRole() === "Service Production") {
+                        $window.location.href = '#/app/cmdp';
+                    } else if (user.getRole() === "livreur") {
+                        $window.location.href = '#/app/ToCollecte';
+                    } else if (user.getRole() === "admin") {
+                        $window.location.href = '#/app/dashboard';
+                    }
 
 
 
