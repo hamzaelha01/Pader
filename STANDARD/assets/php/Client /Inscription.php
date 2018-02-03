@@ -23,7 +23,7 @@ if (count($info) > 0) {
    if (mysqli_query($conn, $query)) {
        echo 'Bienvenue! Tu t\'es Bien Inscrit  ...';
        }else {
-           echo 'Erreur';
+           echo 'Erreur'.mysqli_error($conn);
        }
    // echo $nom.'  '.$prenom.'  '.$phone.'  '.$email.'  '.$sexe.'  '.$password.'  '.$type;
    
