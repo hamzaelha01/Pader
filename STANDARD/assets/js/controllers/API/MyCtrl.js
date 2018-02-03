@@ -10,13 +10,13 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     // var cpt;
     // Show All records 
     $scope.show_cmdaprep = function() {
-        $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/voircmdaprep.php")
+        $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdaprep.php")
             .success(function(data) {
                 $scope.names = data;
             });
     }
     $scope.show_cmdalivr = function() {
-        $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/voircmdalivr.php")
+        $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdalivr.php")
             .success(function(data) {
                 $scope.livrs = data;
             });
@@ -32,7 +32,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                 //alert(index);
                 //Get Record of this Index
                 $http.get(
-                        "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/voircmdalivr.php").success(function(data) {
+                        "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdalivr.php").success(function(data) {
                         $scope.cmds = data;
                         $scope.cmdid = data[index].ID_COMMANDE;
                         // alert($scope.cmdid);
@@ -41,7 +41,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                 $scope.ok = function(e) {
 
                     //alert( $scope.arra(index));
-                    $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/confirmeralivr.php", {
+                    $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmeralivr.php", {
                             'id': $scope.cmdid
                         })
                         .success(function(data) {
@@ -61,7 +61,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     // Show Sweet Modal
     $scope.fini = function(index) {
         $http.get(
-            "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/voircmdalivr.php"
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdalivr.php"
         ).success(function(data) {
             $scope.cmds = data;
             $scope.cmdid = data[index].ID_COMMANDE;
@@ -80,7 +80,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
             closeOnCancel: false
         }, function(isConfirm) {
             if (isConfirm) {
-                $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/confirmeralivr.php", {
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmeralivr.php", {
                         'id': $scope.cmdid
                     })
                     .success(function(data) {
@@ -108,7 +108,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     // Show Record binded to this index
     // $scope.showme = function(index){
     //     $http.get(
-    //         "http://18.221.242.75:3000/PADv1/STANDARD/assets/views/MyUpdate/php/voircmdaprep.php"
+    //         "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/views/MyUpdate/php/voircmdaprep.php"
     //     ).success(function(data){
     //         //$scope.cmds = data;
     //         $scope.cmdx = data[index];
@@ -121,7 +121,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     // $scope.update = function(index){
     //     {
     //         if (confirm("Voulez vous vraiment de confirmer cette commande ?")) {
-    //         $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/views/MyUpdate/php/confirmer.php", {
+    //         $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/views/MyUpdate/php/confirmer.php", {
     //         'id': index
     //         })
     //         .success(function(data) {
@@ -137,7 +137,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     $scope.arra = function(index) {
 
         $http.get(
-            "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/voircmdaprep.php"
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdaprep.php"
         ).success(function(data) {
             //$scope.cmds = data;
             $scope.cmdx = data[index];
@@ -158,49 +158,49 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                 // alert(index);
                 //Get Record of this Index
                 // $http.get(
-                //         "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/voircmdaprep.php"
+                //         "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdaprep.php"
                 //     ).success(function(data) {
-                        // $scope.cmds = data;
-                        // $scope.cmdid = data[index].ID_COMMANDE;
-                        // $scope.qte = data[index].QTE;
-                        // Qauntité des produit panier par rapport a une commande 
-                        user.setQteCmd(x.QTE);
-                        // alert($scope.cmdid);
-                        user.setTempRecu(x.ID_COMMANDE);
-                        user.ClientTempCmd(x.ID_CLIENT);
-                        alert(user.getClientTempCmd());
-                    // })
-                    // Update Statut of commande
+                // $scope.cmds = data;
+                // $scope.cmdid = data[index].ID_COMMANDE;
+                // $scope.qte = data[index].QTE;
+                // Qauntité des produit panier par rapport a une commande 
+                user.setQteCmd(x.QTE);
+                // alert($scope.cmdid);
+                user.setTempRecu(x.ID_COMMANDE);
+                user.ClientTempCmd(x.ID_CLIENT);
+                alert(user.getClientTempCmd());
+                // })
+                // Update Statut of commande
                 $scope.ok = function(e) {
                     // $rootScope.cpt=0;
                     //alert( $scope.arra(index));
                     user.setRecuProdCpt(0);
 
-                     $http({
-                        url: 'http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/confirmer.php',
+                    $http({
+                        url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmer.php',
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                         },
                         data: 'id=' + x.ID_COMMANDE
                     }).success(function(response) {
-                            alert(response);
-                            alert(user.getTempRecu());
-                            alert(user.getID());
-                            alert(IdUser);
-                             $window.location.href = '#/app/RecuProd';
+                        alert(response);
+                        alert(user.getTempRecu());
+                        alert(user.getID());
+                        alert(IdUser);
+                        $window.location.href = '#/app/RecuProd';
                     });
-                    // $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/confirmer.php", {
+                    // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmer.php", {
                     //         'id': x.ID_COMMANDE
                     //     })
                     //     .success(function(data) {
-                            
+
 
                     //         //$scope.show_cmdaprep();
                     //         // $scope.IDCMD = user.getTempRecu();
                     //         // alert($scope.IDCMD);
 
-                           
+
                     //         // Preparation du reçu 
                     //         // user.setTempRecu(data[index].ID_COMMANDE);
                     //         // alert(" USER TEMP " + user.getID());
@@ -229,7 +229,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
 
         // alert(myvar);
         $http.get(
-            "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Livreur/getAllProducts.php"
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/getAllProducts.php"
         ).success(function(data) {
 
             $scope.allproducts = data;
@@ -285,7 +285,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     $scope.total = 0;
     // PANIER === All Product Listing
     $scope.myallproducts = function(size) {
-        
+
         // alert($scope.total);
         $aside.open({
             templateUrl: 'asideContent1.html',
@@ -333,7 +333,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                             // 'idClient':user.getClientTempCmd(),
                             'idCmd': user.getCmdTemp()
                         };
-                        $http.post('http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Livreur/ajouterpanier.php', {
+                        $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/ajouterpanier.php', {
                             cart: $scope.formData
                         }).success(function(data) {
 
@@ -342,16 +342,16 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
 
                         }).error(function(data) { alert(data); })
 
-                        
+
                     }
-                        $http.post('http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Livreur/UpdateStatusP.php', {
-                                'id':user.getCmdTemp()
-                        }).success(function(data) {
+                    $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/UpdateStatusP.php', {
+                        'id': user.getCmdTemp()
+                    }).success(function(data) {
 
-                            alert(data);
+                        alert(data);
 
 
-                        }).error(function(data) { alert(data); })
+                    }).error(function(data) { alert(data); })
 
                     // $scope.cart=[];
 
@@ -375,23 +375,23 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     //  Impression Items : 
     $scope.MyAllBasketsX = function() {
         // alert(IdUser);
-        alert(" ID COMMANDE" +  user.getTempRecu());
-        alert(" ID CLIENT " + user.getClientTempCmd() );
+        alert(" ID COMMANDE" + user.getTempRecu());
+        alert(" ID CLIENT " + user.getClientTempCmd());
 
-         // $http({
-         //    url: 'http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /MyAllBasketsX.php',
-         //    method: 'POST',
-         //    headers: {
-         //        'Content-Type': 'application/x-www-form-urlencoded'
-         //    },
-         //    data: 'IdUser =' + IdUser + 'IDCMD =' + user.getTempRecu()
-         //    }).success(function(response) {
-         //        $scope.MyAllBasketsX = response;
-         //        $scope.MyTotal = $scope.MyAllBasketsX[0].MyTotal;
-         //        $scope.Myname = $scope.MyAllBasketsX[0].Myname;
-         //        $scope.MyNbArticles = $scope.MyAllBasketsX[0].NbProduits;
-         //    });
-        $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /MyAllBasketsX.php", {
+        // $http({
+        //    url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /MyAllBasketsX.php',
+        //    method: 'POST',
+        //    headers: {
+        //        'Content-Type': 'application/x-www-form-urlencoded'
+        //    },
+        //    data: 'IdUser =' + IdUser + 'IDCMD =' + user.getTempRecu()
+        //    }).success(function(response) {
+        //        $scope.MyAllBasketsX = response;
+        //        $scope.MyTotal = $scope.MyAllBasketsX[0].MyTotal;
+        //        $scope.Myname = $scope.MyAllBasketsX[0].Myname;
+        //        $scope.MyNbArticles = $scope.MyAllBasketsX[0].NbProduits;
+        //    });
+        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /MyAllBasketsX.php", {
 
             'IdUser': user.getClientTempCmd(),
             'IDCMD': user.getTempRecu()
@@ -406,7 +406,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
 
     // $scope.MyAllBasketsX = function(){
 
-    //     $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /MyAllBasketsX.php")
+    //     $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /MyAllBasketsX.php")
     //     .success(function(data) {
     //     $scope.MyAllBasketsX = data;
     //     $scope.MyTotal = $scope.MyAllBasketsX[0].MyTotal;
@@ -417,10 +417,10 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     //     });
     // };
 
-    
+
     $scope.MyAllBasketsY = function() {
 
-        $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /MyAllBasketsX.php", {
+        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /MyAllBasketsX.php", {
             'IdUser': IdUser,
             'IDCMD': user.getTempRecu()
         }).success(function(data) {
@@ -436,7 +436,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
         // $rootScope.cpt=+1;
         // alert($rootScope.cpt);
 
-        // $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/getSumQte.php", {
+        // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/getSumQte.php", {
         //     'IDCMD': user.getTempRecu()
         // }).success(function(data) {
         //     $scope.qte = data.Quantite;
@@ -452,8 +452,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
         // Compteur
         alert($scope.cpta);
         alert($scope.cptq);
-        if($scope.cpta>=$scope.cptq)
-        {
+        if ($scope.cpta >= $scope.cptq) {
             user.setRecuProdCpt(0);
         }
         // IMPRIMABLE
@@ -544,11 +543,10 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
 
 
 
-$scope.EditPrice = function(position,p)
-    {
-        // $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/PanierProductCmd.php", {
+    $scope.EditPrice = function(position, p) {
+        // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/PanierProductCmd.php", {
         //     'idCmd': user.getTempRecu()
-            
+
         // }).success(function(data) {
 
         //     $scope.Idpro = data[index].ID_PRODUIT;
@@ -557,26 +555,26 @@ $scope.EditPrice = function(position,p)
 
 
 
-    
 
 
-        
+
+
         $aside.open({
             templateUrl: 'asideContent.html',
             placement: position,
             size: 'sm',
             backdrop: true,
             controller: function($scope, $uibModalInstance) {
-            
-                    // Update Statut of commande
+
+                // Update Statut of commande
                 $scope.ok = function(e) {
                     // $rootScope.cpt=0;
                     //alert( $scope.arra(index));
-                    $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/UpdatePrice.php", {
+                    $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/UpdatePrice.php", {
                         'idCmd': user.getTempRecu(),
                         'idProd': p.ID_PRODUIT,
-                        'MontantProd' : $scope.mon
-                        });
+                        'MontantProd': $scope.mon
+                    });
                     $uibModalInstance.close();
                     e.stopPropagation();
                 };
@@ -587,7 +585,7 @@ $scope.EditPrice = function(position,p)
             }
         });
 
-        
+
     }
 
 

@@ -81,7 +81,7 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
             // alert(number);
             // alert(pass);
             $http({
-                url: 'http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Login/login.php',
+                url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Login/login.php',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'

@@ -45,7 +45,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
         // ETAPE 2: CREATION DE LA COMMANDE & ID DATE
         $http.post(
-            "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /InsertGetDate.php", {
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
 
             }
         ).success(function(response) {
@@ -55,7 +55,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             if ($scope.dateID != null) {
                 // L'AJOUT DE LA COMMANDE
                 $http.post(
-                    "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /InsertCommande.php", {
+                    "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
                         'DD': $scope.dt,
                         'IDCMD': $scope.idcommande,
                         'HT': $scope.timecmd,
@@ -74,7 +74,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
         // Modification de l'adresse 
 
-        $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
+        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
             'idLocal': user.getIdLocalTempclient(),
             'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
         }).success(function(data) {
@@ -87,7 +87,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
     // DEBUT : REDIRECTION
     $scope.Redirect = function(index) {
-            $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/getClients.php")
+            $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/getClients.php")
                 .success(function(data) {
                     $scope.getclc = data;
                     $scope.IDC = data[index].ID_CLIENT;
@@ -121,7 +121,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     //  DEBUT : REDIRECTION VERS RECU 
     // DEBUT : REDIRECTION
     $scope.RedirectR = function(r) {
-            //  $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /getCommandesRecu.php", {
+            //  $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /getCommandesRecu.php", {
 
             //     'IdUser': IDUSER
             // }).success(function(response) {
@@ -182,7 +182,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
         // ETAPE 2: CREATION DE L 'ID DATE 
         $http.post(
-            "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /InsertGetDate.php", {
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
 
             }
         ).success(function(response) {
@@ -192,7 +192,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             if ($scope.dateID != null) {
                 // Ajout de la commande 
                 $http.post(
-                    "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /InsertCommande.php", {
+                    "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
                         'DD': $scope.dt,
                         'IDCMD': $scope.IdCmdUser,
                         'HT': $scope.timecmd,
@@ -211,7 +211,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
             // Modification de l'adresse 
 
-            $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
+            $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
                 'idLocal': user.getIdLocalTempclient(),
                 'AdresseCompleteCollect': $scope.adrz1 + ", " + user.getLocalisation()
             }).success(function(data) {
@@ -222,7 +222,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
         // Modification de l'adresse 
 
-        // $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /InsertCommande.php", {
+        // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
         //            'idLocal' : user.getIdLocalTempclient()
         //           }
         //           ).success(function(data) {
@@ -230,7 +230,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         //           });
 
 
-        //     $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /",{}).success(function(resp){}) 
+        //     $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /",{}).success(function(resp){}) 
     };
     //  FIN : RESERVATION CLIENT APRES REDIRECTION *SERVICE CLIENT*
 
@@ -239,7 +239,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     //selection du dernier ID_DATE
 
     $scope.selectdate = function() {
-        $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/GetDate.php")
+        $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/GetDate.php")
             .success(function(data) {
                 $scope.dates = data;
             })
@@ -258,7 +258,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             alert("Enter Your Age");
         } else {
             $http.post(
-                "http://18.221.242.75:3000/PADv1/STANDARD/assets/js/controllers/insert.php", {
+                "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/js/controllers/insert.php", {
                     'nom': $scope.nom,
                     'prenom': $scope.prenom,
                     'tel': $scope.tel,
@@ -279,7 +279,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     //selection 
 
     $scope.show_data = function() {
-        $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/js/controllers/display.php")
+        $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/js/controllers/display.php")
             .success(function(data) {
                 $scope.names = data;
             });
@@ -293,7 +293,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         alert(IDUSER);
 
         $http({
-            url: 'http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /getCommandes.php',
+            url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /getCommandes.php',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -316,7 +316,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
 
         $http({
-            url: 'http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /getCommandesRecu.php',
+            url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /getCommandesRecu.php',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -331,7 +331,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
 
         });
-        // $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /getCommandesRecu.php", {
+        // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /getCommandesRecu.php", {
 
         //     'IdUser': IDUSER
         // }).success(function(response) {
@@ -365,7 +365,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
 
     $scope.getCmdWait = function() {
-        $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/getCmdWait.php", {
+        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/getCmdWait.php", {
 
             'IdUser': IDUSER
         }).success(function(data) {
@@ -379,7 +379,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     //  Service Clients : Recuperer to les commandes finis 
 
     $scope.getCmdDone = function() {
-        $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/getCmdDone.php", {
+        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/getCmdDone.php", {
 
             'IdUser': IDUSER
         }).success(function(data) {
@@ -392,8 +392,8 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
     // Selection Historique Des Commandes 
     $scope.getHistorique = function() {
-        // $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /getHistorique.php")
-        $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /getHistorique.php", {
+        // $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /getHistorique.php")
+        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /getHistorique.php", {
 
             'IdUser': IDUSER
         }).success(function(data) {
@@ -403,7 +403,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
     // $scope.getHistorique = function() {
     //     // var IDUSER = user.getID();
-    //      $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /getHistorique.php", {
+    //      $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /getHistorique.php", {
 
     //         'IdUser': IDUSER
     //     }).success(function(data) {
@@ -420,7 +420,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
     $scope.getClient = function() {
 
-        $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/getClients.php")
+        $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/getClients.php")
             .success(function(data) {
                 $scope.clientsc = data;
             });
@@ -429,7 +429,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
     $scope.UpdateDate = function() {
 
-        $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/UpdarteHrCommandes.php", {
+        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/UpdarteHrCommandes.php", {
             'ID': $scope.id_cmd,
             'DD': $scope.dt,
             'HR': $scope.ht
@@ -446,7 +446,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
 
     // $scope.UpdateStatut = function() {
-    //         $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Clients/UpdarteHrCommandes.php", {
+    //         $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Clients/UpdarteHrCommandes.php", {
     //             'ID': $scope.id_cmd,
     //             'STATUS': $scope.status
     //         }).success(function() {
@@ -533,7 +533,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     //             //alert(index);
     //             //Get Record of this Index
     //             $http.get(
-    //                     "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/voircmdalivr.php").success(function(data) {
+    //                     "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdalivr.php").success(function(data) {
     //                     $scope.cmds = data;
     //                     $scope.cmdid = data[index].ID_COMMANDE;
     //                     // alert($scope.cmdid);
@@ -542,7 +542,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     //             $scope.ok = function(e) {
 
     //                 //alert( $scope.arra(index));
-    //                 $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/confirmeralivr.php", {
+    //                 $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmeralivr.php", {
     //                         'id': $scope.cmdid
     //                     })
     //                     .success(function(data) {
@@ -564,7 +564,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
 
     $scope.demo5 = function(x) {
-        // $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/getCmdWait.php")
+        // $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/getCmdWait.php")
         //     .success(function(data) {
         //         $scope.getcmdn = data;
         //         $scope.IDn = data[index].ID_COMMANDE;
@@ -585,7 +585,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             closeOnCancel: false
         }, function(isConfirm) {
             if (isConfirm) {
-                // $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/UpdateStatut.php", {
+                // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/UpdateStatut.php", {
                 //         'id': x.ID_COMMANDE
                 //     })
                 //     .success(function(data) {
@@ -595,7 +595,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
 
                 $http({
-                    url: 'http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/UpdateStatut.php',
+                    url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/UpdateStatut.php',
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -643,7 +643,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             closeOnCancel: false
         }, function(isConfirm) {
             if (isConfirm) {
-                $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/UpdateStatutDone.php", {
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/UpdateStatutDone.php", {
                         'id': x.ID_COMMANDE
                     })
                     .success(function(data) {
@@ -674,14 +674,14 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     // $scope.demo5 = function(index) {
 
 
-    //     $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client/getCommandes.php")
+    //     $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client/getCommandes.php")
     //         .success(function(data) {
     //             $scope.getcmdn = data;
     //             $scope.IDn = data[index].ID_COMMANDE;
     //         })
 
     //     $http.get(
-    //         "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Production/voircmdalivr.php"
+    //         "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdalivr.php"
     //     ).success(function(data) {
     //         $scope.cmds = data;
     //         $scope.cmdid = data[index].ID_COMMANDE;
@@ -700,7 +700,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     //         closeOnCancel: false
     //     }, function(isConfirm) {
     //         if (isConfirm) {
-    //             $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Clients/UpdateStatut.php", {
+    //             $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Clients/UpdateStatut.php", {
     //                     'id': $scope.IDn
     //                 })
     //                 .success(function(data) {
@@ -872,7 +872,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     };
     // Modification de date collecte 
     $scope.dtclick = function() {
-        $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/UpdarteHrCommandes.php", {
+        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/UpdarteHrCommandes.php", {
                 'ID': $scope.cmdid,
                 'DD': $scope.dtt,
                 'HT': $scope.hrr,
@@ -902,7 +902,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     $scope.ChangeDateExp = function(e) {
 
 
-        $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/UpdateDtCommande.php", {
+        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/UpdateDtCommande.php", {
                 'ID': $scope.cmdid,
                 'DD': $scope.dated,
                 'HT': $scope.houred,
@@ -916,7 +916,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         alert($scope.cmdid);
         var d = document.getElementById("radio1");
         if (d.checked) {
-            $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /UpdateAdresseLivraison.php", {
+            $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseLivraison.php", {
                 'idLocal': $scope.cmdid,
                 'AdresseCompleteLivraison': $scope.idrliv
             }).success(function(data) {
@@ -926,7 +926,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
 
         } else
-            $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /UpdateAdresseLivraison.php", {
+            $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseLivraison.php", {
                 'idLocal': $scope.cmdid,
                 'AdresseCompleteLivraison': $scope.adrz1 + ", " + user.getLocalisation()
             }).success(function(data) {
@@ -954,7 +954,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         //     closeOnCancel: false
         // }, function(isConfirm) {
         //     if (isConfirm) {
-        //         $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/UpdateStatutDone.php", {
+        //         $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/UpdateStatutDone.php", {
         //                 'id': $scope.cmdid
         //             })
         //             .success(function(data) {
@@ -985,7 +985,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     $scope.ChangeDateClt = function(e) {
 
 
-        $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/UpdateDtCommande.php", {
+        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/UpdateDtCommande.php", {
                 'ID': $scope.cmdid,
                 'DD': $scope.dated,
                 'HT': $scope.houred,
@@ -999,7 +999,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         alert($scope.cmdid);
         var d = document.getElementById("radio1");
         if (d.checked) {
-            $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /UpdateAdresseLivraison.php", {
+            $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseLivraison.php", {
                 'idLocal': $scope.cmdid,
                 'AdresseCompleteLivraison': $scope.idrliv
             }).success(function(data) {
@@ -1007,7 +1007,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                 alert(data);
             });
         } else
-            $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /UpdateAdresseLivraison.php", {
+            $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseLivraison.php", {
                 'idLocal': $scope.cmdid,
                 'AdresseCompleteLivraison': $scope.adrz1 + ", " + user.getLocalisation()
             }).success(function(data) {
@@ -1028,7 +1028,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             templateUrl: 'myModalContent.html',
             controller: function($scope, $uibModalInstance) {
 
-                $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /getHistorique.php", {
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /getHistorique.php", {
 
                     'IdUser': IDUSER
                 }).success(function(data) {
@@ -1040,7 +1040,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
                 $scope.ok = function(e) {
 
-                    $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /Commentaire.php", {
+                    $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /Commentaire.php", {
                         'idLocal': $scope.cmdid,
                         'Commentaire_Livreur': $scope.ComLiv,
                         'Commentaire_Service': $scope.ComSer
@@ -1079,7 +1079,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             controller: function($scope, $uibModalInstance) {
                 // recuperation de l'index du tableau au modal Aside
                 $http.get(
-                    "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/getCmdWait.php").success(function(data) {
+                    "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/getCmdWait.php").success(function(data) {
                     $scope.cmds = data;
                     $scope.cmdid = data[index].ID_COMMANDE;
                     // alert($scope.cmdid);
@@ -1089,7 +1089,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                 $scope.ok = function(e) {
 
 
-                    $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/UpdarteHrCommandes.php", {
+                    $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/UpdarteHrCommandes.php", {
                             'ID': $scope.cmdid,
                             'DD': $scope.dtt,
                             'HT': $scope.hrr,
@@ -1124,7 +1124,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             controller: function($scope, $uibModalInstance) {
                 // recuperation de l'index du tableau au modal Aside
                 // $http.get(
-                //     "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Clients/getCmdDone.php").success(function(data) {
+                //     "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Clients/getCmdDone.php").success(function(data) {
                 //     $scope.cmds = data;
                 //     $scope.cmdid = data[index].ID_COMMANDE;
                 //     $scope.idrliv = data[index].Adresse_Complete_Collect;
@@ -1189,7 +1189,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             if (isConfirm) {
 
                 $http.post(
-                    "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /InsertGetDate.php", {
+                    "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
 
                     }
                 ).success(function(response) {
@@ -1199,7 +1199,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     if ($scope.dateID != null) {
                         // L'AJOUT DE LA COMMANDE
                         $http.post(
-                            "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /InsertCommande.php", {
+                            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
                                 'DD': $scope.dt,
                                 'IDCMD': $scope.idcommande,
                                 'HT': $scope.timecmd,
@@ -1218,7 +1218,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
                 // Modification de l'adresse 
 
-                $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
                     'idLocal': user.getIdLocalTempclient(),
                     'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
                 }).success(function(data) {

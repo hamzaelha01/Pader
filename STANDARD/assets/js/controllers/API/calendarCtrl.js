@@ -1,4 +1,3 @@
-
 'use strict';
 /**
  * Controller of the angularBootstrapCalendarApp
@@ -14,7 +13,7 @@ app.controller('CalendarCtrl', ["$scope", "$aside", "moment", "SweetAlert", "$ht
     $scope.tester = function() {
         // Get All Commandes Are Not Ready 
         // Path : E:\STANDARD 2\STANDARD\assets\php\Service Clients\allcmdevents.php
-        $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/ServiceClients/allcmdevents.php")
+        $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/allcmdevents.php")
             .success(function(data) {
                 $scope.myevents = data;
                 angular.forEach(data, function(event) {
@@ -27,15 +26,13 @@ app.controller('CalendarCtrl', ["$scope", "$aside", "moment", "SweetAlert", "$ht
                     var myhour = Number(event.DD_COMMANDE_H || 0);
                     var myminutes = Number(event.DD_COMMANDE_I || 0);
                     var typein = event.STATUS;
-                    if(typein === "TO COLLECT"){
+                    if (typein === "TO COLLECT") {
                         $scope.events.push({
                             title: event.ID_COMMANDE,
                             startsAt: new Date(myyear, mymonth, myday, myhour, myminutes),
                             type: 'job'
                         });
-                    }
-                    else if (typein === "TO DELIVER")
-                    {
+                    } else if (typein === "TO DELIVER") {
                         $scope.events.push({
                             title: event.ID_COMMANDE,
                             startsAt: new Date(myyear, mymonth, myday, myhour, myminutes),

@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window","$cookies", function($scope, $http, SweetAlert,user,$window,$cookies) {
+app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window", "$cookies", function($scope, $http, SweetAlert, user, $window, $cookies) {
 
     // Get Selected Option from Select
     $scope.changed = function(item) {
@@ -11,13 +11,13 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
 
     // Le Nom du livreur Pour le filtrage du livraion transmis 
 
-      var  nomLivreur = user.getName();
+    var nomLivreur = user.getName();
 
 
     $scope.getCommandesConfirme = function(index) {
 
         $http.get(
-            "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Livraison/getIndexL.php").success(function(data) {
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/getIndexL.php").success(function(data) {
             $scope.cmdcf = data;
 
         })
@@ -27,7 +27,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
     $scope.getCommandesConfirmeSP = function(index) {
 
         $http.get(
-            "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Livraison/getIndexLSP.php").success(function(data) {
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/getIndexLSP.php").success(function(data) {
             $scope.cmdcfSP = data;
 
         })
@@ -36,7 +36,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
 
     $scope.getNomLivreur = function() {
 
-        $http.get("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Livraison/getNomLivreur.php")
+        $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/getNomLivreur.php")
             .success(function(data) {
                 $scope.livreurs = data;
 
@@ -51,14 +51,14 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
 
     $scope.postLivreurCollecte = function(index) {
         $http.get(
-            "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Livraison/getIndexL.php").success(function(data) {
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/getIndexL.php").success(function(data) {
             $scope.cmds = data;
             $scope.cmdid = data[index].ID_COMMANDE;
             // alert($scope.cmdid);
         })
         SweetAlert.swal({
 
-            title: "La commande sera affectée à "+$scope.liv,
+            title: "La commande sera affectée à " + $scope.liv,
             text: "Voulez-vous confirmer la commande ?",
             type: "warning",
             showCancelButton: true,
@@ -69,7 +69,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
             closeOnCancel: false
         }, function(isConfirm) {
             if (isConfirm) {
-                $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Livraison/postLivreurCollecte.php", {
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/postLivreurCollecte.php", {
                         'id': $scope.cmdid,
                         'LIVREUR_COLLECTE': $scope.liv,
 
@@ -78,7 +78,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
                         // alert(data[index].DD_COMMANDE);
                         //$scope.show_cmdaprep();
                     });
-                    setTimeout(function(){
+                setTimeout(function() {
 
                     window.location.reload();
 
@@ -107,7 +107,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
 
     $scope.postLivreurLivraison = function(index) {
         $http.get(
-            "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Livraison/getIndexLSP.php").success(function(data) {
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/getIndexLSP.php").success(function(data) {
             $scope.cmds = data;
             $scope.cmdid = data[index].ID_COMMANDE;
             // alert($scope.cmdid);
@@ -125,7 +125,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
             closeOnCancel: false
         }, function(isConfirm) {
             if (isConfirm) {
-                $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Service Livraison/postLivreurLivraison.php", {
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/postLivreurLivraison.php", {
                         'id': $scope.cmdid,
                         'LIVREUR_LIVRAISON': $scope.liv,
 
@@ -135,7 +135,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
                         //$scope.show_cmdaprep();
                     });
 
-                    setTimeout(function(){
+                setTimeout(function() {
 
                     window.location.reload();
 
@@ -166,66 +166,66 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
     $scope.toCollecte = function(index) {
         // alert(nomLivreur);
         $http.post(
-                "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Livreur/getCollecte.php",{
-                'NOM_LIVREUR' : nomLivreur
-        }).success(function(data) {
-                $scope.toC = data;
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/getCollecte.php", {
+                'NOM_LIVREUR': nomLivreur
+            }).success(function(data) {
+            $scope.toC = data;
 
-            })
+        })
     }
 
     //toDeliver For Livreur 
 
     $scope.toDeliver = function(index) {
         $http.post(
-                "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Livreur/getDeliver.php",{
-                'NOM_LIVREUR' : nomLivreur
-        }).success(function(data) {
-                $scope.toD = data;
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/getDeliver.php", {
+                'NOM_LIVREUR': nomLivreur
+            }).success(function(data) {
+            $scope.toD = data;
 
-            })
+        })
     }
 
-     // DEBUT : REDIRECTION VERS LE PANIER 
-       $scope.RedirectL = function(index) {
+    // DEBUT : REDIRECTION VERS LE PANIER 
+    $scope.RedirectL = function(index) {
 
-                        $scope.cart=[];
-                        $cookies.putObject('cart', $scope.cart);
+            $scope.cart = [];
+            $cookies.putObject('cart', $scope.cart);
 
-        $http.post(
-                "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Livreur/getCollecte.php",{
-                'NOM_LIVREUR' : nomLivreur
-        }).success(function(data) {
+            $http.post(
+                "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/getCollecte.php", {
+                    'NOM_LIVREUR': nomLivreur
+                }).success(function(data) {
                 $scope.toC = data;
                 alert(data[index].ID_COMMANDE);
                 user.cmdTemp(data[index].ID_COMMANDE);
-                alert("COMMANDE TEMP "+ user.getCmdTemp() );
-                $window.location.href ="#/app/Panier";
+                alert("COMMANDE TEMP " + user.getCmdTemp());
+                $window.location.href = "#/app/Panier";
 
             })
 
 
-        // 
-    } 
-    // FIN : REDIRECTION VERS LE PANIEr 
+            // 
+        }
+        // FIN : REDIRECTION VERS LE PANIEr 
 
 
     $scope.ConfirmationD = function(index) {
 
 
-          $http.post(
-                "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Livreur/getDeliver.php",{
-                'NOM_LIVREUR' : nomLivreur
-        }).success(function(data) {
-                $scope.getD = data;
-                // alert(data);
-                
-                $scope.IDD = data[index].ID_COMMANDE;
-                alert(data);
-                alert(data[index].ID_COMMANDE);
+        $http.post(
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/getDeliver.php", {
+                'NOM_LIVREUR': nomLivreur
+            }).success(function(data) {
+            $scope.getD = data;
+            // alert(data);
+
+            $scope.IDD = data[index].ID_COMMANDE;
+            alert(data);
+            alert(data[index].ID_COMMANDE);
 
 
-            })
+        })
         SweetAlert.swal({
 
             title: "Voulez Vous Vraiment Confirmer La Commande ?",
@@ -239,7 +239,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
             closeOnCancel: false
         }, function(isConfirm) {
             if (isConfirm) {
-                $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Livreur/UpdateFinal.php", {
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/UpdateFinal.php", {
                         'id': $scope.IDD
                     })
                     .success(function(data) {
@@ -247,7 +247,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert","user","$window",
                         //$scope.show_cmdaprep();
                     });
 
-                    setTimeout(function(){
+                setTimeout(function() {
 
                     window.location.reload();
 
