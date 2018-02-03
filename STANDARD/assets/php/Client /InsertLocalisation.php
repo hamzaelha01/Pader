@@ -9,7 +9,7 @@ $query  ="INSERT INTO `LOCALISATION` (`ID_LOCALISATION`, `Adresse_Complete_Colle
 if (mysqli_query($conn, $query)) {
 // echo "Data Inserted Successfully...";
 } else {
-echo 'Failed';
+echo 'Failed'.mysqli_error($conn);
 }
 
 
