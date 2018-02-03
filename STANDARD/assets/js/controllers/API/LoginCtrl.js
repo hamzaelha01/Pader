@@ -32,6 +32,7 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
             } else {
                 // SweetAlert.swal("Good job!", "Your form is ready to be submitted!", "success");
                 //your code for submit
+                alert($scope.adresse);
                 $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertLocalisation.php", {
                     'adr': $scope.adresse
                 }).success(function(response) {
