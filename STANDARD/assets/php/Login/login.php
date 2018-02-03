@@ -8,7 +8,7 @@ session_start();
 
 $response= [];
 if(count($_POST)>0) {
-	$conn = mysqli_connect("phpmyadmin.ctjo7qihl13z.us-east-2.rds.amazonaws.com","phpMyAdmin","phpMyAdmin","pressing");
+$conn = mysqli_connect("localhost","root","root","pressing");
 	$result = mysqli_query($conn,"SELECT * FROM CLIENT WHERE CLIENT.TELEPHONE_CLIENT ='" . $_POST["number"] . "' and CLIENT.Password = '". $_POST["pass"]."'");
      $res = mysqli_query($conn,"SELECT * FROM PERSONNEL WHERE PERSONNEL.NOM_PERSONNEL = '" . $_POST["number"] . "' AND PERSONNEL.PASS_PERSO = '". $_POST["pass"]."'");
 

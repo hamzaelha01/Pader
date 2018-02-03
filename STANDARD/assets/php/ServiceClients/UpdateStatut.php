@@ -25,9 +25,9 @@ if(count($_POST)>0) {
 
 	echo $_POST["id"];
 
-$servername = "phpmyadmin.ctjo7qihl13z.us-east-2.rds.amazonaws.com";
-$username = "phpMyAdmin";
-$password = "phpMyAdmin";
+$servername = "localhost";
+$username = "root";
+$password = "root";
 $dbname = "pressing";
 
 $v = $_POST["id"];

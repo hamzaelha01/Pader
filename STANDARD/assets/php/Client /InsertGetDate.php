@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-$conn = mysqli_connect("phpmyadmin.ctjo7qihl13z.us-east-2.rds.amazonaws.com","phpMyAdmin","phpMyAdmin","pressing");$info = json_decode(file_get_contents("php://input"));
+$conn = mysqli_connect("localhost","root","root","pressing");
 if (count($info) > 0) {
 
 $query  ="INSERT INTO `DATE` (`ID_DATE`, `DATE_C_RES`, `DATE_C_RC`, `DATE_C_RL`, `DATE_C_PL`, `DATE_C_RP`, `DATE_C_LP`, `DATE_C_VL`) VALUES (NULL, NOW(), NULL, NULL, NULL, NULL, NULL, NULL)";

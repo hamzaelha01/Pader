@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-$conn = mysqli_connect("phpmyadmin.ctjo7qihl13z.us-east-2.rds.amazonaws.com","phpMyAdmin","phpMyAdmin","pressing");
+$conn = mysqli_connect("localhost","root","root","pressing");
 $output = array();
 // $query  = "SELECT * FROM users";
 $query  ="SELECT * FROM `DATE` ORDER BY `ID_DATE` DESC LIMIT 1";

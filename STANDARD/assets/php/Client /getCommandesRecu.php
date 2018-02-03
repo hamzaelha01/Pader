@@ -10,7 +10,7 @@ header('Access-Control-Allow-Origin: *');
 
 $response= [];
 if(count($_POST)>0) {
-$conn = mysqli_connect("phpmyadmin.ctjo7qihl13z.us-east-2.rds.amazonaws.com","phpMyAdmin","phpMyAdmin","pressing");	$result = mysqli_query($conn,"SELECT DISTINCT COMMANDE.ID_COMMANDE , COMMANDE.DD_COMMANDE ,COMMANDE.STATUS, COMMANDE.DF_COMMANDE , SUM(PANIER.QUANITE) as QUANTITE , SUM(PANIER.MONTANT)as MONTANT , LOCALISATION.Adresse_Complete_Collect 
+$conn = mysqli_connect("localhost","root","root","pressing");	$result = mysqli_query($conn,"SELECT DISTINCT COMMANDE.ID_COMMANDE , COMMANDE.DD_COMMANDE ,COMMANDE.STATUS, COMMANDE.DF_COMMANDE , SUM(PANIER.QUANITE) as QUANTITE , SUM(PANIER.MONTANT)as MONTANT , LOCALISATION.Adresse_Complete_Collect 
 		FROM COMMANDE , PANIER , LOCALISATION
 		WHERE COMMANDE.ID_COMMANDE = PANIER.ID_COMMANDE 
 		AND COMMANDE.ID_LOCALISATION = LOCALISATION.ID_LOCALISATION
