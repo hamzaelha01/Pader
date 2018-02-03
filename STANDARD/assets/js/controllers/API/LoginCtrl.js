@@ -2,6 +2,78 @@
 
 app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($scope, $window, $http, user) {
 
+
+    $scope.form = {
+
+        submit: function(form) {
+
+            var firstError = null;
+            if (form.$invalid) {
+
+                var field = null,
+                    firstError = null;
+                for (field in form) {
+                    if (field[0] != '$') {
+                        if (firstError === null && !form[field].$valid) {
+                            firstError = form[field].$name;
+                        }
+
+                        if (form[field].$pristine) {
+                            form[field].$dirty = true;
+                        }
+                    }
+                }
+
+                angular.element('.ng-invalid[name=' + firstError + ']').focus();
+                alert("Error");
+                // SweetAlert.swal("The form cannot be submitted because it contains validation errors!", "Errors are marked with a red, dashed border!", "error");
+                return;
+
+            } else {
+                // SweetAlert.swal("Good job!", "Your form is ready to be submitted!", "success");
+                //your code for submit
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertLocalisation.php", {
+                    'adr': $scope.adresse
+                }).success(function(response) {
+                    alert(response.ID);
+                    $scope.LocalisationID = response.ID;
+                    alert($scope.LocalisationID);
+                    if ($scope.LocalisationID != null) {
+
+                        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /Inscription.php", {
+                            'nom': $scope.nom,
+                            'prenom': $scope.prenom,
+                            'phone': $scope.phone,
+                            'email': $scope.email,
+                            'adresse': $scope.adresse,
+                            'password': $scope.password,
+                            'idlocalisation': $scope.LocalisationID,
+                            'type': $scope.compte,
+                            'sexe': $scope.gender,
+                            'user': $scope.myModel
+                        })
+
+                        .success(function(data) {
+                            alert("Succes");
+                            // alert(data);
+                            // SweetAlert.swal("Tres Bien!", "Vous Avez Bien Rempli Votre Formulaire!", "success");
+
+                        });
+                    }
+
+                });
+            }
+
+        },
+        reset: function(form) {
+
+            $scope.myModel = angular.copy($scope.master);
+            form.$setPristine(true);
+
+        }
+    };
+
+
     $scope.login = function() {
 
         var number = $scope.number;
