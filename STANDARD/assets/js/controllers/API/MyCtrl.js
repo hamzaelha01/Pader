@@ -167,8 +167,8 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                 user.setQteCmd(x.QTE);
                 // alert($scope.cmdid);
                 user.setTempRecu(x.ID_COMMANDE);
-                user.ClientTempCmd(x.ID_CLIENT);
-                alert(user.getClientTempCmd());
+                user.setTempIDC(x.ID_CLIENT);
+                alert(user.getTempIDC());
                 // })
                 // Update Statut of commande
                 $scope.ok = function(e) {

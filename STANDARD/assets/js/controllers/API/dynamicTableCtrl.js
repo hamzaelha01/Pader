@@ -652,13 +652,14 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     .success(function(data) {
                         //$scope.reload();
                         //$scope.show_cmdaprep();
+                        setTimeout(function() {
+
+                            window.location.reload();
+
+                        }, 500);
                     });
 
-                setTimeout(function() {
-
-                    window.location.reload();
-
-                }, 500);
+                
 
             } else {
                 SweetAlert.swal({
