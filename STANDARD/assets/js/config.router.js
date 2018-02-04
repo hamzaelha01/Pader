@@ -85,7 +85,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 }
             }).state('app.BdClients', {
                 url: "/BdClients",
-                templateUrl: "assets/views/ServiceClients/TableauSC_Clients.html",
+                templateUrl: "assets/views/ServiceClients/TableauSC_clients.html",
                 resolve: {
                     check: function($window, user) {
                         if (!user.isUserLoggedIn()) {
