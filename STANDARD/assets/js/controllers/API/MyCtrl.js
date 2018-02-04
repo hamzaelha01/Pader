@@ -376,7 +376,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     $scope.MyAllBasketsX = function() {
         // alert(IdUser);
         alert(" ID COMMANDE" + user.getTempRecu());
-        alert(" ID CLIENT " + user.getClientTempCmd());
+        alert(" ID CLIENT " + user.getTempIDC());
 
 
         // $http({
