@@ -77,12 +77,13 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
                     .success(function(data) {
                         // alert(data[index].DD_COMMANDE);
                         //$scope.show_cmdaprep();
+                        setTimeout(function() {
+
+                         window.location.reload();
+
+                        }, 500);
                     });
-                setTimeout(function() {
-
-                    window.location.reload();
-
-                }, 500);
+                
                 // SweetAlert.swal({
                 //     title: "Confirmée!",
                 //     text: "Votre Commande a été confirmée.",

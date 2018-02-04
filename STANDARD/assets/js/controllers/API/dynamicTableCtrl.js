@@ -604,15 +604,17 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     data: 'id=' + x.ID_COMMANDE
                 }).success(function(response) {
 
-                });
-
-
-                setTimeout(function() {
+                     setTimeout(function() {
 
                     window.location.reload();
 
                 }, 500);
 
+
+                });
+
+
+               
 
             } else {
                 SweetAlert.swal({
