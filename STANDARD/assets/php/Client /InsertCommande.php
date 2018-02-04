@@ -24,15 +24,17 @@ echo "//////";
   echo $combine;
 
 
-  $response = [];
+  // $response = [];
 
 //$query = "INSERT INTO users(name, email, age) VALUES ('$name', '$email', '$age')";
 $query  ="INSERT INTO `COMMANDE` (`ID_COMMANDE`, `DD_COMMANDE`, `DF_COMMANDE`, `STATUS`, `NBR_ARTICLES`, `ID_LOCALISATION`, `COMMENTAIRE`, `LIVREUR_COLLECTE`, `LIVREUR_LIVRAISON`, `ID_DATE` , `ID_CLIENT`) VALUES ('$IDCMD', '$combine', NULL, 'EN ATTENTE', '$nbrd', '12', NULL, NULL, NULL, '$IDDATE','$IDCLIENT')";
 if (mysqli_query($conn, $query)) {
         
-    $response["Feed"] = "Inserted";
+    // $response["Feed"] = "Inserted";
+    echo "inserted";
 } else {
-  $response["Feed"] = "Failed";
+  // $response["Feed"] = "Failed";
+	echo "Failed".mysqli_error($conn);
   // echo 'Failed';
 }
 
