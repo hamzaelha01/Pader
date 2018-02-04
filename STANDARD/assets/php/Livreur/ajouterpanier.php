@@ -37,7 +37,7 @@ if (count($info) > 0) {
         
 }
  else {
-    echo 'Erreur';
+    echo 'Erreur'.mysqli_error($conn);
     }
 // }else echo 'On a rien recu comme infos!Merci!';
 ?>

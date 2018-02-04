@@ -34,13 +34,13 @@
 
 
         $http.get(
-            "http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Livreur/getAllCat.php"
+            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/getAllCat.php"
         ).success(function(data) {
 
             $scope.allcat = data;
             // alert($scope.cmdacollects[1].NOM_CLIENT);
             // alert(data);
-            $http.post("http://18.221.242.75:3000/PADv1/STANDARD/assets/php/Livreur/getAllProducts.php", {
+            $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/getAllProducts.php", {
             'idCat': data,
         }).success(function(data) {
            
