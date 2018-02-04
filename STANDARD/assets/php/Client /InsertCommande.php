@@ -1,6 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-$conn = mysqli_connect("localhost","root","root","Pressing");
+$conn = mysqli_connect("localhost", "root", "root", "Pressing");
+$info = json_decode(file_get_contents("php://input"));
 if (count($info) > 0) {
 $DD     = mysqli_real_escape_string($conn, $info->DD);
 $IDCMD    = mysqli_real_escape_string($conn, $info->IDCMD);
@@ -24,17 +25,15 @@ echo "//////";
   echo $combine;
 
 
-  // $response = [];
+  $response ;
 
 //$query = "INSERT INTO users(name, email, age) VALUES ('$name', '$email', '$age')";
 $query  ="INSERT INTO `COMMANDE` (`ID_COMMANDE`, `DD_COMMANDE`, `DF_COMMANDE`, `STATUS`, `NBR_ARTICLES`, `ID_LOCALISATION`, `COMMENTAIRE`, `LIVREUR_COLLECTE`, `LIVREUR_LIVRAISON`, `ID_DATE` , `ID_CLIENT`) VALUES ('$IDCMD', '$combine', NULL, 'EN ATTENTE', '$nbrd', '12', NULL, NULL, NULL, '$IDDATE','$IDCLIENT')";
 if (mysqli_query($conn, $query)) {
         
-    // $response["Feed"] = "Inserted";
-    echo "inserted";
+    $response = "Inserted";
 } else {
-  // $response["Feed"] = "Failed";
-	echo "Failed".mysqli_error($conn);
+  $response = "Failed";
   // echo 'Failed';
 }
 
