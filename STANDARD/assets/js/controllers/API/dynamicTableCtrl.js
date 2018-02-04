@@ -1165,13 +1165,13 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         // alert($scope.IDClient);
         // alert($scope.idcommande);
         // Affichage des infroamtions TEST
-        // alert(" JOUR COMMANDE " + $scope.dt);
-        // alert(" ID COMMANDE " + $scope.idcommande);
-        // alert(" HEURE COMMANDE " + $scope.timecmd);
-        // alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
-        // // alert(" DATE COMMANDE " + $scope.dateID);
-        // alert("not null you can do command");
-        // alert(" ID CLIENT " + IDUSER);
+        alert(" JOUR COMMANDE " + $scope.dt);
+        alert(" ID COMMANDE " + $scope.idcommande);
+        alert(" HEURE COMMANDE " + $scope.timecmd);
+        alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
+        alert(" DATE COMMANDE " + $scope.dateID);
+        alert("not null you can do command");
+        alert(" ID CLIENT " + IDUSER);
 
 
         SweetAlert.swal({
@@ -1189,16 +1189,42 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
             if (isConfirm) {
 
+                // $http.post(
+                //     "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
+
+                //     }
+                // ).success(function(response) {
+                //     // scope id data 
+                //     $scope.dateID = response.ID;
+                //     // alert($scope.dateID);
+                //     if ($scope.dateID != null) {
+                //         // L'AJOUT DE LA COMMANDE
+                //         $http.post(
+                //             "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
+                //                 'DD': $scope.dt,
+                //                 'IDCMD': $scope.idcommande,
+                //                 'HT': $scope.timecmd,
+                //                 'nbrd': $scope.nbrd,
+                //                 'IDDATE': $scope.dateID,
+                //                 'IDCLIENT': IDUSER
+
+                //             }
+                //         ).success(function(data) {
+                //             // alert(data.ID);
+                //         });
+
+
+                //     }
+                // })
+
                 $http.post(
                     "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
 
                     }
-                ).success(function(data) {
+                ).success(function(response) {
                     // scope id data 
-                    alert(data.ID);
-                    $scope.dateID = data.ID;
-                    // alert($scope.dateID);
-                    
+                    $scope.dateID = response.ID;
+                    alert($scope.dateID);
                     if ($scope.dateID != null) {
                         // L'AJOUT DE LA COMMANDE
                         $http.post(
@@ -1218,6 +1244,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
                     }
                 })
+
 
                 // Modification de l'adresse 
 
