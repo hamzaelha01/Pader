@@ -25,20 +25,20 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
                 }
 
                 angular.element('.ng-invalid[name=' + firstError + ']').focus();
-                alert("Error");
+                // alert("Error");
                 // SweetAlert.swal("The form cannot be submitted because it contains validation errors!", "Errors are marked with a red, dashed border!", "error");
                 return;
 
             } else {
                 // SweetAlert.swal("Good job!", "Your form is ready to be submitted!", "success");
                 //your code for submit
-                alert($scope.adresse);
+                // alert($scope.adresse);
                 $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertLocalisation.php", {
                     'adr': $scope.adresse
                 }).success(function(response) {
-                    alert(response.ID);
+                    // alert(response.ID);
                     $scope.LocalisationID = response.ID;
-                    alert($scope.LocalisationID);
+                    // alert($scope.LocalisationID);
                     if ($scope.LocalisationID != null) {
 
                         $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /Inscription.php", {
@@ -55,7 +55,7 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
                         })
 
                         .success(function(data) {
-                            alert("Succes");
+                            // alert("Succes");
                             // alert(data);
                             // SweetAlert.swal("Tres Bien!", "Vous Avez Bien Rempli Votre Formulaire!", "success");
 
