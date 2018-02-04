@@ -20,8 +20,9 @@ while ($row = mysqli_fetch_array($result)) {
  $response['ID'] = $row['ID_DATE'];
  echo $response['ID'];
 }
+}
+}
 echo json_encode($response);
-}
-}
+
 ?> 
 

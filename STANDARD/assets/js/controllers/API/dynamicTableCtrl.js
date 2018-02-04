@@ -1193,10 +1193,12 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
 
                     }
-                ).success(function(response) {
+                ).success(function(data) {
                     // scope id data 
-                    $scope.dateID = response.ID;
-                    alert($scope.dateID);
+                    alert(data.ID);
+                    $scope.dateID = data.ID;
+                    // alert($scope.dateID);
+                    
                     if ($scope.dateID != null) {
                         // L'AJOUT DE LA COMMANDE
                         $http.post(
