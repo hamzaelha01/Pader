@@ -1189,33 +1189,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
             if (isConfirm) {
 
-                // $http.post(
-                //     "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
-
-                //     }
-                // ).success(function(response) {
-                //     // scope id data 
-                //     $scope.dateID = response.ID;
-                //     // alert($scope.dateID);
-                //     if ($scope.dateID != null) {
-                //         // L'AJOUT DE LA COMMANDE
-                //         $http.post(
-                //             "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
-                //                 'DD': $scope.dt,
-                //                 'IDCMD': $scope.idcommande,
-                //                 'HT': $scope.timecmd,
-                //                 'nbrd': $scope.nbrd,
-                //                 'IDDATE': $scope.dateID,
-                //                 'IDCLIENT': IDUSER
-
-                //             }
-                //         ).success(function(data) {
-                //             // alert(data.ID);
-                //         });
-
-
-                //     }
-                // })
+              
 
                 $http.post(
                     "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
@@ -1237,7 +1211,25 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                                 'IDCLIENT': IDUSER
 
                             }
-                        ).success(function(data) {
+                        ).success(function(response) {
+                            alert($response.Feed);
+
+                            // if($response.Feed);
+
+                            $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
+                            'idLocal': user.getIdLocalTempclient(),
+                            'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
+                             }).success(function(data) {
+
+                                SweetAlert.swal({
+                                title: "Confirmée!",
+                                text: "Votre commande est bien passeé",
+                                type: "success",
+                                confirmButtonColor: "#007AFF"
+                                 });
+                            // alert(data.ID);
+                            alert(data);
+                });
                             // alert(data.ID);
                         });
 
@@ -1248,13 +1240,13 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
                 // Modification de l'adresse 
 
-                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
-                    'idLocal': user.getIdLocalTempclient(),
-                    'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
-                }).success(function(data) {
-                    // alert(data.ID);
-                    alert(data);
-                });
+                // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
+                //     'idLocal': user.getIdLocalTempclient(),
+                //     'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
+                // }).success(function(data) {
+                //     // alert(data.ID);
+                //     alert(data);
+                // });
 
 
                 SweetAlert.swal({
