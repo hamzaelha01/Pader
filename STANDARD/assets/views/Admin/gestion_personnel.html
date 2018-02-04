@@ -1,0 +1,257 @@
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+	<div class="row">
+		<div class="col-sm-8">
+			<h1 class="mainTitle" translate="sidebar.nav.pages.BLANKPAGE">LISTE DU PERSONNEL</h1>
+			<span class="mainDescription">Use this page to start from scratch and put your custom content</span>
+		</div>
+		<div ncy-breadcrumb></div>
+	</div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: YOUR CONTENT HERE -->
+<!-- start: STRIPED ROWS -->
+<div ng-controller="personnelCtrl">
+    <div  class="container-fluid container-fullw"  >
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="over-title margin-bottom-15">Striped <span class="text-bold">rows</span></h5>
+                <p>
+                    Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.
+                </p>
+               
+                <table ng-table="tableParams" show-filter="true" class="table table-striped table-hover" id="sample-table-2" ng-if="personnels.length > 0" >
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th class="hidden-xs">Prenom</th>
+                            <th class="hidden-xs">Role</th>
+                            <th class="hidden-xs">Telephone</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody  >
+                        <tr ng-repeat="personnel in personnels" >
+                            <td  >{{$index+1}}</td>
+                            <td >{{personnel.NOM_PERSONNEL}}</td>
+                            <td class="hidden-xs">{{personnel.PRENOM_PERSONNEL}}</td>
+                            <td class="hidden-xs">
+                            <a href="#" rel="nofollow" target="_blank">
+                                {{personnel.ROLE_PERSONNEL}}
+                            </a></td>
+                            <td class="hidden-xs">{{personnel.TELEPHONE_PERSONNEL}}</td>
+                            <td class="center">
+                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" uib-tooltip="Modifier" ng-click="edit('left',$index)" ><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" uib-tooltip="Supprimer" ng-click="delete($index)" ><i class="fa fa-times fa fa-white"></i></a>
+                            </div>
+                            <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                <div class="btn-group" uib-dropdown>
+                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" uib-dropdown-toggle>
+                                        <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right dropdown-light" role="menu">
+                                        <li>
+                                            <a href="#"  >
+                                                Edit
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" >
+                                                Share
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"  >
+                                                Remove
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <button class="btn btn-success" ng-click="ajouterPersonnel('left')">Add Task
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Content Section -->
+
+                <!-- Modal -->
+                <!-- Bootstrap Modals -->
+                <!-- Modal - Add New Task -->
+                <script type="text/ng-template" id="editPersonnel.html" ng-controller="MyCtrl" >
+					<div class="modal-header">
+					<h3 class="modal-title">Personnel #{{personnel_details.ID_PERSONNEL}}</h3>
+					</div>
+					<div class="modal-body">
+                        <ul class="alert alert-danger" ng-if="errors.length > 0">
+                            <li ng-repeat="error in errors">
+                                {{ error }}
+                            </li>
+                        </ul>
+
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input ng-model="personnel_details.NOM_PERSONNEL" type="text" id="nom" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="prenom">Prenom</label>
+                                <input ng-model="personnel_details.PRENOM_PERSONNEL" type="text" id="prenom" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="phone">Telephone</label>
+                                <input ng-model="personnel_details.TELEPHONE_PERSONNEL" type="text" id="phone" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="cnss">CNSS</label>
+                                <input ng-model="personnel_details.CNSS_PERSONNEL" type="text" id="cnss" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="role">Role</label>
+                                <input ng-model="personnel_details.ROLE_PERSONNEL" type="text" id="compte" class="form-control"/>
+                        </div>
+
+                        
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                        <button type="button" class="btn btn-primary" ng-click="ok()">Save Changes</button>
+                    </div>
+					</div>
+                </script>
+                <script type="text/ng-template" id="ajouterPersonnel.html" ng-controller="MyCtrl" >
+					<div class="modal-header">
+					<h3 class="modal-title">Ajout Personnel</h3>
+					</div>
+					<div class="modal-body">
+                        <ul class="alert alert-danger" ng-if="errors.length > 0">
+                            <li ng-repeat="error in errors">
+                                {{ error }}
+                            </li>
+                        </ul>
+
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input ng-model="personnel.NOM_PERSONNEL" type="text" id="nom" ng-init="personnel.NOM_PERSONNEL ='MyNom'" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="prenom">Prenom</label>
+                                <input ng-model="personnel.PRENOM_PERSONNEL" type="text"  ng-init="personnel.PRENOM_PERSONNEL ='MyPrenom'" id="prenom" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="phone">Telephone</label>
+                                <input ng-model="personnel.TELEPHONE_PERSONNEL" type="text" ng-init="personnel.TELEPHONE_PERSONNEL ='0611223344'" id="phone" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="cnss">CNSS</label>
+                                <input ng-model="personnel.CNSS_PERSONNEL" type="text" id="cnss" ng-init="personnel.CNSS_PERSONNEL ='12345'" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="role">Role</label>
+                                <input ng-model="personnel.ROLE_PERSONNEL" type="text" id="compte" ng-init="personnel.ROLE_PERSONNEL ='GERANT'" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="role">Contrat</label>
+                                <input ng-model="personnel.TYPE_CONTRAT_PERSONNEL" type="text" id="contrat" ng-init="personnel.TYPE_CONTRAT_PERSONNEL ='CDD'" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                                <label> Date Embauche </label>
+                                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="personnel.DD_EMBAUCHE_PERSONNEL" ng-init="personnel.DD_EMBAUCHE_PERSONNEL ='2015-01-01'" is-open="disabledopened" ng-init="disabledopened = false" ng-click="disabledopened = !disabledopened" datepicker-options="dateDisabledOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                            </div>
+                        <div class="form-group">
+                                <label for="role">Mot De Passe</label>
+                                <input ng-model="personnel.PASS_PERSO" type="text" id="pass" ng-init="personnel.PASS_PERSO ='kababaka123'" class="form-control"/>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" ng-click="cancel()">Annuler</button>
+                        <button type="button" class="btn btn-primary" ng-click="ok()">Ajouter</button>
+                    </div>
+					</div>
+				</script>
+                <!-- <div class="modal fade" id="add_new_task_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="MyCtrl" >
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Ajout Personnel</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <ul class="alert alert-danger" ng-if="errors.length > 0">
+                                    <li ng-repeat="error in errors">
+                                        {{ error }}
+                                    </li>
+                                </ul>
+
+                                <div class="form-group">
+                                    <label for="name">Nom</label>
+                                    <input ng-model="personnel.nom" type="text" id="nom" class="form-control"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea ng-model="personnel.prenom" class="form-control" name="personnel"></textarea>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" ng-click="addPersonnel()">Ajouter Personnel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- // Modal -->
+                    <!-- Modal - Update Task -->
+                <!-- <div class="modal fade" id="modal_update_task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Personnel Details</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <ul class="alert alert-danger" ng-if="errors.length > 0">
+                                    <li ng-repeat="error in errors">
+                                        {{ error }}
+                                    </li>
+                                </ul>
+
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input ng-model="personnel_details.name" type="text" id="nom" class="form-control"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea ng-model="personnel_details.description" class="form-control" name="prenom"></textarea>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" ng-click="updatePersonnel()">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+        <!-- // Modal -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: STRIPED ROWS -->
+<!-- end: YOUR CONTENT HERE -->

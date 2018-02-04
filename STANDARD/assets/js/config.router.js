@@ -67,6 +67,22 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 ncyBreadcrumb: {
                     label: 'Panier'
                 }
+            }).state('app.GestPers', {
+                url: "/GestPers",
+                templateUrl: "assets/views/Admin/gestion_personnel.html",
+                resolve: loadSequence('jquery-sparkline', 'touchspin-plugin', 'ngTable', 'ngTableCtrl', 'dynamicTableCtrl', 'personnelCtrl'),
+                title: 'Gestion du personnel ',
+                ncyBreadcrumb: {
+                    label: 'Gestion du personnel'
+                }
+            }).state('app.GestProd', {
+                url: "/GestProd",
+                templateUrl: "assets/views/Admin/gestion_produit.html",
+                resolve: loadSequence('jquery-sparkline', 'touchspin-plugin', 'ngTable', 'ngTableCtrl', 'dynamicTableCtrl', 'produitCtrl'),
+                title: 'Gestion des produits ',
+                ncyBreadcrumb: {
+                    label: 'Gestion des produits'
+                }
             }).state('app.BdClients', {
                 url: "/BdClients",
                 templateUrl: "assets/views/ServiceClients/TableauSC_Clients.html",

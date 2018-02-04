@@ -1196,7 +1196,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                 ).success(function(response) {
                     // scope id data 
                     $scope.dateID = response.ID;
-                    // alert($scope.dateID);
+                    alert($scope.dateID);
                     if ($scope.dateID != null) {
                         // L'AJOUT DE LA COMMANDE
                         $http.post(

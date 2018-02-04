@@ -58,6 +58,8 @@ app.constant('JS_REQUIRES', {
         'user': 'assets/js/directives/user.js',
         'MyCtrl':'assets/js/controllers/API/MyCtrl.js',
         'LivreurCtrl':'assets/js/controllers/API/LivreurCtrl.js',
+        'personnelCtrl': 'assets/js/controller/API/personnelCtrl',
+        'produitCtrl': 'assets/js/controller/API/produitCtrl',
         
         //*** Filters
         'htmlToPlaintext': 'assets/js/filters/htmlToPlaintext.js'
