@@ -24,7 +24,7 @@
                                     <th>Nom et Prenom Client</th>
                                     <th>Date Fin Commande</th>
                                     <th>Adresse complete</th>
-                                    <th>Nombre d'articles</th>
+                                    <!-- <th>Nombre d'articles</th> -->
                                     <th>Livreur Livraison</th>
                                     <th>Confirmation</th>
                                 </tr>
@@ -36,7 +36,7 @@
                                     <td>{{x.NOM_CLIENT}} {{x.PRENOM_CLIENT}}</td>
                                     <td>{{x.DF_COMMANDE}}</td>
                                     <td>{{x.Adresse_Complete_Livraison}}</td>
-                                    <td>{{x.QUANTITE}}</td>
+                                    <!-- <td>{{x.QUANTITE}}</td> -->
                                     <td>
                                         <div class="form-group" ng-init="getNomLivreur()">
                                             <select ng-change="changed(MyLiv)" ng-options="livreur.NOM_PERSONNEL for livreur in livreurs track by livreur.ID_PERSONNEL" ng-model="MyLiv" class="cs-select cs-skin-slide">
