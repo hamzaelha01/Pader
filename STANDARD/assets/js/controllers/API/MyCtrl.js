@@ -394,7 +394,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
         //    });
         $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /MyAllBasketsX.php", {
 
-            'IdUser': user.getClientTempCmd(),
+            'IdUser': user.getTempIDC(),
             'IDCMD': user.getTempRecu()
         }).success(function(data) {
             $scope.MyAllBasketsX = data;
