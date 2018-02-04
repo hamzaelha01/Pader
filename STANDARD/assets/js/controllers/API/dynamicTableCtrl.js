@@ -135,8 +135,9 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             //         // $scope.PRENOM = data[index].PRENOM_CLIENT;
             //         
             alert(r.ID_COMMANDE);
+            user.setClientTempCmd(r.ID_CLIENT);
             user.setTempRecu(r.ID_COMMANDE);
-            alert(" USER TEMP " + user.getID());
+            alert(" USER TEMP " + user.getClientTempCmd());
             alert("CMD TEMP " + user.getTempRecu());
             // $location.path('/Client');
             $window.location.href = '#/app/RecuClient';

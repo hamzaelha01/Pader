@@ -378,6 +378,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
         alert(" ID COMMANDE" + user.getTempRecu());
         alert(" ID CLIENT " + user.getClientTempCmd());
 
+
         // $http({
         //    url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /MyAllBasketsX.php',
         //    method: 'POST',

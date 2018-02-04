@@ -61,6 +61,7 @@
                                         <th>Date Commande</th>
                                         <th>Date Livraison</th>
                                         <th>Nombre Articles</th>
+                                        <th class="hidden"> IdCLIENT</th>
                                         <th>Statut</th>
                                         <th>Montant</th>
                                         <th><i class="fa fa-time"></i> Modifier </th>
@@ -74,6 +75,7 @@
                                         <td>{{r.DD_COMMANDE}}</td>
                                         <td>{{r.DF_COMMANDE}}</td>
                                         <td>{{r.QUANTITE}}</td>
+                                        <td class="hidden">{{r.ID_CLIENT}}</td>
 
                                         <td> <span ng-class="{'label label-sm label-danger': (r.STATUS == 'PRETE'),'label label-sm label-danger ': (r.STATUS == 'TO DELIVER '), 'label label-sm label-success': (r.STATUS == 'CONFIRMED'  || 'LIVRE' ),'label label-sm label-info': (r.STATUS == 'EN PREPARATION')}">{{r.STATUS}}</td>
                                     <!-- <td>{{arr}}</td> -->
