@@ -15,7 +15,7 @@ if (count($info) > 0) {
     if (mysqli_query($conn, $query)) {
     echo 'La Commande est bien Ajoutee ...';
     }else {
-        echo 'la commande nest pas ajouté';
+        echo 'la commande nest pas ajouté ' .mysqli_error($conn); ;
     }
     // INSERT INTO `PANIER` (`ID_COMMANDE`, `ID_PRODUIT`, `QUANITE`, `MONTANT`, `COMMENTAIRE`) VALUES ('$idCmd', '$produit->ID_PRODUIT', '$quantite', '$total','BLANK')
     // $sql = array(); 
