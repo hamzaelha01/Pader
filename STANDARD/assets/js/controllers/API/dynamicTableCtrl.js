@@ -35,13 +35,13 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         // alert($scope.IDClient);
         // alert($scope.idcommande);
         // Affichage des infroamtions TEST
-        alert(" JOUR COMMANDE " + $scope.dt);
-        alert(" ID COMMANDE " + $scope.idcommande);
-        alert(" HEURE COMMANDE " + $scope.timecmd);
-        alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
-        // alert(" DATE COMMANDE " + $scope.dateID);
-        alert("not null you can do command");
-        alert(" ID CLIENT " + IDUSER);
+        // alert(" JOUR COMMANDE " + $scope.dt);
+        // alert(" ID COMMANDE " + $scope.idcommande);
+        // alert(" HEURE COMMANDE " + $scope.timecmd);
+        // alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
+        // // alert(" DATE COMMANDE " + $scope.dateID);
+        // alert("not null you can do command");
+        // alert(" ID CLIENT " + IDUSER);
 
         // ETAPE 2: CREATION DE LA COMMANDE & ID DATE
         $http.post(
@@ -51,7 +51,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         ).success(function(response) {
             // scope id data 
             $scope.dateID = response.ID;
-            alert($scope.dateID);
+            // alert($scope.dateID);
             if ($scope.dateID != null) {
                 // L'AJOUT DE LA COMMANDE
                 $http.post(
@@ -79,7 +79,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
         }).success(function(data) {
             // alert(data.ID);
-            alert(data);
+            // alert(data);
         });
     };
     // FIN  : RESERVATION PAR CLIENT *CLIENT*
@@ -98,10 +98,10 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     user.setTempNameCmd(data[index].NOM_CLIENT);
                     user.clientTemp(data[index].ID_CLIENT);
                     user.setIdLocalTempClient(data[index].ID_LOCALISATION);
-                    alert(" USER TEMP " + user.getClientTemp());
-                    alert(" NOM TEMP " + user.getTempNameCmd());
-                    alert(" PRENOM TEMP " + user.getTempProfileCmd());
-                    alert("ID LOCALISATION TMEP " + user.getIdLocalTempclient());
+                    // alert(" USER TEMP " + user.getClientTemp());
+                    // alert(" NOM TEMP " + user.getTempNameCmd());
+                    // alert(" PRENOM TEMP " + user.getTempProfileCmd());
+                    // alert("ID LOCALISATION TMEP " + user.getIdLocalTempclient());
 
                     // $location.path('/Client');
                     $window.location.href = '#/app/ReserverSC';
@@ -134,11 +134,11 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             //         // $scope.NOM = data[index].NOM_CLIENT;
             //         // $scope.PRENOM = data[index].PRENOM_CLIENT;
             //         
-            alert(r.ID_COMMANDE);
+            // alert(r.ID_COMMANDE);
             user.setTempIDC(r.ID_CLIENT);
             user.setTempRecu(r.ID_COMMANDE);
-            alert(" USER TEMP " + user.getTempIDC());
-            alert("CMD TEMP " + user.getTempRecu());
+            // alert(" USER TEMP " + user.getTempIDC());
+            // alert("CMD TEMP " + user.getTempRecu());
             // $location.path('/Client');
             $window.location.href = '#/app/RecuClient';
             // alert($window.location.names);
@@ -170,13 +170,13 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
 
         // Affichage des infroamtions TEST
-        alert(" JOUR COMMANDE " + $scope.dt);
-        alert(" ID COMMANDE " + $scope.IdCmdUser);
-        alert(" HEURE COMMANDE " + $scope.timecmd);
-        alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
-        // alert(" DATE COMMANDE " + $scope.dateID);
-        alert("ID USER " + idUser);
-        alert("not null you can do command");
+        // alert(" JOUR COMMANDE " + $scope.dt);
+        // alert(" ID COMMANDE " + $scope.IdCmdUser);
+        // alert(" HEURE COMMANDE " + $scope.timecmd);
+        // alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
+        // // alert(" DATE COMMANDE " + $scope.dateID);
+        // alert("ID USER " + idUser);
+        // alert("not null you can do command");
 
         // CREATION DE LA COMMANDE 
 
@@ -217,7 +217,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                 'AdresseCompleteCollect': $scope.adrz1 + ", " + user.getLocalisation()
             }).success(function(data) {
                 // alert(data.ID);
-                alert(data);
+                // alert(data);
             });
         });
 
@@ -291,7 +291,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
     $scope.getCommandesEncours = function() {
 
-        alert(IDUSER);
+        // alert(IDUSER);
 
         $http({
             url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /getCommandes.php',
@@ -572,7 +572,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         //         alert($scope.IDn);
 
         //     })
-        alert(x.ID_COMMANDE);
+        // alert(x.ID_COMMANDE);
         SweetAlert.swal({
 
             title: "Voulez-vous confirmer la commande ?",
@@ -925,7 +925,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                 'AdresseCompleteLivraison': $scope.idrliv
             }).success(function(data) {
                 // alert(data.ID);
-                alert(data);
+                // alert(data);
             });
 
 
@@ -935,14 +935,15 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                 'AdresseCompleteLivraison': $scope.adrz1 + ", " + user.getLocalisation()
             }).success(function(data) {
                 // alert(data.ID);
-                alert(data);
-            });
-
-        setTimeout(function() {
+                // alert(data);
+                 setTimeout(function() {
 
             window.location.reload();
 
         }, 500);
+            });
+
+       
 
 
         // SweetAlert.swal({
@@ -1087,7 +1088,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     $scope.cmds = data;
                     $scope.cmdid = data[index].ID_COMMANDE;
                     // alert($scope.cmdid);
-                    alert($scope.cmdid);
+                    // alert($scope.cmdid);
                 })
 
                 $scope.ok = function(e) {
@@ -1102,9 +1103,9 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                             // alert(data[index].DD_COMMANDE);
                             //$scope.show_cmdaprep();
                         });
-                    alert($scope.dtt);
-                    alert($scope.hrr);
-                    alert($scope.cmdid);
+                    // alert($scope.dtt);
+                    // alert($scope.hrr);
+                    // alert($scope.cmdid);
 
                     $uibModalInstance.close();
                     e.stopPropagation();
@@ -1201,7 +1202,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                 ).success(function(response) {
                     // scope id data 
                     $scope.dateID = response.ID;
-                    alert($scope.dateID);
+                    // alert($scope.dateID);
                     if ($scope.dateID != null) {
                         // L'AJOUT DE LA COMMANDE
                         $http.post(
@@ -1215,7 +1216,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
                             }
                         ).success(function(response) {
-                            alert(response);
+                            // alert(response);
 
                             // if($response.Feed);
 
@@ -1231,7 +1232,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                                 confirmButtonColor: "#007AFF"
                                  });
                             // alert(data.ID);
-                            alert(data);
+                            // alert(data);
                 });
                             // alert(data.ID);
                         });

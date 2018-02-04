@@ -45,7 +45,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                             'id': $scope.cmdid
                         })
                         .success(function(data) {
-                            alert(data);
+                            // alert(data);
                             //$scope.show_cmdaprep();
                         });
                     $uibModalInstance.close();
@@ -168,7 +168,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                 // alert($scope.cmdid);
                 user.setTempRecu(x.ID_COMMANDE);
                 user.setTempIDC(x.ID_CLIENT);
-                alert(user.getTempIDC());
+                // alert(user.getTempIDC());
                 // })
                 // Update Statut of commande
                 $scope.ok = function(e) {
@@ -184,10 +184,10 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                         },
                         data: 'id=' + x.ID_COMMANDE
                     }).success(function(response) {
-                        alert(response);
-                        alert(user.getTempRecu());
-                        alert(user.getID());
-                        alert(IdUser);
+                        // alert(response);
+                        // alert(user.getTempRecu());
+                        // alert(user.getID());
+                        // alert(IdUser);
                         $window.location.href = '#/app/RecuProd';
                     });
                     // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmer.php", {
@@ -236,7 +236,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
             // alert($scope.cmdacollects[1].NOM_CLIENT);
             // alert(data);
 
-        }).error(function(data) { alert(data); })
+        }).error(function(data) {  })
     };
 
     // ETAPE 2 : INSERTION DES PRODUITS DANS LA CARTE 
@@ -337,10 +337,10 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                             cart: $scope.formData
                         }).success(function(data) {
 
-                            alert(data);
+                            // alert(data);
 
 
-                        }).error(function(data) { alert(data); })
+                        }).error(function(data) {  })
 
 
                     }
@@ -348,10 +348,10 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                         'id': user.getCmdTemp()
                     }).success(function(data) {
 
-                        alert(data);
+                        // alert(data);
 
 
-                    }).error(function(data) { alert(data); })
+                    }).error(function(data) {  })
 
                     // $scope.cart=[];
 
@@ -375,8 +375,8 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     //  Impression Items : 
     $scope.MyAllBasketsX = function() {
         // alert(IdUser);
-        alert(" ID COMMANDE" + user.getTempRecu());
-        alert(" ID CLIENT " + user.getTempIDC());
+        // alert(" ID COMMANDE" + user.getTempRecu());
+        // alert(" ID CLIENT " + user.getTempIDC());
 
 
         // $http({
@@ -445,14 +445,14 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
         //     alert(data.Quantite);
         // });
         // Qte a ne pas depasser 
-        alert(user.getQteCmd());
+        // alert(user.getQteCmd());
         $scope.cptq = user.getQteCmd();
         $scope.cpta = user.getRecuProdCpt();
         $scope.cpta++;
         user.setRecuProdCpt($scope.cpta);
         // Compteur
-        alert($scope.cpta);
-        alert($scope.cptq);
+        // alert($scope.cpta);
+        // alert($scope.cptq);
         if ($scope.cpta >= $scope.cptq) {
             user.setRecuProdCpt(0);
         }

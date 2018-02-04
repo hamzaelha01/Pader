@@ -198,9 +198,9 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
                     'NOM_LIVREUR': nomLivreur
                 }).success(function(data) {
                 $scope.toC = data;
-                alert(data[index].ID_COMMANDE);
+                // alert(data[index].ID_COMMANDE);
                 user.cmdTemp(data[index].ID_COMMANDE);
-                alert("COMMANDE TEMP " + user.getCmdTemp());
+                // alert("COMMANDE TEMP " + user.getCmdTemp());
                 $window.location.href = "#/app/Panier";
 
             })
@@ -222,8 +222,8 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
             // alert(data);
 
             $scope.IDD = data[index].ID_COMMANDE;
-            alert(data);
-            alert(data[index].ID_COMMANDE);
+            // alert(data);
+            // alert(data[index].ID_COMMANDE);
 
 
         })
