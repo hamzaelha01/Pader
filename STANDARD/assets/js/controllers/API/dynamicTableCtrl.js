@@ -1212,7 +1212,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
                             }
                         ).success(function(response) {
-                            alert($response.Feed);
+                            alert(response.Feed);
 
                             // if($response.Feed);
 
