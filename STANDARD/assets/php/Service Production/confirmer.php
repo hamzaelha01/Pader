@@ -28,7 +28,7 @@ if(count($_POST)>0) {
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "pressing";
+$dbname = "Pressing";
 
 $v = $_POST["id"];
 $conn = mysqli_connect($servername, $username, $password, $dbname);

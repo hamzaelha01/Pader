@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-$conn = mysqli_connect("localhost","root","root","pressing");
+$conn = mysqli_connect("localhost","root","root","Pressing");
 $output = array();
 $query  = "SELECT DISTINCT c.ID_COMMANDE,DATE_FORMAT(c.DD_COMMANDE, '%Y') AS 'DD_COMMANDE_Y',
 DATE_FORMAT(c.DD_COMMANDE, '%m') AS 'DD_COMMANDE_M',

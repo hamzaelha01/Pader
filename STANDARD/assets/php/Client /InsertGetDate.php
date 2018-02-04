@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-$conn = mysqli_connect("localhost","root","root","pressing");
+$conn = mysqli_connect("localhost","root","root","Pressing");
 if (count($info) > 0) {
 
 $query  ="INSERT INTO `DATE` (`ID_DATE`, `DATE_C_RES`, `DATE_C_RC`, `DATE_C_RL`, `DATE_C_PL`, `DATE_C_RP`, `DATE_C_LP`, `DATE_C_VL`) VALUES (NULL, NOW(), NULL, NULL, NULL, NULL, NULL, NULL)";

@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-$conn = mysqli_connect("localhost","root","root","pressing");
+$conn = mysqli_connect("localhost","root","root","Pressing");
 $output = array();
 // $query  = "SELECT * FROM users";
 $query  ="SELECT *

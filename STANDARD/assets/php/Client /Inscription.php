@@ -18,8 +18,8 @@ if (count($info) > 0) {
    $idlocalisation = $info->idlocalisation;
 
 
-   $query = "INSERT INTO `CLIENT` (`ID_LOCALISATION`,`NOM_CLIENT`, `PRENOM_CLIENT`,`AGE_CLIENT`, `TELEPHONE_CLIENT`, `Email`, `SEXE_CLIENT`, `Password`, `TYPE_CLIENT`)
-               VALUES ('$idlocalisation','$nom','$prenom','0','$phone','$email','$sexe','$password','$type')";
+   $query = "INSERT INTO `CLIENT` (`ID_LOCALISATION`,`NOM_CLIENT`, `PRENOM_CLIENT`, `TELEPHONE_CLIENT`, `Email`, `SEXE_CLIENT`, `Password`, `TYPE_CLIENT`)
+               VALUES ('$idlocalisation','$nom','$prenom','$phone','$email','$sexe','$password','$type')";
    if (mysqli_query($conn, $query)) {
        echo 'Bienvenue! Tu t\'es Bien Inscrit  ...';
        }else {

@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-$conn = mysqli_connect("localhost","root","root","pressing");
+$conn = mysqli_connect("localhost","root","root","Pressing");
 $info = json_decode(file_get_contents("php://input"));
 if (count($info) > 0) {
 $ID     = mysqli_real_escape_string($conn, $info->ID);

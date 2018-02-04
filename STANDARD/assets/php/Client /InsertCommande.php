@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-$conn = mysqli_connect("localhost","root","root","pressing");
+$conn = mysqli_connect("localhost","root","root","Pressing");
 if (count($info) > 0) {
 $DD     = mysqli_real_escape_string($conn, $info->DD);
 $IDCMD    = mysqli_real_escape_string($conn, $info->IDCMD);

@@ -10,7 +10,7 @@ header('Access-Control-Allow-Origin: *');
 
 $response= [];
 if(count($_POST)>0) {
-$conn = mysqli_connect("localhost","root","root","pressing");
+$conn = mysqli_connect("localhost","root","root","Pressing");
 	$result = mysqli_query($conn,"SELECT DISTINCT COMMANDE.ID_COMMANDE , COMMANDE.DD_COMMANDE , COMMANDE.STATUS ,COMMANDE.NBR_ARTICLES , COMMANDE.DF_COMMANDE FROM COMMANDE WHERE COMMANDE.STATUS IN ('EN ATTENTE','CONFIRME','TO COLLECT') AND COMMANDE.ID_CLIENT = ".$_POST["Iduser"]."");
     if(mysqli_num_rows($result)>0){
     while($row = $result->fetch_assoc()){
