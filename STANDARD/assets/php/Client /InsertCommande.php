@@ -33,7 +33,7 @@ if (mysqli_query($conn, $query)) {
         
     $response = "Inserted";
 } else {
-  $response = "Failed";
+  $response = "Failed".mysqli_error($conn);
   // echo 'Failed';
 }
 
