@@ -191,6 +191,13 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
             $scope.toD = data;
             alert(data);
 
+
+            if(data.length === 0)
+            {
+                document.querySelector("#table").style.display = "none";
+
+            }
+
         })
     }
 

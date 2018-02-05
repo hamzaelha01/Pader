@@ -140,6 +140,17 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
 
 
             }
+            else if(response.STATUS === "ERROR")
+            {
+                // var i;
+                //     // var x = document.getElementsByTagName("*");
+                //     var go = document.querySelectorAll("#error");
+                //     for (i = 0; i < go.length; i++) {
+                //         go[i].classList.remove('hidden');
+                //      }
+                document.querySelector("#error").classList.remove('hidden');
+            }
+
         })
     }
 
