@@ -3,6 +3,7 @@
     <div class="row">
         <div class="col-sm-8">
             <h1 class="mainTitle">Commandes a collecter </h1>
+            <input ng-model="searchText" class="form-control text-center margin-top-15" type="text" placeholder="Rechercher une commande">
             <!-- <span class="mainDescription">Use this page to start from scratch and put your custom content</span> -->
         </div>
         <div ncy-breadcrumb></div>
@@ -22,7 +23,7 @@
                 Please try to re-size your browser window in order to see the tables in responsive mode.
             </div> -->
             <div ng-init="toCollecte()" class="table-responsive">
-                <div class=" table-responsive">
+                <div id="table" class=" table-responsive">
                      <!-- <label>Search: <input ng-model="searchText"></label> -->
                     <table class="table table-stripped table-hover" id="sample-table-2">
                         <thead>
@@ -38,7 +39,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="x in toC track by $index">
+                            <tr ng-repeat="x in toC track by $index ">
                                 <td class="hidden-xs" >{{x.ID_COMMANDE}}</td>
                                 <td>{{x.NOM_CLIENT}}</td>
                                 <td class="hidden-xs">{{x.PRENOM_CLIENT}}</td>
@@ -64,4 +65,4 @@
 </div>
 
 
-<!-- end: YOUR CONTENT HERE -->-
+<!-- end: YOUR CONTENT HERE -->

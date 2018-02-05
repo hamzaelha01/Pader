@@ -164,25 +164,32 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
 
 
 
-    $scope.toCollecte = function(index) {
+    $scope.toCollecte = function() {
         // alert(nomLivreur);
         $http.post(
             "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/getCollecte.php", {
                 'NOM_LIVREUR': nomLivreur
             }).success(function(data) {
             $scope.toC = data;
+            alert(data.length);
 
+            if(data.length === 0)
+            {
+                document.querySelector("#table").style.display = "none";
+
+            }
         })
     }
 
     //toDeliver For Livreur 
 
-    $scope.toDeliver = function(index) {
+    $scope.toDeliver = function() {
         $http.post(
             "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/getDeliver.php", {
                 'NOM_LIVREUR': nomLivreur
             }).success(function(data) {
             $scope.toD = data;
+            alert(data);
 
         })
     }
