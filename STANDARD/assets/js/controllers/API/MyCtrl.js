@@ -86,6 +86,11 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                     .success(function(data) {
                         //$scope.reload();
                         //$scope.show_cmdaprep();
+                         setTimeout(function() {
+
+                    window.location.reload();
+
+                }, 500);
                     });
                 SweetAlert.swal({
                     title: "Confirmée",
