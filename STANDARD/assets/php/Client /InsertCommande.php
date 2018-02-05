@@ -9,6 +9,7 @@ $HT      = mysqli_real_escape_string($conn, $info->HT);
 $nbrd      = mysqli_real_escape_string($conn, $info->nbrd);
 $IDDATE     = mysqli_real_escape_string($conn, $info->IDDATE);
 $IDCLIENT = mysqli_real_escape_string($conn,$info->IDCLIENT);
+$idLocal = mysqli_real_escape_string($conn,$info->idLocal);
 
 
 echo "//////";
@@ -28,7 +29,7 @@ echo "//////";
   $response ;
 
 //$query = "INSERT INTO users(name, email, age) VALUES ('$name', '$email', '$age')";
-$query  ="INSERT INTO `COMMANDE` (`ID_COMMANDE`, `DD_COMMANDE`, `DF_COMMANDE`, `STATUS`, `NBR_ARTICLES`, `ID_LOCALISATION`, `COMMENTAIRE`, `LIVREUR_COLLECTE`, `LIVREUR_LIVRAISON`, `ID_DATE` , `ID_CLIENT`) VALUES ('$IDCMD', '$combine', NULL, 'EN ATTENTE', '$nbrd', '12', NULL, NULL, NULL, '$IDDATE','$IDCLIENT')";
+$query  ="INSERT INTO `COMMANDE` (`ID_COMMANDE`, `DD_COMMANDE`, `DF_COMMANDE`, `STATUS`, `NBR_ARTICLES`, `ID_LOCALISATION`, `COMMENTAIRE`, `LIVREUR_COLLECTE`, `LIVREUR_LIVRAISON`, `ID_DATE` , `ID_CLIENT`) VALUES ('$IDCMD', '$combine', NULL, 'EN ATTENTE', '$nbrd', '$idLocal', NULL, NULL, NULL, '$IDDATE','$IDCLIENT')";
 if (mysqli_query($conn, $query)) {
         
     $response = "Inserted";

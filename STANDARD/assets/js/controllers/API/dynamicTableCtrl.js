@@ -52,6 +52,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             // scope id data 
             $scope.dateID = response.ID;
             // alert($scope.dateID);
+            alert(user.getIdLocalTempclient());
             if ($scope.dateID != null) {
                 // L'AJOUT DE LA COMMANDE
                 $http.post(
@@ -61,7 +62,8 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                         'HT': $scope.timecmd,
                         'nbrd': $scope.nbrd,
                         'IDDATE': $scope.dateID,
-                        'IDCLIENT': IDUSER
+                        'IDCLIENT': IDUSER,
+                        'idLocal': user.getIdLocalTempclient()
 
                     }
                 ).success(function(data) {
@@ -1203,6 +1205,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     // scope id data 
                     $scope.dateID = response.ID;
                     // alert($scope.dateID);
+                    alert(user.getIdLocalTempclient());
                     if ($scope.dateID != null) {
                         // L'AJOUT DE LA COMMANDE
                         $http.post(
@@ -1212,7 +1215,8 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                                 'HT': $scope.timecmd,
                                 'nbrd': $scope.nbrd,
                                 'IDDATE': $scope.dateID,
-                                'IDCLIENT': IDUSER
+                                'IDCLIENT': IDUSER,
+                                'idLocal': user.getIdLocalTempclient()
 
                             }
                         ).success(function(response) {
