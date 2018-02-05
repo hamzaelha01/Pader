@@ -58,7 +58,8 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
                             // alert("Succes");
                             // alert(data);
                             // SweetAlert.swal("Tres Bien!", "Vous Avez Bien Rempli Votre Formulaire!", "success");
-
+                            $window.location.href = '#/login/signin';
+                            document.querySelector("#success").classList.remove('hidden');
                         });
                     }
 
