@@ -16,12 +16,14 @@ if (mysqli_num_rows($result) > 0) {
 
     $response['status']='exists';
     }
+    echo json_encode($response);
 }
 else
 {
     $response['status']='no exists';
 }
 
-echo json_encode($response);
+
+
 ?> 
 
