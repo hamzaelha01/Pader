@@ -1,0 +1,23 @@
+<?php
+
+header('Access-Control-Allow-Origin: *');
+$conn = mysqli_connect("localhost","root","root","Pressing");
+$info = json_decode(file_get_contents("php://input"));
+$response= [];
+$Numero   = mysqli_real_escape_string($conn, $info->Numero);
+
+
+// $output = array();
+// $query  = "SELECT * FROM `COMMANDE`";
+$query  ="SELECT * FROM CLIENT WHERE  CLIENT.TELEPHONE_CLIENT = '$Numero'";
+$result = mysqli_query($conn, $query);
+if (mysqli_num_rows($result) > 0) {
+
+    $response['status']='exists';
+// echo json_encode($output);
+}else
+    $response['status']='no exists';
+
+echo json_encode($response);
+?> 
+
