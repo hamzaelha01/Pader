@@ -11,7 +11,6 @@ $Numero   = mysqli_real_escape_string($conn, $info->Numero);
 // $query  = "SELECT * FROM `COMMANDE`";
 $query  ="SELECT * FROM CLIENT WHERE  CLIENT.TELEPHONE_CLIENT = '$Numero'";
 $result = mysqli_query($conn, $query);
-echo $result;
 if (mysqli_num_rows($result) > 0) {
 
     while($row = $result->fetch_assoc()){
