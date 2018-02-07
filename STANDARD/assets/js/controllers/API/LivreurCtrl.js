@@ -19,7 +19,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
         $http.get(
             "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/getIndexL.php").success(function(data) {
             $scope.cmdcf = data;
-
+            // alert(data.length);
         })
 
     }
@@ -29,6 +29,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
         $http.get(
             "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/getIndexLSP.php").success(function(data) {
             $scope.cmdcfSP = data;
+            // alert(data.length);
 
         })
 
@@ -39,7 +40,7 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
         $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/getNomLivreur.php")
             .success(function(data) {
                 $scope.livreurs = data;
-
+                // alert(data.length);
             });
         // $scope.liv = $scope.livreurs[0];
 
@@ -79,11 +80,11 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
                         //$scope.show_cmdaprep();
                         setTimeout(function() {
 
-                         window.location.reload();
+                            window.location.reload();
 
                         }, 500);
                     });
-                
+
                 // SweetAlert.swal({
                 //     title: "Confirmée!",
                 //     text: "Votre Commande a été confirmée.",
@@ -171,13 +172,12 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
                 'NOM_LIVREUR': nomLivreur
             }).success(function(data) {
             $scope.toC = data;
-            alert(data.length);
+            // alert(data.length);
 
-            if(data.length === 0)
-            {
-                document.querySelector("#table").style.display = "none";
+            // if (data.length === 0) {
+            //     document.querySelector("#table").style.display = "none";
 
-            }
+            // }
         })
     }
 
@@ -189,14 +189,13 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
                 'NOM_LIVREUR': nomLivreur
             }).success(function(data) {
             $scope.toD = data;
-            alert(data);
+            // alert(data);
 
 
-            if(data.length === 0)
-            {
-                document.querySelector("#table").style.display = "none";
+            // if (data.length === 0) {
+            //     document.querySelector("#table").style.display = "none";
 
-            }
+            // }
 
         })
     }
