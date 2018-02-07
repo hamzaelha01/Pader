@@ -33,37 +33,83 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
                 // SweetAlert.swal("Good job!", "Your form is ready to be submitted!", "success");
                 //your code for submit
                 // alert($scope.adresse);
-                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertLocalisation.php", {
-                    'adr': $scope.adresse
+
+                // alert($scope.phone);
+                // alert($scope.myModel.phone);
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /NumTest.php", {
+                    'Numero': $scope.myModel.phone
                 }).success(function(response) {
-                    // alert(response.ID);
-                    $scope.LocalisationID = response.ID;
-                    // alert($scope.LocalisationID);
-                    if ($scope.LocalisationID != null) {
+                    if (response.status === "exists") {
+                        document.querySelector("#error").classList.remove('hidden');
+                    } else if (response.status === "no exists") {
 
-                        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /Inscription.php", {
-                            'nom': $scope.nom,
-                            'prenom': $scope.prenom,
-                            'phone': $scope.phone,
-                            'email': $scope.email,
-                            'adresse': $scope.adresse,
-                            'password': $scope.password,
-                            'idlocalisation': $scope.LocalisationID,
-                            'type': $scope.compte,
-                            'sexe': $scope.gender,
-                            'user': $scope.myModel
-                        })
+                        // alert("non existants");
+                        $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertLocalisation.php", {
+                            'adr': $scope.adresse
+                        }).success(function(response) {
+                            // alert(response.ID);
+                            $scope.LocalisationID = response.ID;
+                            // alert($scope.LocalisationID);
+                            if ($scope.LocalisationID != null) {
 
-                        .success(function(data) {
-                            // alert("Succes");
-                            // alert(data);
-                            // SweetAlert.swal("Tres Bien!", "Vous Avez Bien Rempli Votre Formulaire!", "success");
-                            $window.location.href = '#/login/signin';
-                            document.querySelector("#success").classList.remove('hidden');
+                                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /Inscription.php", {
+                                    'nom': $scope.nom,
+                                    'prenom': $scope.prenom,
+                                    'phone': $scope.phone,
+                                    'email': $scope.email,
+                                    'adresse': $scope.adresse,
+                                    'password': $scope.password,
+                                    'idlocalisation': $scope.LocalisationID,
+                                    'type': $scope.compte,
+                                    'sexe': $scope.gender,
+                                    'user': $scope.myModel
+                                })
+
+                                .success(function(data) {
+                                    // alert("Succes");
+                                    // alert(data);
+                                    // SweetAlert.swal("Tres Bien!", "Vous Avez Bien Rempli Votre Formulaire!", "success");
+                                    $window.location.href = '#/login/signin';
+                                    document.querySelector("#success").classList.remove('hidden');
+                                });
+                            }
+
                         });
                     }
+                })
 
-                });
+
+                // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertLocalisation.php", {
+                //     'adr': $scope.adresse
+                // }).success(function(response) {
+                //     // alert(response.ID);
+                //     $scope.LocalisationID = response.ID;
+                //     // alert($scope.LocalisationID);
+                //     if ($scope.LocalisationID != null) {
+
+                //         $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /Inscription.php", {
+                //             'nom': $scope.nom,
+                //             'prenom': $scope.prenom,
+                //             'phone': $scope.phone,
+                //             'email': $scope.email,
+                //             'adresse': $scope.adresse,
+                //             'password': $scope.password,
+                //             'idlocalisation': $scope.LocalisationID,
+                //             'type': $scope.compte,
+                //             'sexe': $scope.gender,
+                //             'user': $scope.myModel
+                //         })
+
+                //         .success(function(data) {
+                //             // alert("Succes");
+                //             // alert(data);
+                //             // SweetAlert.swal("Tres Bien!", "Vous Avez Bien Rempli Votre Formulaire!", "success");
+                //             $window.location.href = '#/login/signin';
+                //             document.querySelector("#success").classList.remove('hidden');
+                //         });
+                //     }
+
+                // });
             }
 
         },
@@ -140,9 +186,7 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
 
 
 
-            }
-            else if(response.STATUS === "ERROR")
-            {
+            } else if (response.STATUS === "ERROR") {
                 // var i;
                 //     // var x = document.getElementsByTagName("*");
                 //     var go = document.querySelectorAll("#error");
