@@ -6,7 +6,7 @@ $info = json_decode(file_get_contents("php://input"));
 $response= [];
 $Numero   = mysqli_real_escape_string($conn, $info->Numero);
 
-echo $Numero;
+// echo $Numero;
 // $output = array();
 // $query  = "SELECT * FROM `COMMANDE`";
 $query  ="SELECT * FROM CLIENT WHERE  CLIENT.TELEPHONE_CLIENT = '$Numero'";
