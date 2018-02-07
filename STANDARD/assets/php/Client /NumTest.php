@@ -9,21 +9,18 @@ $Numero   = mysqli_real_escape_string($conn, $info->Numero);
 
 // $output = array();
 // $query  = "SELECT * FROM `COMMANDE`";
-$query  ="SELECT * FROM CLIENT WHERE  CLIENT.TELEPHONE_CLIENT = '$Numero'";
-$result = mysqli_query($conn, $query);
+$result = mysqli_query($conn,"SELECT * FROM CLIENT WHERE  CLIENT.TELEPHONE_CLIENT = '$Numero'");
 if (mysqli_num_rows($result) > 0) {
-    while($row = $res->fetch_assoc()){
+    while($row = $result->fetch_assoc()){
 
     $response['status']='exists';
     }
-    echo json_encode($response);
+    
 }
 else
 {
     $response['status']='no exists';
 }
-
-
-
+echo json_encode($response);
 ?> 
 
