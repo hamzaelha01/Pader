@@ -13,13 +13,13 @@
                         Client Inscription
                     </legend>
                     <p>
-                        Veuillez Remplir Tous Les Champs:
+                        Veuillez remplir tous les champs:
                     </p>
                     <div class="form-group" ng-class="{'has-error':Form.nom.$dirty && Form.nom.$invalid, 'has-success':Form.nom.$valid}">
                         <span class="input-icon">
                                 <input type="text"  class="form-control" name="nom" placeholder="Nom" ng-model="myModel.nom" required>
                                 <i class="ti-user"></i>
-                                <span class="error text-small block" ng-if="Form.nom.$dirty && Form.nom.$invalid">Champ Obligatoire</span>
+                                <span class="error text-small block" ng-if="Form.nom.$dirty && Form.nom.$invalid">Champ obligatoire</span>
                         <!-- <span class="success text-small" ng-if="Form.nom.$valid">Thank You!</span>  -->
                         </span>
                     </div>
@@ -27,7 +27,7 @@
                         <span class="input-icon">
                                     <input type="text"  class="form-control" name="prenom" placeholder="Prenom" ng-model="myModel.prenom" required>
                                     <i class="ti-user"></i> 
-                                    <span class="error text-small block" ng-if="Form.prenom.$dirty && Form.prenom.$invalid">Champ Obligatoire</span>
+                                    <span class="error text-small block" ng-if="Form.prenom.$dirty && Form.prenom.$invalid">Champ obligatoire</span>
                         <!-- <span class="success text-small" ng-if="Form.nom.$valid">Thank You!</span>  -->
                         </span>
                     </div>
@@ -36,9 +36,9 @@
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="myModel.email" required>
                                 <i class="fa fa-envelope"></i> 
                             </span>
-                        <span class="error text-small block" ng-if="Form.email.$dirty && Form.email.$error.required">Email Est Obligatoire.</span>
-                        <span class="error text-small block" ng-if="Form.email.$error.email">SVP, enter a valid email address.</span>
-                        <span class="success text-small" ng-if="Form.email.$valid">It's a valid e-mail!</span>
+                        <span class="error text-small block" ng-if="Form.email.$dirty && Form.email.$error.required">Adresse email obligatoire.</span>
+                        <span class="error text-small block" ng-if="Form.email.$error.email">S'il vous plait, enter une adresse valide</span>
+                        <span class="success text-small" ng-if="Form.email.$valid">votre adresse email est valide!</span>
 
                     </div>
                     <div class="form-group" ng-class="{'has-error':Form.phone.$dirty && Form.phone.$invalid, 'has-success':Form.phone.$valid}">
@@ -47,9 +47,9 @@
                                 ng-maxlength="10" placeholder="Phone" ng-model="myModel.phone" required>
                                 <i class="fa fa-phone"></i> 
                              </span>
-                        <span class="error text-small block" ng-if="Form.phone.$dirty && Form.phone.$error.required">phone Est Obligatoire.</span>
-                        <span class="error text-small block" ng-if="Form.phone.$error.number">SVP, enter a valid phone address.</span>
-                        <span class="success text-small" ng-if="Form.phone.$valid">It's a valid phone!</span>
+                        <span class="error text-small block" ng-if="Form.phone.$dirty && Form.phone.$error.required">Votre numero de telephone est obligatoire</span>
+                        <span class="error text-small block" ng-if="Form.phone.$error.number">S'il vous plait, enter a valid phone address.</span>
+                        <span class="success text-small" ng-if="Form.phone.$valid">Votre numero de telephone est valide</span>
                     </div>
 
                     <div class="form-group">
@@ -94,17 +94,17 @@
                                     <i class="fa fa-lock"></i> 
                                 </span>
                         <!-- <input type="password" placeholder="Enter a Password" class="form-control" name="password" ng-model="myModel.password" required/> -->
-                        <span class="error text-small block" ng-if="Form.password.$dirty && Form.password.$error.required">Password is required.</span>
-                        <span class="success text-small block" ng-if="Form.password.$valid">Ok!</span>
+                        <span class="error text-small block" ng-if="Form.password.$dirty && Form.password.$error.required">Mot de passe invalide</span>
+                        <span class="success text-small block" ng-if="Form.password.$valid"></span>
                     </div>
                     <div class="form-group" ng-class="{'has-error':Form.password2.$dirty && Form.password2.$error.compareTo || Form.password2.$dirty && Form.password2.$invalid, 'has-success':Form.password2.$valid}">
                         <span class="input-icon">
                                 <input type="password" class="form-control" name="password2" ng-model="myModel.password2"  placeholder="Mot De Passe Confirmation" compare-to="myModel.password" required>
                                 <i class="fa fa-lock"></i> 
                             </span>
-                        <span class="error text-small block" ng-if="Form.password2.$dirty && Form.password2.$error.required">Repeat password is required!</span>
-                        <span class="error text-small block" ng-if="Form.password2.$dirty && Form.password2.$error.compareTo">Passwords do not match!</span>
-                        <span class="success text-small block" ng-if="Form.password2.$valid">Passwords match!</span>
+                        <span class="error text-small block" ng-if="Form.password2.$dirty && Form.password2.$error.required">Confirmez votre me de passe</span>
+                        <span class="error text-small block" ng-if="Form.password2.$dirty && Form.password2.$error.compareTo">Les mots de passes ne sont pas identiques</span>
+                        <span class="success text-small block" ng-if="Form.password2.$valid">Les mots de passes sont identiques</span>
                     </div>
 
                     <!-- <div class="form-group">
