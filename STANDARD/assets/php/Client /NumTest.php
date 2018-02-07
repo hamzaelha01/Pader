@@ -12,11 +12,15 @@ $Numero   = mysqli_real_escape_string($conn, $info->Numero);
 $query  ="SELECT * FROM CLIENT WHERE  CLIENT.TELEPHONE_CLIENT = '$Numero'";
 $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
+    while($row = $res->fetch_assoc()){
 
     $response['status']='exists';
-// echo json_encode($output);
-}else
+    }
+}
+else
+{
     $response['status']='no exists';
+}
 
 echo json_encode($response);
 ?> 
