@@ -59,7 +59,7 @@ class Produit
     public function Read()
     {
         
-        $query = $this->db->prepare("select produit.ID_PRODUIT,produit.DESIGNATION,produit.PRIX,produit.ID_CATEGORIE from produit");
+        $query = $this->db->prepare("select produit.ID_PRODUIT,produit.DESIGNATION,produit.PRIX,produit.ID_CATEGORIE, CATEGORIE.DESGINATION_CAT from produit , CATEGORIE where produit.ID_CATEGORIE=CATEGORIE.ID_CATEGORIE");
         $query->execute();
         $data = array();
         

@@ -4,6 +4,19 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
     // List of Personnel
     $scope.produits = [];
 
+    $scope.changed = function(item) {
+
+        $scope.catg = item.DESGINATION_CAT;
+        $scope.catgid = item.ID_CATEGORIE;
+
+    }
+
+    $scope.GetCatg = function() {
+        $http.get("http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/getcateg.php")
+            .success(function(data) {
+                $scope.cated = data;
+            })
+    }
 
     $scope.loadCategorie = function() {
         $http.get("http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/categories.php")
@@ -107,31 +120,47 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
             controller: function($scope, $uibModalInstance) {
 
                 $scope.ok = function(e) {
-                    console.log($scope.produit);
-                    // console.log($scope.produits);
-                    // console.log($scope.produit.categorie);
-                    var request = $http({
-                        method: "post",
-                        url: "http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/create.php",
-                        data: {
-                            produit: $scope.produit
-                                // ,first_name: $scope.first_name,
-                                // last_name: $scope.last_name,
-                                // dept_name: $scope.dept_name,
-                        },
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                    }).then(function(response) {
-                        // code to execute in case of success
-                        $scope.errors = [];
-                        $scope.produits.push($scope.produit);
-                        // console.log(response.data);
-                    }, function(response) {
-                        // code to execute in case of error
-                        console.log("Erreuur!");
-                    });
+                    // console.log($scope.produit);
+                    // // console.log($scope.produits);
+                    // // console.log($scope.produit.categorie);
+                    // var request = $http({
+                    //     method: "post",
+                    //     url: "http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/create.php",
+                    //     data: {
+                    //         produit: $scope.produit
+                    //             // ,first_name: $scope.first_name,
+                    //             // last_name: $scope.last_name,
+                    //             // dept_name: $scope.dept_name,
+                    //     },
+                    //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                    // }).then(function(response) {
+                    //     // code to execute in case of success
+                    //     $scope.errors = [];
+                    //     $scope.produits.push($scope.produit);
+                    //     // console.log(response.data);
+                    // }, function(response) {
+                    //     // code to execute in case of error
+                    //     console.log("Erreuur!");
+                    // });
+
+                    // Create a new product : 
+
+                    alert("Designation Product : " + $scope.DESIGNATION);
+                    alert(" Id Categore : " + $scope.catgid);
+                    alert(" Prix : " + $scope.prix);
+                    $http.post("http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/create.php", {
+                            'Designation_Product': $scope.DESIGNATION,
+                            'ID_Categorie': $scope.catgid,
+                            'Prix': $scope.prix
+
+                        })
+                        .success(function(data) {
+                            alert("good to go!");
+                        });
+
 
                     $uibModalInstance.close();
-                    e.stopPropagation();
+                    // e.stopPropagation();
                 };
                 $scope.cancel = function(e) {
                     $uibModalInstance.dismiss();
@@ -151,23 +180,45 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
             scope: $scope,
             controller: function($scope, $uibModalInstance) {
                 $scope.produit_details = $scope.produits[index];
-                console.log($scope.produit_details);
+                alert($scope.produit_details.ID_PRODUIT);
                 $scope.ok = function(e) {
-                    var request = $http({
-                        method: "post",
-                        url: "http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/update.php",
-                        data: {
-                            produit: $scope.produits[index]
-                        },
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                    }).then(function(response) {
-                        // code to execute in case of success
-                        console.log(response);
-                        // console.log(response.data);
-                    }, function(response) {
-                        // code to execute in case of error
-                        console.log("Erreuur!");
-                    });
+
+
+                    $scope.id = $scope.produit_details.ID_PRODUIT;
+                    alert($scope.id);
+                    // var request = $http({
+                    //     method: "post",
+                    //     url: "http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/update.php",
+                    //     data: {
+                    //         produit: $scope.produits[index]
+                    //     },
+                    //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                    // }).then(function(response) {
+                    //     // code to execute in case of success
+                    //     console.log(response);
+                    //     // console.log(response.data);
+                    // }, function(response) {
+                    //     // code to execute in case of error
+                    //     console.log("Erreuur!");
+                    // });
+
+                    // alert("Designation Product : " + $scope.EditDESIGNATION);
+
+
+
+                    $http.post("http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/update.php", {
+                            'IDPROD': $scope.id,
+                            'Designation_Product': $scope.EditDESIGNATION,
+                            'ID_Categorie': $scope.catgid,
+                            'Prix': $scope.EditPRIX
+
+                        })
+                        .success(function(data) {
+                            // alert("good to go!");
+                        });
+
+
+
                     // $http.post('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/update.php', {
                     //     produit: $scope.produit_details
                     // }).success(function(data) {
@@ -176,7 +227,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
                     //     });
                     // console.log($scope.produit_details);
                     $uibModalInstance.close();
-                    e.stopPropagation();
+                    // e.stopPropagation();
                 };
                 $scope.cancel = function(e) {
                     $uibModalInstance.dismiss();

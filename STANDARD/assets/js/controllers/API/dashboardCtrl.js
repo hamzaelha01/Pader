@@ -2,157 +2,148 @@
 /** 
  * controllers used for the dashboard
  */
-app.controller('SparklineCtrl', ["$scope", "user","$window", function($scope, user,$window) {
+app.controller('SparklineCtrl', ["$scope", "user", "$window", function($scope, user, $window) {
     $scope.sales = [600, 923, 482, 1211, 490, 1125, 1487];
     $scope.earnings = [400, 650, 886, 443, 502, 412, 353];
     $scope.referrals = [4879, 6567, 5022, 5890, 9234, 7128, 4811];
     // $scope.userC = user.getName;
     // $scope.userC = user.setName;
     if (!!localStorage.getItem('login')) {
-    var store =  JSON.parse( localStorage.getItem("login"));
-    // alert(store.nom);
-    $scope.userC = store.nom;
-    $scope.userR = store.role;
+        var store = JSON.parse(localStorage.getItem("login"));
+        // alert(store.nom);
+        $scope.userC = store.nom;
+        $scope.userR = store.role;
 
 
-    if(  $scope.userR === "Client")
-    {
-         var i;
-        // var x = document.getElementsByTagName("*");
-        var admin = document.querySelectorAll("#admin");
-        for (i = 0; i < admin.length; i++) {
-            admin[i].style.display = "none";
-        }
-        var serviceClients = document.querySelectorAll("#serviceClients");
-        for (i = 0; i < serviceClients.length; i++) {
-            serviceClients[i].style.display = "none";
-        }
-        var serviceLivraisons = document.querySelectorAll("#serviceLivraisons");
-        for (i = 0; i < serviceLivraisons.length; i++) {
-            serviceLivraisons[i].style.display = "none";
-        }
-        var serviceProductions = document.querySelectorAll("#serviceProductions");
-        for (i = 0; i < serviceProductions.length; i++) {
-            serviceProductions[i].style.display = "none";
-        }
-        var livreur = document.querySelectorAll("#livreur");
-       
-        for (i = 0; i < livreur.length; i++) {
-            livreur[i].style.display = "none";
-        }
-    }
-    else if ( $scope.userR === "Service Clients" )
-    {
-          var i;
-        // var x = document.getElementsByTagName("*");
-        var admin = document.querySelectorAll("#admin");
-        for (i = 0; i < admin.length; i++) {
-            admin[i].style.display = "none";
-        }
-        var client = document.querySelectorAll("#client");
-        for (i = 0; i < client.length; i++) {
-            client[i].style.display = "none";
-        }
-        var serviceLivraisons = document.querySelectorAll("#serviceLivraisons");
-        for (i = 0; i < serviceLivraisons.length; i++) {
-            serviceLivraisons[i].style.display = "none";
-        }
-        var serviceProductions = document.querySelectorAll("#serviceProductions");
-        for (i = 0; i < serviceProductions.length; i++) {
-            serviceProductions[i].style.display = "none";
-        }
-        var livreur = document.querySelectorAll("#livreur");
-       
-        for (i = 0; i < livreur.length; i++) {
-            livreur[i].style.display = "none";
-        }
-    }
-    else if ( $scope.userR === "livreur" )
-    {
-          var i;
-        // var x = document.getElementsByTagName("*");
-        var admin = document.querySelectorAll("#admin");
-        for (i = 0; i < admin.length; i++) {
-            admin[i].style.display = "none";
-        }
-        var client = document.querySelectorAll("#client");
-        for (i = 0; i < client.length; i++) {
-            client[i].style.display = "none";
-        }
-        var serviceLivraisons = document.querySelectorAll("#serviceLivraisons");
-        for (i = 0; i < serviceLivraisons.length; i++) {
-            serviceLivraisons[i].style.display = "none";
-        }
-        var serviceProductions = document.querySelectorAll("#serviceProductions");
-        for (i = 0; i < serviceProductions.length; i++) {
-            serviceProductions[i].style.display = "none";
-        }
-        var serviceClients = document.querySelectorAll("#serviceClients");
-       
-        for (i = 0; i < serviceClients.length; i++) {
-            serviceClients[i].style.display = "none";
-        }
-    }
-    else if ( $scope.userR === "Service Livraison")
-    {
-          var i;
-        // var x = document.getElementsByTagName("*");
-        var admin = document.querySelectorAll("#admin");
-        for (i = 0; i < admin.length; i++) {
-            admin[i].style.display = "none";
-        }
-        var client = document.querySelectorAll("#client");
-        for (i = 0; i < client.length; i++) {
-            client[i].style.display = "none";
-        }
-        var serviceClients = document.querySelectorAll("#serviceClients");
-        for (i = 0; i < serviceClients.length; i++) {
-            serviceClients[i].style.display = "none";
-        }
-        var serviceProductions = document.querySelectorAll("#serviceProductions");
-        for (i = 0; i < serviceProductions.length; i++) {
-            serviceProductions[i].style.display = "none";
-        }
-        var livreur = document.querySelectorAll("#livreur");
-       
-        for (i = 0; i < livreur.length; i++) {
-            livreur[i].style.display = "none";
-        }
-    }
-    else if ( $scope.userR === "Service Production")
-    {
-          var i;
-        // var x = document.getElementsByTagName("*");
-        var admin = document.querySelectorAll("#admin");
-        for (i = 0; i < admin.length; i++) {
-            admin[i].style.display = "none";
-        }
-        var client = document.querySelectorAll("#client");
-        for (i = 0; i < client.length; i++) {
-            client[i].style.display = "none";
-        }
-        var serviceClients = document.querySelectorAll("#serviceClients");
-        for (i = 0; i < serviceClients.length; i++) {
-            serviceClients[i].style.display = "none";
-        }
-        var serviceLivraisons = document.querySelectorAll("#serviceLivraisons");
-        for (i = 0; i < serviceLivraisons.length; i++) {
-            serviceLivraisons[i].style.display = "none";
-        }
-        var livreur = document.querySelectorAll("#livreur");
-       
-        for (i = 0; i < livreur.length; i++) {
-            livreur[i].style.display = "none";
-        }
-    }
-    }
-   
+        if ($scope.userR === "Client") {
+            var i;
+            // var x = document.getElementsByTagName("*");
+            var admin = document.querySelectorAll("#admin");
+            for (i = 0; i < admin.length; i++) {
+                admin[i].style.display = "none";
+            }
+            var serviceClients = document.querySelectorAll("#serviceClients");
+            for (i = 0; i < serviceClients.length; i++) {
+                serviceClients[i].style.display = "none";
+            }
+            var serviceLivraisons = document.querySelectorAll("#serviceLivraisons");
+            for (i = 0; i < serviceLivraisons.length; i++) {
+                serviceLivraisons[i].style.display = "none";
+            }
+            var serviceProductions = document.querySelectorAll("#serviceProductions");
+            for (i = 0; i < serviceProductions.length; i++) {
+                serviceProductions[i].style.display = "none";
+            }
+            var livreur = document.querySelectorAll("#livreur");
 
-    $scope.logiout=function(){
+            for (i = 0; i < livreur.length; i++) {
+                livreur[i].style.display = "none";
+            }
+        } else if ($scope.userR === "Service Clients") {
+            var i;
+            // var x = document.getElementsByTagName("*");
+            var admin = document.querySelectorAll("#admin");
+            for (i = 0; i < admin.length; i++) {
+                admin[i].style.display = "none";
+            }
+            var client = document.querySelectorAll("#client");
+            for (i = 0; i < client.length; i++) {
+                client[i].style.display = "none";
+            }
+            var serviceLivraisons = document.querySelectorAll("#serviceLivraisons");
+            for (i = 0; i < serviceLivraisons.length; i++) {
+                serviceLivraisons[i].style.display = "none";
+            }
+            var serviceProductions = document.querySelectorAll("#serviceProductions");
+            for (i = 0; i < serviceProductions.length; i++) {
+                serviceProductions[i].style.display = "none";
+            }
+            var livreur = document.querySelectorAll("#livreur");
+
+            for (i = 0; i < livreur.length; i++) {
+                livreur[i].style.display = "none";
+            }
+        } else if ($scope.userR === "livreur") {
+            var i;
+            // var x = document.getElementsByTagName("*");
+            var admin = document.querySelectorAll("#admin");
+            for (i = 0; i < admin.length; i++) {
+                admin[i].style.display = "none";
+            }
+            var client = document.querySelectorAll("#client");
+            for (i = 0; i < client.length; i++) {
+                client[i].style.display = "none";
+            }
+            var serviceLivraisons = document.querySelectorAll("#serviceLivraisons");
+            for (i = 0; i < serviceLivraisons.length; i++) {
+                serviceLivraisons[i].style.display = "none";
+            }
+            var serviceProductions = document.querySelectorAll("#serviceProductions");
+            for (i = 0; i < serviceProductions.length; i++) {
+                serviceProductions[i].style.display = "none";
+            }
+            var serviceClients = document.querySelectorAll("#serviceClients");
+
+            for (i = 0; i < serviceClients.length; i++) {
+                serviceClients[i].style.display = "none";
+            }
+        } else if ($scope.userR === "Service Livraison") {
+            var i;
+            // var x = document.getElementsByTagName("*");
+            var admin = document.querySelectorAll("#admin");
+            for (i = 0; i < admin.length; i++) {
+                admin[i].style.display = "none";
+            }
+            var client = document.querySelectorAll("#client");
+            for (i = 0; i < client.length; i++) {
+                client[i].style.display = "none";
+            }
+            var serviceClients = document.querySelectorAll("#serviceClients");
+            for (i = 0; i < serviceClients.length; i++) {
+                serviceClients[i].style.display = "none";
+            }
+            var serviceProductions = document.querySelectorAll("#serviceProductions");
+            for (i = 0; i < serviceProductions.length; i++) {
+                serviceProductions[i].style.display = "none";
+            }
+            var livreur = document.querySelectorAll("#livreur");
+
+            for (i = 0; i < livreur.length; i++) {
+                livreur[i].style.display = "none";
+            }
+        } else if ($scope.userR === "Service Production") {
+            var i;
+            // var x = document.getElementsByTagName("*");
+            var admin = document.querySelectorAll("#admin");
+            for (i = 0; i < admin.length; i++) {
+                admin[i].style.display = "none";
+            }
+            var client = document.querySelectorAll("#client");
+            for (i = 0; i < client.length; i++) {
+                client[i].style.display = "none";
+            }
+            var serviceClients = document.querySelectorAll("#serviceClients");
+            for (i = 0; i < serviceClients.length; i++) {
+                serviceClients[i].style.display = "none";
+            }
+            var serviceLivraisons = document.querySelectorAll("#serviceLivraisons");
+            for (i = 0; i < serviceLivraisons.length; i++) {
+                serviceLivraisons[i].style.display = "none";
+            }
+            var livreur = document.querySelectorAll("#livreur");
+
+            for (i = 0; i < livreur.length; i++) {
+                livreur[i].style.display = "none";
+            }
+        }
+    }
+
+
+    $scope.logiout = function() {
 
         user.dataClear();
 
-        $window.location.href="#/login/signin";
+        $window.location.href = "#/login/signin";
     }
 
 }]);

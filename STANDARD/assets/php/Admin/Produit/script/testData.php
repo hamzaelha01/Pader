@@ -1,7 +1,7 @@
 <?php
 try {
 	//Connect to the Database
-	$dbo = new PDO('mysql:host=localhost;dbname=pressing', 'root', '');
+	$dbo = new PDO('mysql:host=localhost;dbname=pressing', 'root', 'root');
 	$dbo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$dbo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
