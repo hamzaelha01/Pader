@@ -19,7 +19,7 @@ if (isset($data['categorie'])) {
 
     } else {
         
-        $query = "INSERT INTO categorie(DESGINATION_CAT)  VALUES ('$categorie_name')";
+        $query = "INSERT INTO CATEGORIE(DESGINATION_CAT)  VALUES ('$categorie_name')";
    
         
         // $query->bindParam("categorie", $categorie_name, PDO::PARAM_STR);

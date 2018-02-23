@@ -31,7 +31,7 @@ class Produit
      */
     public function Create($designation,$categorie,$prix)
     {
-        $query = $this->db->prepare("INSERT INTO produit( DESIGNATION, ID_CATEGORIE, PRIX) 
+        $query = $this->db->prepare("INSERT INTO PRODUIT ( DESIGNATION, ID_CATEGORIE, PRIX) 
          VALUES (:designation,:categorie,:prix)");
    
         $query->bindParam("designation", $designation, PDO::PARAM_STR);
@@ -59,7 +59,7 @@ class Produit
     public function Read()
     {
         
-        $query = $this->db->prepare("select produit.ID_PRODUIT,produit.DESIGNATION,produit.PRIX,produit.ID_CATEGORIE, CATEGORIE.DESGINATION_CAT from produit , CATEGORIE where produit.ID_CATEGORIE=CATEGORIE.ID_CATEGORIE");
+        $query = $this->db->prepare("select PRODUIT.ID_PRODUIT,PRODUIT.DESIGNATION,PRODUIT.PRIX,PRODUIT.ID_CATEGORIE, CATEGORIE.DESGINATION_CAT from PRODUIT , CATEGORIE where PRODUIT.ID_CATEGORIE=CATEGORIE.ID_CATEGORIE");
         $query->execute();
         $data = array();
         
@@ -94,7 +94,7 @@ class Produit
      */
     public function Update($designation,$categorie,$prix , $produit_id)
     {
-        $query = $this->db->prepare("UPDATE produit SET DESIGNATION= :designation,ID_CATEGORIE=:categorie ,PRIX= :prix WHERE ID_PRODUIT = :idproduit ");
+        $query = $this->db->prepare("UPDATE PRODUIT SET DESIGNATION= :designation,ID_CATEGORIE=:categorie ,PRIX= :prix WHERE ID_PRODUIT = :idproduit ");
     
         $query->bindParam("designation", $designation, PDO::PARAM_STR);
         $query->bindParam("categorie", $categorie, PDO::PARAM_STR);
@@ -110,7 +110,7 @@ class Produit
      */
     public function Delete($produit_id)
     {
-        $query = $this->db->prepare("DELETE FROM produit WHERE ID_PRODUIT =:id");
+        $query = $this->db->prepare("DELETE FROM PRODUIT WHERE ID_PRODUIT =:id");
         $query->bindParam("id", $produit_id, PDO::PARAM_STR);
         $query->execute();
     }

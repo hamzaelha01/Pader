@@ -14,9 +14,9 @@ try {
 	
 	// //prepare some storage for the data
 	// $data = array();
-	$myquery = "SELECT produit.ID_PRODUIT,produit.DESIGNATION,produit.PRIX,categorie.ID_CATEGORIE,categorie.DESGINATION_CAT
-	FROM produit,categorie
-	WHERE produit.ID_CATEGORIE=categorie.ID_CATEGORIE";
+	$myquery = "SELECT PRODUIT.ID_PRODUIT,PRODUIT.DESIGNATION,PRODUIT.PRIX,CATEGORIE.ID_CATEGORIE,CATEGORIE.DESGINATION_CAT
+	FROM PRODUIT,CATEGORIE
+	WHERE PRODUIT.ID_CATEGORIE=CATEGORIE.ID_CATEGORIE";
 	$results       = $dbo->query($myquery);
 	// $myquery->execute();
 	// $results = $dbo->fetchAll($myquery);
