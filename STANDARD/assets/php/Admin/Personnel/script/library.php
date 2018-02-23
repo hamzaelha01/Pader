@@ -31,7 +31,7 @@ class Personnel
      */
     public function Create($nom,$prenom,$phone,$sexe,$cnss,$ddembauche,$contrat,$poste,$pass)
     {
-        $query = $this->db->prepare("INSERT INTO personnel(NOM_PERSONNEL, PRENOM_PERSONNEL, TELEPHONE_PERSONNEL, SEXE_PERSONNEL,
+        $query = $this->db->prepare("INSERT INTO PERSONNEL (NOM_PERSONNEL, PRENOM_PERSONNEL, TELEPHONE_PERSONNEL, SEXE_PERSONNEL,
           CNSS_PERSONNEL, DD_EMBAUCHE_PERSONNEL, TYPE_CONTRAT_PERSONNEL, ROLE_PERSONNEL, PASS_PERSO) 
          VALUES (:nom,:prenom,:phone,:sexe,:cnss,:ddembauche,:contrat,:poste,:pass)");
         // $x = "INSERT INTO personnel(NOM_PERSONNEL, PRENOM_PERSONNEL, TELEPHONE_PERSONNEL, SEXE_PERSONNEL,
@@ -83,7 +83,7 @@ class Personnel
      */
     public function Read()
     {
-        $query = $this->db->prepare("SELECT * FROM personnel");
+        $query = $this->db->prepare("SELECT * FROM PERSONNEL");
         $query->execute();
         $data = array();
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
@@ -103,7 +103,7 @@ class Personnel
      */
     public function Update($nom,$prenom,$phone,$sexe,$cnss,$ddembauche,$contrat,$poste,$pass, $personnel_id)
     {
-        $query = $this->db->prepare("UPDATE personnel SET NOM_PERSONNEL=:nom,PRENOM_PERSONNEL=:prenom,TELEPHONE_PERSONNEL=:phone,
+        $query = $this->db->prepare("UPDATE PERSONNEL SET NOM_PERSONNEL=:nom,PRENOM_PERSONNEL=:prenom,TELEPHONE_PERSONNEL=:phone,
         SEXE_PERSONNEL=:sexe,CNSS_PERSONNEL=:cnss,DD_EMBAUCHE_PERSONNEL=:ddembauche,
         TYPE_CONTRAT_PERSONNEL=:contrat,ROLE_PERSONNEL=:poste,PASS_PERSO=:pass WHERE ID_PERSONNEL =:id ");
         // $x = "UPDATE personnel SET NOM_PERSONNEL=:nom,PRENOM_PERSONNEL=:prenom,TELEPHONE_PERSONNEL=:phone,
@@ -129,7 +129,7 @@ class Personnel
      */
     public function Delete($personnel_id)
     {
-        $query = $this->db->prepare("DELETE FROM personnel WHERE ID_PERSONNEL =:id");
+        $query = $this->db->prepare("DELETE FROM PERSONNEL WHERE ID_PERSONNEL =:id");
         $query->bindParam("id", $personnel_id, PDO::PARAM_STR);
         $query->execute();
     }
