@@ -249,7 +249,7 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
                     } else if (user.getRole() === "livreur") {
                         $window.location.href = '#/app/ToCollecte';
                     } else if (user.getRole() === "admin") {
-                        $window.location.href = '#/app/dashboard';
+                        $window.location.href = '#/app/GestPers';
                     }
 
 
