@@ -5,7 +5,7 @@ app.controller("personnelCtrl", function($scope, $http, $log, $aside, SweetAlert
     $scope.personnels = [];
 
     $scope.listPersonnels = function() {
-        $http.get('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Personnel/script/list.php', {})
+        $http.get('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Personnel/script/list.php', {})
             .then(function success(e) {
                 $scope.personnels = e.data.personnels;
             }, function error(e) {
@@ -13,7 +13,7 @@ app.controller("personnelCtrl", function($scope, $http, $log, $aside, SweetAlert
             });
     };
     $scope.addPersonnel = function() {
-        $http.post('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Personnel/script/create.php', {
+        $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Personnel/script/create.php', {
                 pesonnel: $scope.personnel
             })
             .then(function success(e) {
@@ -42,7 +42,7 @@ app.controller("personnelCtrl", function($scope, $http, $log, $aside, SweetAlert
                     // alert($scope.personnel.NOM_PERSONNEL);
                     var request = $http({
                         method: "post",
-                        url: "http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Personnel/script/create.php",
+                        url: "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Personnel/script/create.php",
                         data: {
                             personnel: $scope.personnel
                                 // ,first_name: $scope.first_name,
@@ -89,7 +89,7 @@ app.controller("personnelCtrl", function($scope, $http, $log, $aside, SweetAlert
                 $scope.personnel_details = $scope.personnels[index];
                 // alert($scope.personnels[index].NOM_PERSONNEL);
                 $scope.ok = function(e) {
-                    $http.post('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Personnel/script/update.php', {
+                    $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Personnel/script/update.php', {
                         personnel: $scope.personnel_details
                     }).success(function(data) {
                         alert(data);
@@ -110,7 +110,7 @@ app.controller("personnelCtrl", function($scope, $http, $log, $aside, SweetAlert
     };
     // update the task
     $scope.updatePersonnel = function() {
-        $http.post('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Personnel/script/update.php', {
+        $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Personnel/script/update.php', {
                 personnel: $scope.personnel_details
             })
             .then(function success(e) {
@@ -141,7 +141,7 @@ app.controller("personnelCtrl", function($scope, $http, $log, $aside, SweetAlert
             closeOnCancel: false
         }, function(isConfirm) {
             if (isConfirm) {
-                $http.post('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Personnel/script/delete.php', {
+                $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Personnel/script/delete.php', {
                     personnel: $scope.personnels[index]
                 })
                 $scope.errors = [];
@@ -166,7 +166,7 @@ app.controller("personnelCtrl", function($scope, $http, $log, $aside, SweetAlert
         // var conf = confirm("Do you really want to delete the task?");
 
         // if (conf == true) {
-        //     $http.post('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Personnel/script/delete.php', {
+        //     $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Personnel/script/delete.php', {
         //         personnel: $scope.personnels[index]
         //     })
         //         .then(function success(e) {

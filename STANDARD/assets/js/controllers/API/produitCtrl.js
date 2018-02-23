@@ -12,14 +12,14 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
     }
 
     $scope.GetCatg = function() {
-        $http.get("http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/getcateg.php")
+        $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/getcateg.php")
             .success(function(data) {
                 $scope.cated = data;
             })
     }
 
     $scope.loadCategorie = function() {
-        $http.get("http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/categories.php")
+        $http.get("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/categories.php")
             .success(function(data) {
                 $scope.categories = data;
                 // console.log(data); 
@@ -40,7 +40,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
                     // console.log($scope.produit.categorie);
                     var request = $http({
                         method: "post",
-                        url: "http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/addCategory.php",
+                        url: "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/addCategory.php",
                         data: {
                             categorie: $scope.categorie
                                 // ,first_name: $scope.first_name,
@@ -70,7 +70,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
     };
     // $scope.testData = function () {
     //     //    alert("Hamdoulilah");
-    //        $http.get('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/testData.php', {})
+    //        $http.get('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/testData.php', {})
     //            .then(function success(e) {
     //             //    $scope.produits = e.data.produits;
     //                console.log(e);
@@ -81,7 +81,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
     //    };
     $scope.listProduits = function() {
         //    alert("Hamdoulilah");
-        $http.get('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/list.php', {})
+        $http.get('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/list.php', {})
             .then(function success(e) {
                 $scope.produits = e.data.produits;
                 //    $scope.produits.categorie = e.data.produits.categorie;
@@ -93,7 +93,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
             });
     };
     $scope.addPersonnel = function() {
-        $http.post('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/create.php', {
+        $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/create.php', {
                 produit: $scope.produit
             })
             .then(function success(e) {
@@ -125,7 +125,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
                     // // console.log($scope.produit.categorie);
                     // var request = $http({
                     //     method: "post",
-                    //     url: "http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/create.php",
+                    //     url: "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/create.php",
                     //     data: {
                     //         produit: $scope.produit
                     //             // ,first_name: $scope.first_name,
@@ -148,7 +148,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
                     alert("Designation Product : " + $scope.DESIGNATION);
                     alert(" Id Categore : " + $scope.catgid);
                     alert(" Prix : " + $scope.prix);
-                    $http.post("http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/create.php", {
+                    $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/create.php", {
                             'Designation_Product': $scope.DESIGNATION,
                             'ID_Categorie': $scope.catgid,
                             'Prix': $scope.prix
@@ -188,7 +188,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
                     alert($scope.id);
                     // var request = $http({
                     //     method: "post",
-                    //     url: "http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/update.php",
+                    //     url: "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/update.php",
                     //     data: {
                     //         produit: $scope.produits[index]
                     //     },
@@ -206,7 +206,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
 
 
 
-                    $http.post("http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/update.php", {
+                    $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/update.php", {
                             'IDPROD': $scope.id,
                             'Designation_Product': $scope.EditDESIGNATION,
                             'ID_Categorie': $scope.catgid,
@@ -219,7 +219,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
 
 
 
-                    // $http.post('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/update.php', {
+                    // $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/update.php', {
                     //     produit: $scope.produit_details
                     // }).success(function(data) {
                     //     console.log(data);
@@ -241,7 +241,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
     };
     // update the task
     // $scope.updateProduit = function () {
-    //     $http.post('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/update.php', {
+    //     $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/update.php', {
     //         produit: $scope.produit_details
     //     })
     //         .then(function success(e) {
@@ -272,7 +272,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
             closeOnCancel: false
         }, function(isConfirm) {
             if (isConfirm) {
-                $http.post('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/php/Admin/Produit/script/delete.php', {
+                $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Admin/Produit/script/delete.php', {
                     produit: $scope.produits[index]
                 })
                 $scope.errors = [];
@@ -297,7 +297,7 @@ app.controller("produitCtrl", function($scope, $http, $log, $aside, SweetAlert, 
         // var conf = confirm("Do you really want to delete the task?");
 
         // if (conf == true) {
-        //     $http.post('http://localhost/cliptwo/AngularJs-Admin/STANDARD/assets/views/MyUpdate/personnel/script/delete.php', {
+        //     $http.post('http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/views/MyUpdate/personnel/script/delete.php', {
         //         personnel: $scope.personnels[index]
         //     })
         //         .then(function success(e) {
