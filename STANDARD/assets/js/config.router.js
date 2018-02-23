@@ -70,7 +70,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             }).state('app.GestPers', {
                 url: "/GestPers",
                 templateUrl: "assets/views/Admin/gestion_personnel.html",
-                resolve: loadSequence('jquery-sparkline', 'touchspin-plugin', 'ngTable', 'ngTableCtrl', 'dynamicTableCtrl', 'personnelCtrl'),
+                resolve: loadSequence('jquery-sparkline', 'touchspin-plugin', 'ngTable', 'ngTableCtrl', 'dynamicTableCtrl', 'personnelCtrl','dashboardCtrl'),
                 title: 'Gestion du personnel ',
                 ncyBreadcrumb: {
                     label: 'Gestion du personnel'
@@ -78,7 +78,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             }).state('app.GestProd', {
                 url: "/GestProd",
                 templateUrl: "assets/views/Admin/gestion_produit.html",
-                resolve: loadSequence('jquery-sparkline', 'touchspin-plugin', 'ngTable', 'ngTableCtrl', 'dynamicTableCtrl', 'produitCtrl'),
+                resolve: loadSequence('jquery-sparkline', 'touchspin-plugin', 'ngTable', 'ngTableCtrl', 'dynamicTableCtrl', 'produitCtrl','dashboardCtrl'),
                 title: 'Gestion des produits ',
                 ncyBreadcrumb: {
                     label: 'Gestion des produits'
