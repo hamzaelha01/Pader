@@ -15,7 +15,31 @@ app.controller('SparklineCtrl', ["$scope", "user", "$window", function($scope, u
         $scope.userR = store.role;
 
 
-        if ($scope.userR === "Client") {
+        if ($scope.userR === "admin") {
+            var i;
+            // var x = document.getElementsByTagName("*");
+            var admin = document.querySelectorAll("#client");
+            for (i = 0; i < admin.length; i++) {
+                admin[i].style.display = "none";
+            }
+            var serviceClients = document.querySelectorAll("#serviceClients");
+            for (i = 0; i < serviceClients.length; i++) {
+                serviceClients[i].style.display = "none";
+            }
+            var serviceLivraisons = document.querySelectorAll("#serviceLivraisons");
+            for (i = 0; i < serviceLivraisons.length; i++) {
+                serviceLivraisons[i].style.display = "none";
+            }
+            var serviceProductions = document.querySelectorAll("#serviceProductions");
+            for (i = 0; i < serviceProductions.length; i++) {
+                serviceProductions[i].style.display = "none";
+            }
+            var livreur = document.querySelectorAll("#livreur");
+
+            for (i = 0; i < livreur.length; i++) {
+                livreur[i].style.display = "none";
+            }
+        } else if ($scope.userR === "Client") {
             var i;
             // var x = document.getElementsByTagName("*");
             var admin = document.querySelectorAll("#admin");
