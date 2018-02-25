@@ -69,8 +69,20 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
                                     // alert("Succes");
                                     // alert(data);
                                     // SweetAlert.swal("Tres Bien!", "Vous Avez Bien Rempli Votre Formulaire!", "success");
-                                    $window.location.href = '#/login/signin';
+                                    // SweetAlert.swal({
+                                    //     title: "Good job!",
+                                    //     text: "You clicked the button!",
+                                    //     type: "success",
+                                    //     confirmButtonColor: "#007AFF"
+                                    // });
                                     document.querySelector("#success").classList.remove('hidden');
+                                    // setTimeout(function() {
+
+                                    //     $window.location.href = '#/login/signin';
+
+                                    // }, 2000);
+
+
                                 });
                             }
 
@@ -159,7 +171,7 @@ app.controller('LoginCtrl', ["$scope", "$window", "$http", "user", function($sco
                 // alert(user.isUserLoggedIn());
 
                 if (user.getRole() === "Client") {
-                    $window.location.href = '#/app/CommandesEnCours';
+                    $window.location.href = '#/app/Reservation';
                 } else if (user.getRole() === "Service Clients") {
                     $window.location.href = '#/app/BdClients';
                 } else if (user.getRole() === "Service Livraison") {

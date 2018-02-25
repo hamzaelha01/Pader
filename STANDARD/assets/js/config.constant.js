@@ -26,8 +26,8 @@ app.constant('JS_REQUIRES', {
         'ckeditor-plugin': '../bower_components/ckeditor/ckeditor.js',
         'jquery-nestable-plugin': ['../bower_components/jquery-nestable/jquery.nestable.js'],
         'touchspin-plugin': ['../bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js', '../bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css'],
-		'spectrum-plugin': ['../bower_components/spectrum/spectrum.js', '../bower_components/spectrum/spectrum.css'],
-		
+        'spectrum-plugin': ['../bower_components/spectrum/spectrum.js', '../bower_components/spectrum/spectrum.css'],
+
         //*** Controllers
         'dashboardCtrl': 'assets/js/controllers/API/dashboardCtrl.js',
         'iconsCtrl': 'assets/js/controllers/iconsCtrl.js',
@@ -56,11 +56,11 @@ app.constant('JS_REQUIRES', {
         'NotificationIconsCtrl': 'assets/js/controllers/notificationIconsCtrl.js',
         'LoginCtrl': 'assets/js/controllers/API/LoginCtrl.js',
         'user': 'assets/js/directives/user.js',
-        'MyCtrl':'assets/js/controllers/API/MyCtrl.js',
-        'LivreurCtrl':'assets/js/controllers/API/LivreurCtrl.js',
+        'MyCtrl': 'assets/js/controllers/API/MyCtrl.js',
+        'LivreurCtrl': 'assets/js/controllers/API/LivreurCtrl.js',
         'personnelCtrl': 'assets/js/controller/API/personnelCtrl',
         'produitCtrl': 'assets/js/controller/API/produitCtrl',
-        
+
         //*** Filters
         'htmlToPlaintext': 'assets/js/filters/htmlToPlaintext.js'
     },

@@ -12,76 +12,73 @@
     <div ng-controller="TabsDemoCtrl">
         <div class="container-fluid container-fullw ">
             <div ng-controller="dynamicTableCtrl" class="row">
-                 <div class="col-md-12">
+                <div class="col-md-12">
                     <h5 class="over-title">Nouvelle <span class="text-bold">Reservation</span></h5>
                     <p class="margin-bottom-30">
                     </p>
                     <div class="row">
-                    <form ng-controller="dynamicTableCtrl" ng-init="selectdate()">
-                    
-                    <div class="col-md-6">
-                        <fieldset>
-                            <legend>Articles</legend>
-                            <div class="form-group">
-                                <label>Nombre d'articles <span class="symbol required"></span></label>
-                                 <div class="form-group">
-                                    <input type="text" value="0" ng-model="nbrd" name="nbr" touchspin data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down">
-                                </div>
-                            </div>
-                        </fieldset>
-                    <fieldset>
-                        <legend>Adresse de collecte</legend>
-                            <div class="form-group">
-                                <label>Adresse</label>
-                                <input type="text" class="form-control" ng-model="adr1"  placeholder="Adresse Complete">
-                            </div>
-                            <div class="form-group">
-                            <div class="input-group">
-                            <!-- id="google_canvas" -->
-                                <input  id="google_canvas"  type="text" class="form-control" name="prenom" value="{{myadress}}" placeholder="Localisez Moi">
+                        <form ng-controller="dynamicTableCtrl" ng-init="selectdate()">
 
-                                <span class="input-group-btn">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <legend>Articles</legend>
+                                    <div class="form-group">
+                                        <label>Nombre d'articles <span class="symbol required"></span></label>
+                                        <div class="form-group">
+                                            <input type="text" value="0" ng-model="nbrd" name="nbr" touchspin data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Adresse de collecte</legend>
+                                    <div class="form-group">
+                                        <label>Adresse</label>
+                                        <input type="text" class="form-control" ng-model="adr1" placeholder="Adresse Complete">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <!-- id="google_canvas" -->
+                                            <input id="google_canvas" type="text" class="form-control" name="prenom" value="{{myadress}}" placeholder="Localisez Moi">
+
+                                            <span class="input-group-btn">
                                     <button type="button" class="btn btn-primary" ng-click="getadresse()">
                                     <i class="fa fa-map-marker" ></i>
                                     </button>
                                 </span>
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <legend>
+                                        Date Collecte
+                                    </legend>
+                                    <div class="form-group">
+                                        <label> Jour </label>
+                                        <input type="text" id="dit1" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="inputopened" ng-init="inputopened = false" ng-click="inputopened = !inputopened" datepicker-options="datepickerOptions" ng-required="true" close-text="Close"
+                                        />
+
+                                        <!-- <button ng-click="dtclick()" class="btn btn-o btn-primary">date</button> -->
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Heure</label>
+                                        <uib-timepicker ng-model="timecmd" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+                                    </div>
+
+                                </fieldset>
+                                <div align="right">
+                                    <button type="submit" ng-click="ReserConfirm()" class="btn btn-o btn-light-grey">Reserver</button>
+
+                                </div>
+
                             </div>
-                    </fieldset>
+                        </form>
                     </div>
-                    <div class="col-md-6">
-                    <fieldset>
-                    <legend>
-                    Date Collecte
-                    </legend>
-                    <div class="form-group">
-                    <label> Jour </label>
-                    <input type="text" id="dit1" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="inputopened" ng-init="inputopened = false" ng-click="inputopened = !inputopened" datepicker-options="datepickerOptions" ng-required="true" close-text="Close"
-                    />
-
-                    <!-- <button ng-click="dtclick()" class="btn btn-o btn-primary">date</button> -->
-                    </div>
-                    <div class="form-group">
-                    <label>Heure</label>
-                    <uib-timepicker ng-model="timecmd" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
-                    </div>
-
-                    </fieldset>
-                    <div align="right">
-                    <button type="submit" ng-click="ReserConfirm()" class="btn btn-o btn-primary">Reserver</button>
-
-                    </div>
-
-                    </div>
-                    </form>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
+</div>
+</div>

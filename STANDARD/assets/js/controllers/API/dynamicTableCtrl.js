@@ -606,17 +606,17 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     data: 'id=' + x.ID_COMMANDE
                 }).success(function(response) {
 
-                     setTimeout(function() {
+                    setTimeout(function() {
 
-                    window.location.reload();
+                        window.location.reload();
 
-                }, 500);
+                    }, 500);
 
 
                 });
 
 
-               
+
 
             } else {
                 SweetAlert.swal({
@@ -661,7 +661,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                         }, 500);
                     });
 
-                
+
 
             } else {
                 SweetAlert.swal({
@@ -938,14 +938,14 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
             }).success(function(data) {
                 // alert(data.ID);
                 // alert(data);
-                 setTimeout(function() {
+                setTimeout(function() {
 
-            window.location.reload();
+                    window.location.reload();
 
-        }, 500);
+                }, 500);
             });
 
-       
+
 
 
         // SweetAlert.swal({
@@ -1171,17 +1171,17 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         // alert($scope.IDClient);
         // alert($scope.idcommande);
         // Affichage des infroamtions TEST
-        alert(" JOUR COMMANDE " + $scope.dt);
-        alert(" ID COMMANDE " + $scope.idcommande);
-        alert(" HEURE COMMANDE " + $scope.timecmd);
-        alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
-        alert(" DATE COMMANDE " + $scope.dateID);
-        alert("not null you can do command");
-        alert(" ID CLIENT " + IDUSER);
+        // alert(" JOUR COMMANDE " + $scope.dt);
+        // alert(" ID COMMANDE " + $scope.idcommande);
+        // alert(" HEURE COMMANDE " + $scope.timecmd);
+        // alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
+        // alert(" DATE COMMANDE " + $scope.dateID);
+        // alert("not null you can do command");
+        // alert(" ID CLIENT " + IDUSER);
 
 
         SweetAlert.swal({
-            title: "Voulez-vous passer une nouvelle commande?",
+            title: "Voulez-vous confirmer votre commande ?",
             text: "",
             type: "warning",
             showCancelButton: true,
@@ -1195,7 +1195,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
             if (isConfirm) {
 
-              
+
 
                 $http.post(
                     "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
@@ -1205,7 +1205,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     // scope id data 
                     $scope.dateID = response.ID;
                     // alert($scope.dateID);
-                    alert(user.getIdLocalTempclient());
+                    // alert(user.getIdLocalTempclient());
                     if ($scope.dateID != null) {
                         // L'AJOUT DE LA COMMANDE
                         $http.post(
@@ -1225,19 +1225,19 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                             // if($response.Feed);
 
                             $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
-                            'idLocal': user.getIdLocalTempclient(),
-                            'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
-                             }).success(function(data) {
+                                'idLocal': user.getIdLocalTempclient(),
+                                'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
+                            }).success(function(data) {
 
                                 SweetAlert.swal({
-                                title: "Confirmée!",
-                                text: "Votre commande est bien passeé",
-                                type: "success",
-                                confirmButtonColor: "#007AFF"
-                                 });
-                            // alert(data.ID);
-                            // alert(data);
-                });
+                                    title: "Confirmée!",
+                                    text: "Votre commande est bien passeé",
+                                    type: "success",
+                                    confirmButtonColor: "#007AFF"
+                                });
+                                // alert(data.ID);
+                                // alert(data);
+                            });
                             // alert(data.ID);
                         });
 
