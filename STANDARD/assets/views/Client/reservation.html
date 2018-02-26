@@ -32,8 +32,8 @@
                                 <fieldset>
                                     <legend>Adresse de collecte</legend>
                                     <div class="form-group">
-                                        <label>Adresse</label>
-                                        <input type="text" class="form-control" id="adresse" ng-model="adr1" placeholder="Adresse Complete">
+                                        <label>Adresse <span class="symbol required"></span> </label>
+                                        <input type="text" ng-required="true" class="form-control" id="adresse" ng-model="adr1" placeholder="Adresse Complete" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
@@ -55,14 +55,14 @@
                                         Date Collecte
                                     </legend>
                                     <div class="form-group">
-                                        <label> Jour </label>
+                                        <label> Jour <span class="symbol required"></span>  </label>
                                         <input type="text" id="dit1" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="inputopened" ng-init="inputopened = false" ng-click="inputopened = !inputopened" datepicker-options="datepickerOptions" ng-required="true" close-text="Close"
-                                        />
+                                            required/>
 
                                         <!-- <button ng-click="dtclick()" class="btn btn-o btn-primary">date</button> -->
                                     </div>
                                     <div class="form-group">
-                                        <label>Heure</label>
+                                        <label>Heure <span class="symbol required"></span> </label>
                                         <uib-timepicker ng-model="timecmd" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
                                     </div>
 
@@ -70,6 +70,14 @@
                                 <div align="right">
                                     <button type="submit" ng-click="ReserConfirm()" class="btn btn-o btn-light-grey">Reserver</button>
 
+                                </div>
+
+
+                                <div class="form-actions has-error">
+                                    <label id="error" class="hidden"> 
+                                        Veuillez remplir les champs obligatoires  
+                                        <span class="symbol required"></span> 
+                                    </label>
                                 </div>
 
                             </div>

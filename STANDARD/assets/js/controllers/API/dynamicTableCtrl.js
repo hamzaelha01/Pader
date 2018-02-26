@@ -846,7 +846,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     };
 
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
+    $scope.format = $scope.formats[3];
 
     $scope.hstep = 1;
     $scope.mstep = 15;
@@ -1162,126 +1162,141 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
 
     $scope.ReserConfirm = function() {
-        $rootScope.idc += 1;
+
+        // alert($scope.dt);
+        // alert($scope.timecmd);
+        // alert($scope.nbrd);
+
+        if ($scope.dt !== undefined && $scope.timecmd !== undefined && $scope.adr1 !== undefined && $scope.nbrd !== undefined) {
+            $rootScope.idc += 1;
 
 
-        // alert( $scope.adr1 +", "+ user.getLocalisation());
+            // alert( $scope.adr1 +", "+ user.getLocalisation());
 
-        $scope.idcommande = IDUSER + $scope.nbrd + prof[0] + nom[0] + $scope.idc;
-        // alert($scope.IDClient);
-        // alert($scope.idcommande);
-        // Affichage des infroamtions TEST
-        // alert(" JOUR COMMANDE " + $scope.dt);
-        // alert(" ID COMMANDE " + $scope.idcommande);
-        // alert(" HEURE COMMANDE " + $scope.timecmd);
-        // alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
-        // alert(" DATE COMMANDE " + $scope.dateID);
-        // alert("not null you can do command");
-        // alert(" ID CLIENT " + IDUSER);
-
-
-        SweetAlert.swal({
-            title: "Voulez-vous confirmer votre commande ?",
-            text: "",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Oui",
-            cancelButtonText: "Non",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        }, function(isConfirm) {
+            $scope.idcommande = IDUSER + $scope.nbrd + prof[0] + nom[0] + $scope.idc;
+            // alert($scope.IDClient);
+            // alert($scope.idcommande);
+            // Affichage des infroamtions TEST
+            // alert(" JOUR COMMANDE " + $scope.dt);
+            // alert(" ID COMMANDE " + $scope.idcommande);
+            // alert(" HEURE COMMANDE " + $scope.timecmd);
+            // alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
+            // alert(" DATE COMMANDE " + $scope.dateID);
+            // alert("not null you can do command");
+            // alert(" ID CLIENT " + IDUSER);
 
 
-            if (isConfirm) {
+            SweetAlert.swal({
+                title: "Voulez-vous confirmer votre commande ?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Oui",
+                cancelButtonText: "Non",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function(isConfirm) {
+
+
+                if (isConfirm) {
 
 
 
-                $http.post(
-                    "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
+                    $http.post(
+                        "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
 
-                    }
-                ).success(function(response) {
-                    // scope id data 
-                    $scope.dateID = response.ID;
-                    // alert($scope.dateID);
-                    // alert(user.getIdLocalTempclient());
-                    if ($scope.dateID != null) {
-                        // L'AJOUT DE LA COMMANDE
-                        $http.post(
-                            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
-                                'DD': $scope.dt,
-                                'IDCMD': $scope.idcommande,
-                                'HT': $scope.timecmd,
-                                'nbrd': $scope.nbrd,
-                                'IDDATE': $scope.dateID,
-                                'IDCLIENT': IDUSER,
-                                'idLocal': user.getIdLocalTempclient()
+                        }
+                    ).success(function(response) {
+                        // scope id data 
+                        $scope.dateID = response.ID;
+                        // alert($scope.dateID);
+                        // alert(user.getIdLocalTempclient());
+                        if ($scope.dateID != null) {
+                            // L'AJOUT DE LA COMMANDE
+                            $http.post(
+                                "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
+                                    'DD': $scope.dt,
+                                    'IDCMD': $scope.idcommande,
+                                    'HT': $scope.timecmd,
+                                    'nbrd': $scope.nbrd,
+                                    'IDDATE': $scope.dateID,
+                                    'IDCLIENT': IDUSER,
+                                    'idLocal': user.getIdLocalTempclient()
 
-                            }
-                        ).success(function(response) {
-                            // alert(response);
+                                }
+                            ).success(function(response) {
+                                // alert(response);
 
-                            // if($response.Feed);
+                                // if($response.Feed);
 
-                            $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
-                                'idLocal': user.getIdLocalTempclient(),
-                                'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
-                            }).success(function(data) {
+                                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
+                                    'idLocal': user.getIdLocalTempclient(),
+                                    'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
+                                }).success(function(data) {
 
-                                SweetAlert.swal({
-                                    title: "Confirmée!",
-                                    text: "Votre commande est bien passeé",
-                                    type: "success",
-                                    confirmButtonColor: "#007AFF"
+                                    SweetAlert.swal({
+                                        title: "Confirmée!",
+                                        text: "Votre commande est bien passeé",
+                                        type: "success",
+                                        confirmButtonColor: "#007AFF"
+                                    });
+
+                                    document.getElementById("adresse").value = "";
+                                    document.getElementById("google_canvas").value = "";
+                                    document.getElementById("nbrarticles").value = "";
+                                    document.getElementById("dit1").value = "";
+                                    // alert(data.ID);
+                                    // alert(data);
                                 });
                                 // alert(data.ID);
-                                // alert(data);
                             });
-                            // alert(data.ID);
-                        });
 
 
-                    }
-                })
+                        }
+                    })
 
 
-                // Modification de l'adresse 
+                    // Modification de l'adresse 
 
-                // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
-                //     'idLocal': user.getIdLocalTempclient(),
-                //     'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
-                // }).success(function(data) {
-                //     // alert(data.ID);
-                //     alert(data);
-                // });
+                    // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
+                    //     'idLocal': user.getIdLocalTempclient(),
+                    //     'AdresseCompleteCollect': $scope.adr1 + ", " + user.getLocalisation()
+                    // }).success(function(data) {
+                    //     // alert(data.ID);
+                    //     alert(data);
+                    // });
 
 
-                SweetAlert.swal({
-                    title: "Confirmée!",
-                    text: "Votre commande est bien passeé",
-                    type: "success",
-                    confirmButtonColor: "#007AFF"
-                });
+                    // SweetAlert.swal({
+                    //     title: "Confirmée!",
+                    //     text: "Votre commande est bien passeé",
+                    //     type: "success",
+                    //     confirmButtonColor: "#007AFF"
+                    // });
 
-            } else {
-                SweetAlert.swal({
-                    title: "Annulée",
-                    text: "La commande est annulée!",
-                    type: "error",
-                    confirmButtonColor: "#007AFF"
-                });
 
-                document.getElementById("adresse").value = "";
-                document.getElementById("google_canvas").value = "";
-                document.getElementById("nbrarticles").value = "";
-                document.getElementById("dit1").value = "";
-                // $scope.dt = "";
-                // $scope.timecmd = "";
 
-                // document.getElementById("time").value = "";
-            }
-        });
+                } else {
+                    SweetAlert.swal({
+                        title: "Annulée",
+                        text: "La commande est annulée!",
+                        type: "error",
+                        confirmButtonColor: "#007AFF"
+                    });
+
+                    document.getElementById("adresse").value = "";
+                    document.getElementById("google_canvas").value = "";
+                    document.getElementById("nbrarticles").value = "";
+                    document.getElementById("dit1").value = "";
+                    // $scope.dt = "";
+                    // $scope.timecmd = "";
+
+                    // document.getElementById("time").value = "";
+                }
+            });
+        } else
+            document.querySelector("#error").classList.remove('hidden');
     };
 
 }]);
