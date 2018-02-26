@@ -1263,6 +1263,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     type: "success",
                     confirmButtonColor: "#007AFF"
                 });
+
             } else {
                 SweetAlert.swal({
                     title: "Annulée",
@@ -1270,6 +1271,15 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     type: "error",
                     confirmButtonColor: "#007AFF"
                 });
+
+                document.getElementById("adresse").value = "";
+                document.getElementById("google_canvas").value = "";
+                document.getElementById("nbrarticles").value = "";
+                document.getElementById("dit1").value = "";
+                // $scope.dt = "";
+                // $scope.timecmd = "";
+
+                // document.getElementById("time").value = "";
             }
         });
     };
