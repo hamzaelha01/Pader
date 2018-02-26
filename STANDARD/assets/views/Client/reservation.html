@@ -25,7 +25,7 @@
                                     <div class="form-group">
                                         <label>Nombre d'articles <span class="symbol required"></span></label>
                                         <div class="form-group">
-                                            <input type="text" value="0" ng-model="nbrd" name="nbr" touchspin data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down">
+                                            <input type="text" value="0" id="nbrarticles" ng-model="nbrd" name="nbr" touchspin data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down">
                                         </div>
                                     </div>
                                 </fieldset>
@@ -33,12 +33,12 @@
                                     <legend>Adresse de collecte</legend>
                                     <div class="form-group">
                                         <label>Adresse</label>
-                                        <input type="text" class="form-control" ng-model="adr1" placeholder="Adresse Complete">
+                                        <input type="text" class="form-control" id="adresse" ng-model="adr1" placeholder="Adresse Complete">
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
                                             <!-- id="google_canvas" -->
-                                            <input id="google_canvas" type="text" class="form-control" name="prenom" value="{{myadress}}" placeholder="Localisez Moi">
+                                            <input id="google_canvas" type="text" id="localisation" class="form-control" name="prenom" value="{{myadress}}" placeholder="Localisez Moi">
 
                                             <span class="input-group-btn">
                                     <button type="button" class="btn btn-primary" ng-click="getadresse()">
