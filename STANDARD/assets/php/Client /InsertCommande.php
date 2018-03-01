@@ -23,7 +23,7 @@ echo "//////";
 
 
   $combine = date('Y-m-d H:i:s', strtotime("$day $time"));
-  echo $combine;
+  // echo $combine;
 
    echo $idLocal;
 
