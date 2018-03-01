@@ -70,7 +70,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             }).state('app.GestPers', {
                 url: "/GestPers",
                 templateUrl: "assets/views/Admin/gestion_personnel.html",
-                resolve: loadSequence('jquery-sparkline', 'touchspin-plugin', 'ngTable', 'ngTableCtrl', 'dynamicTableCtrl', 'personnelCtrl','dashboardCtrl'),
+                resolve: loadSequence('jquery-sparkline', 'touchspin-plugin', 'ngTable', 'ngTableCtrl', 'dynamicTableCtrl', 'personnelCtrl', 'dashboardCtrl'),
                 title: 'Gestion du personnel ',
                 ncyBreadcrumb: {
                     label: 'Gestion du personnel'
@@ -78,7 +78,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             }).state('app.GestProd', {
                 url: "/GestProd",
                 templateUrl: "assets/views/Admin/gestion_produit.html",
-                resolve: loadSequence('jquery-sparkline', 'touchspin-plugin', 'ngTable', 'ngTableCtrl', 'dynamicTableCtrl', 'produitCtrl','dashboardCtrl'),
+                resolve: loadSequence('jquery-sparkline', 'touchspin-plugin', 'ngTable', 'ngTableCtrl', 'dynamicTableCtrl', 'produitCtrl', 'dashboardCtrl'),
                 title: 'Gestion des produits ',
                 ncyBreadcrumb: {
                     label: 'Gestion des produits'
@@ -142,6 +142,21 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Liste des livraisons en attentes ',
                 ncyBreadcrumb: {
                     label: 'Espace Service Clients'
+                }
+            }).state('app.ReserverSC', {
+                url: "/ReserverSC",
+                templateUrl: "assets/views/ServiceClients/ReserPourClient.html",
+                resolve: {
+                    check: function($window, user) {
+                        if (!user.isUserLoggedIn()) {
+                            $window.location.href = '#/login/error';
+                        }
+                    },
+                    scripts: loadSequence('jquery-sparkline', 'touchspin-plugin', 'dynamicTableCtrl', 'LivreurCtrl', 'dashboardCtrl').deps
+                },
+                title: 'Reserver Pour Un Client ',
+                ncyBreadcrumb: {
+                    label: 'Reserver Pour Un Client'
                 }
             }).state('app.BdLSC', {
                 url: "/ModificationCommande",
