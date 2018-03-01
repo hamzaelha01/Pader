@@ -100,6 +100,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                     user.setTempNameCmd(data[index].NOM_CLIENT);
                     user.clientTemp(data[index].ID_CLIENT);
                     user.setIdLocalTempClient(data[index].ID_LOCALISATION);
+
                     // alert(" USER TEMP " + user.getClientTemp());
                     // alert(" NOM TEMP " + user.getTempNameCmd());
                     // alert(" PRENOM TEMP " + user.getTempProfileCmd());
@@ -161,81 +162,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     // na = user.getTempNameCmd();
 
 
-    $scope.ResPourClient = function() {
 
-        $rootScope.idc += 1;
-        // ETAPE 1 : CREATION
-        var idUser = user.getClientTemp();
-        var FirstNameUser = user.getTempProfileCmd();
-        var LastNameUser = user.getTempNameCmd();
-        $scope.IdCmdUser = $scope.nbrd + FirstNameUser[0] + LastNameUser[0] + $scope.idc;
-
-
-        // Affichage des infroamtions TEST
-        // alert(" JOUR COMMANDE " + $scope.dt);
-        // alert(" ID COMMANDE " + $scope.IdCmdUser);
-        // alert(" HEURE COMMANDE " + $scope.timecmd);
-        // alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
-        // // alert(" DATE COMMANDE " + $scope.dateID);
-        // alert("ID USER " + idUser);
-        // alert("not null you can do command");
-
-        // CREATION DE LA COMMANDE 
-
-
-        // ETAPE 2: CREATION DE L 'ID DATE 
-        $http.post(
-            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
-
-            }
-        ).success(function(response) {
-            // scope id data 
-            $scope.dateID = response.ID;
-            alert($scope.dateID);
-            if ($scope.dateID != null) {
-                // Ajout de la commande 
-                $http.post(
-                    "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
-                        'DD': $scope.dt,
-                        'IDCMD': $scope.IdCmdUser,
-                        'HT': $scope.timecmd,
-                        'nbrd': $scope.nbrd,
-                        'IDDATE': $scope.dateID,
-                        'IDCLIENT': idUser,
-                        'idLocal': user.getIdLocalTempclient()
-
-                    }
-                ).success(function(data) {
-                    // alert(data.ID);
-                });
-
-
-            }
-
-            // Modification de l'adresse 
-
-            $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
-                'idLocal': user.getIdLocalTempclient(),
-                'AdresseCompleteCollect': $scope.adrz1 + ", " + user.getLocalisation()
-            }).success(function(data) {
-                // alert(data.ID);
-                // alert(data);
-            });
-        });
-
-        // Modification de l'adresse 
-
-        // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
-        //            'idLocal' : user.getIdLocalTempclient()
-        //           }
-        //           ).success(function(data) {
-        //               // alert(data.ID);
-        //           });
-
-
-        //     $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /",{}).success(function(resp){}) 
-    };
-    //  FIN : RESERVATION CLIENT APRES REDIRECTION *SERVICE CLIENT*
 
 
 
@@ -1298,5 +1225,165 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         } else
             document.querySelector("#error").classList.remove('hidden');
     };
+
+
+    $scope.ResPourClient = function() {
+
+        $rootScope.idc += 1;
+        // ETAPE 1 : CREATION
+        var idUser = user.getClientTemp();
+        var FirstNameUser = user.getTempProfileCmd();
+        var LastNameUser = user.getTempNameCmd();
+        $scope.IdCmdUser = $scope.nbrd + FirstNameUser[0] + LastNameUser[0] + $scope.idc;
+
+
+        SweetAlert.swal({
+            title: "Voulez vous confirmer votre commande?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Oui",
+            cancelButtonText: "Non!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirm) {
+            if (isConfirm) {
+
+                $http.post(
+                    "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
+
+                    }
+                ).success(function(response) {
+                    // scope id data 
+                    $scope.dateID = response.ID;
+                    // alert(user.getIdLocalTempclient());
+                    // alert($scope.dateID);
+                    if ($scope.dateID != null) {
+                        // Ajout de la commande 
+                        // alert(user.getIdLocalTempclient());
+
+                        $http.post(
+                            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
+                                'DD': $scope.dt,
+                                'IDCMD': $scope.IdCmdUser,
+                                'HT': $scope.timecmd,
+                                'nbrd': $scope.nbrd,
+                                'IDDATE': $scope.dateID,
+                                'IDCLIENT': idUser,
+                                'idLocal': user.getIdLocalTempclient()
+
+                            }
+                        ).success(function(data) {
+                            // alert(data.ID);
+                            SweetAlert.swal({
+                                title: "Confirmée!",
+                                text: "Votre commande est bien passeé",
+                                type: "success",
+                                confirmButtonColor: "#007AFF"
+                            });
+
+                            setTimeout(function() {
+
+                                $window.location.href = '#/app/BdCommandes';
+
+                            }, 500);
+
+                        });
+
+
+                    }
+
+                    // Modification de l'adresse 
+
+                    $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
+                        'idLocal': user.getIdLocalTempclient(),
+                        'AdresseCompleteCollect': $scope.adrz1 + ", " + user.getLocalisation()
+                    }).success(function(data) {
+                        // alert(data.ID);
+                        // alert(data);
+
+                    });
+                });
+
+
+            } else {
+                SweetAlert.swal({
+                    title: "Cancelled",
+                    text: "Your imaginary file is safe :)",
+                    type: "error",
+                    confirmButtonColor: "#007AFF"
+                });
+            }
+        });
+        // Affichage des infroamtions TEST
+        // alert(" JOUR COMMANDE " + $scope.dt);
+        // alert(" ID COMMANDE " + $scope.IdCmdUser);
+        // alert(" HEURE COMMANDE " + $scope.timecmd);
+        // alert(" NBR ARTICLES  COMMANDE " + $scope.nbrd);
+        // // alert(" DATE COMMANDE " + $scope.dateID);
+        // alert("ID USER " + idUser);
+        // alert("not null you can do command");
+
+
+        // CREATION DE LA COMMANDE 
+        // alert(user.getIdLocalTempclient());
+        // alert(user.getIdLocalTempclient());
+        // ETAPE 2: CREATION DE L 'ID DATE 
+        // $http.post(
+        //     "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertGetDate.php", {
+
+        //     }
+        // ).success(function(response) {
+        //     // scope id data 
+        //     $scope.dateID = response.ID;
+        //     alert(user.getIdLocalTempclient());
+        //     alert($scope.dateID);
+        //     if ($scope.dateID != null) {
+        //         // Ajout de la commande 
+        //         alert(user.getIdLocalTempclient());
+
+        //         $http.post(
+        //             "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
+        //                 'DD': $scope.dt,
+        //                 'IDCMD': $scope.IdCmdUser,
+        //                 'HT': $scope.timecmd,
+        //                 'nbrd': $scope.nbrd,
+        //                 'IDDATE': $scope.dateID,
+        //                 'IDCLIENT': idUser,
+        //                 'idLocal': user.getIdLocalTempclient()
+
+        //             }
+        //         ).success(function(data) {
+        //             // alert(data.ID);
+        //         });
+
+
+        //     }
+
+        //     // Modification de l'adresse 
+
+        //     $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /UpdateAdresseCollecte.php", {
+        //         'idLocal': user.getIdLocalTempclient(),
+        //         'AdresseCompleteCollect': $scope.adrz1 + ", " + user.getLocalisation()
+        //     }).success(function(data) {
+        //         // alert(data.ID);
+        //         // alert(data);
+        //     });
+        // });
+
+        // Modification de l'adresse 
+
+        // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
+        //            'idLocal' : user.getIdLocalTempclient()
+        //           }
+        //           ).success(function(data) {
+        //               // alert(data.ID);
+        //           });
+
+
+        //     $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /",{}).success(function(resp){}) 
+    };
+    //  FIN : RESERVATION CLIENT APRES REDIRECTION *SERVICE CLIENT*
 
 }]);

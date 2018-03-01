@@ -148,9 +148,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: "assets/views/ServiceClients/ReserPourClient.html",
                 resolve: {
                     check: function($window, user) {
-                        if (!user.isUserLoggedIn()) {
-                            $window.location.href = '#/login/error';
-                        }
+                        // if (!user.isUserLoggedIn()) {
+                        //     $window.location.href = '#/login/error';
+                        // }
                     },
                     scripts: loadSequence('jquery-sparkline', 'touchspin-plugin', 'dynamicTableCtrl', 'LivreurCtrl', 'dashboardCtrl').deps
                 },

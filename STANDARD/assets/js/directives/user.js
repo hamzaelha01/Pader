@@ -33,24 +33,24 @@
         var TempProfileCmd;
         var TempRecu; // ID COMMANDE TEMPORAIRE POUR QUE LE CLIENT PUISSE VOIR SON RECU 
         var TempIDC; // ID COMMANDE TEMPORAIRE POUR LE SERVICE PRODUCTION => CONSULTATION RECU CONCERNANT UNE COMMANDE
-        var IdLocalTempclient // ID LOCALISATION POUR UN CLIENT 
+        var IdLocalTempclient; // ID LOCALISATION POUR UN CLIENT 
         // localisation 
-        var localisation; 
+        var localisation;
         var RecuProdCpt; // Compteur du recu production
         var QteCmd; // Qte d'une commande  a ne pas depasser lors de l'impression
 
         // this.setName = function(name) {
         //     username = name;
         // };
-        this.getIdLocalTempclient = function()
-        {
-            return  IdLocalTempclient;
-        }
 
-        this.setIdLocalTempClient = function(idlc)
-        {
+        this.setIdLocalTempClient = function(idlc) {
             IdLocalTempclient = idlc;
         }
+        this.getIdLocalTempclient = function() {
+            return IdLocalTempclient;
+        }
+
+
 
         this.getName = function() {
             return nom;
@@ -76,7 +76,8 @@
                 profil = data.profil;
                 id = data.id;
                 role = data.role;
-                IdLocalTempclient = data.IdLocalTempclient;            }
+                IdLocalTempclient = data.IdLocalTempclient;
+            }
             return loggedin;
         };
         this.userLoggedIn = function() {
@@ -129,73 +130,70 @@
         }
 
         // Redirection vers Panier
-        this.cmdTemp = function(commande){
+        this.cmdTemp = function(commande) {
             TempCmd = commande;
         }
 
-        this.getCmdTemp = function(){
+        this.getCmdTemp = function() {
             return TempCmd;
         }
 
         //Redirection ver Panier 
-        this.ClientTempCmd = function(cl){
+        this.ClientTempCmd = function(cl) {
             ClTempCmd = cl;
         }
 
-        this.getClientTempCmd = function(){
-            return ClTempCmd;
-        }
-        // Redirection vers Recu 
-        this.getTempRecu = function(){
+        this.getClientTempCmd = function() {
+                return ClTempCmd;
+            }
+            // Redirection vers Recu 
+        this.getTempRecu = function() {
             return TempRecu;
         }
-        this.setTempRecu = function(TPC){
+        this.setTempRecu = function(TPC) {
             TempRecu = TPC;
         }
-        this.getTempIDC = function(){
+        this.getTempIDC = function() {
             return TempIDC;
         }
-        this.setTempIDC = function(TIDC){
-            TempIDC= TIDC;
+        this.setTempIDC = function(TIDC) {
+            TempIDC = TIDC;
         }
-        this.setTempNameCmd = function(TNC){
+        this.setTempNameCmd = function(TNC) {
             TempNameCmd = TNC;
         }
-        this.getTempNameCmd = function(){
+        this.getTempNameCmd = function() {
             return TempNameCmd;
         }
-        this.setTempProfileCmd = function(TPC){
+        this.setTempProfileCmd = function(TPC) {
             TempProfileCmd = TPC;
         }
-        this.getTempProfileCmd = function(){
+        this.getTempProfileCmd = function() {
             return TempProfileCmd;
         }
 
 
         // localisation 
-        this.getLocalisation = function(){
+        this.getLocalisation = function() {
             return localisation;
         }
-        this.setLocalisation = function(local){
+        this.setLocalisation = function(local) {
             localisation = local;
         }
 
         // Qte & Compteur Recu Prod
 
-        this.getRecuProdCpt = function()
-        {
+        this.getRecuProdCpt = function() {
             return RecuProdCpt;
         }
-        this.setRecuProdCpt = function(RP){
+        this.setRecuProdCpt = function(RP) {
             RecuProdCpt = RP;
         }
 
-        this.getQteCmd = function()
-        {
+        this.getQteCmd = function() {
             return QteCmd;
         }
-        this.setQteCmd = function(QC)
-        {
+        this.setQteCmd = function(QC) {
             QteCmd = QC;
         }
 
