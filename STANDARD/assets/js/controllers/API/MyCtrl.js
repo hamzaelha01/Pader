@@ -86,11 +86,11 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                     .success(function(data) {
                         //$scope.reload();
                         //$scope.show_cmdaprep();
-                         setTimeout(function() {
+                        setTimeout(function() {
 
-                    window.location.reload();
+                            window.location.reload();
 
-                }, 500);
+                        }, 500);
                     });
                 SweetAlert.swal({
                     title: "Confirmée",
@@ -153,75 +153,162 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
         return x;
 
     }
+
+
+
     $scope.preparation = function(position, x) {
-        $aside.open({
-            templateUrl: 'asideContent.html',
-            placement: position,
-            size: 'sm',
-            backdrop: true,
-            controller: function($scope, $uibModalInstance) {
-                // alert(index);
-                //Get Record of this Index
-                // $http.get(
-                //         "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdaprep.php"
-                //     ).success(function(data) {
-                // $scope.cmds = data;
-                // $scope.cmdid = data[index].ID_COMMANDE;
-                // $scope.qte = data[index].QTE;
-                // Qauntité des produit panier par rapport a une commande 
-                user.setQteCmd(x.QTE);
-                // alert($scope.cmdid);
-                user.setTempRecu(x.ID_COMMANDE);
-                user.setTempIDC(x.ID_CLIENT);
-                // alert(user.getTempIDC());
-                // })
-                // Update Statut of commande
-                $scope.ok = function(e) {
-                    // $rootScope.cpt=0;
-                    //alert( $scope.arra(index));
-                    user.setRecuProdCpt(0);
-
-                    $http({
-                        url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmer.php',
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        data: 'id=' + x.ID_COMMANDE
-                    }).success(function(response) {
-                        // alert(response);
-                        // alert(user.getTempRecu());
-                        // alert(user.getID());
-                        // alert(IdUser);
-                        $window.location.href = '#/app/RecuProd';
-                    });
-                    // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmer.php", {
-                    //         'id': x.ID_COMMANDE
-                    //     })
-                    //     .success(function(data) {
 
 
-                    //         //$scope.show_cmdaprep();
-                    //         // $scope.IDCMD = user.getTempRecu();
-                    //         // alert($scope.IDCMD);
+        user.setQteCmd(x.QTE);
+        // alert($scope.cmdid);
+        user.setTempRecu(x.ID_COMMANDE);
+        user.setTempIDC(x.ID_CLIENT);
+        user.setRecuProdCpt(0);
+
+        $window.location.href = '#/app/RecuProd';
 
 
-                    //         // Preparation du reçu 
-                    //         // user.setTempRecu(data[index].ID_COMMANDE);
-                    //         // alert(" USER TEMP " + user.getID());
-                    //         // alert("CMD TEMP " + user.getTempRecu());
-                    //     });
-                    $uibModalInstance.close();
-                    e.stopPropagation();
-                };
-                $scope.cancel = function(e) {
-                    $uibModalInstance.dismiss();
-                    e.stopPropagation();
-                };
-            }
-        });
+        //             // $http({
+        //             //     url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmer.php',
+        //             //     method: 'POST',
+        //             //     headers: {
+        //             //         'Content-Type': 'application/x-www-form-urlencoded'
+        //             //     },
+        //             //     data: 'id=' + x.ID_COMMANDE
+        //             // }).success(function(response) {
+        //             //     // alert(response);
+        //             //     // alert(user.getTempRecu());
+        //             //     // alert(user.getID());
+        //             //     // alert(IdUser);
+        //             //     
+        //             // });
+
+        // $aside.open({
+        //     templateUrl: 'asideContent.html',
+        //     placement: position,
+        //     size: 'sm',
+        //     backdrop: true,
+        //     controller: function($scope, $uibModalInstance) {
+        //         // alert(index);
+        //         //Get Record of this Index
+        //         // $http.get(
+        //         //         "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdaprep.php"
+        //         //     ).success(function(data) {
+        //         // $scope.cmds = data;
+        //         // $scope.cmdid = data[index].ID_COMMANDE;
+        //         // $scope.qte = data[index].QTE;
+        //         // Qauntité des produit panier par rapport a une commande 
+        //         user.setQteCmd(x.QTE);
+        //         // alert($scope.cmdid);
+        //         user.setTempRecu(x.ID_COMMANDE);
+        //         user.setTempIDC(x.ID_CLIENT);
+        //         // alert(user.getTempIDC());
+        //         // })
+        //         // Update Statut of commande
+        //         $scope.ok = function(e) {
+        //             // $rootScope.cpt=0;
+        //             //alert( $scope.arra(index));
+        //             user.setRecuProdCpt(0);
+
+        //             // $http({
+        //             //     url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmer.php',
+        //             //     method: 'POST',
+        //             //     headers: {
+        //             //         'Content-Type': 'application/x-www-form-urlencoded'
+        //             //     },
+        //             //     data: 'id=' + x.ID_COMMANDE
+        //             // }).success(function(response) {
+        //             //     // alert(response);
+        //             //     // alert(user.getTempRecu());
+        //             //     // alert(user.getID());
+        //             //     // alert(IdUser);
+        //             //     
+        //             // });
+
+        //             $window.location.href = '#/app/RecuProd';
+
+
+
+        //             // $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmer.php", {
+        //             //         'id': x.ID_COMMANDE
+        //             //     })
+        //             //     .success(function(data) {
+
+
+        //             //         //$scope.show_cmdaprep();
+        //             //         // $scope.IDCMD = user.getTempRecu();
+        //             //         // alert($scope.IDCMD);
+
+
+        //             //         // Preparation du reçu 
+        //             //         // user.setTempRecu(data[index].ID_COMMANDE);
+        //             //         // alert(" USER TEMP " + user.getID());
+        //             //         // alert("CMD TEMP " + user.getTempRecu());
+        //             //     });
+        //             $uibModalInstance.close();
+        //             e.stopPropagation();
+        //         };
+        //         $scope.cancel = function(e) {
+        //             $uibModalInstance.dismiss();
+        //             e.stopPropagation();
+        //         };
+        //     }
+        // });
     };
 
+
+    $scope.SP_Prete = function() {
+
+
+        // alert(user.getTempRecu());
+
+        SweetAlert.swal({
+
+            title: "Voulez-vous confirmer la commande?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Oui, Confirmez!",
+            cancelButtonText: "Non, Annulez!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirm) {
+            if (isConfirm) {
+                $http({
+                    url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmer.php',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: 'id=' + user.getTempRecu()
+                }).success(function(response) {
+                    setTimeout(function() {
+
+                        $window.location.href = "#/app/cmdl";
+
+                    }, 200);
+
+                });
+                SweetAlert.swal({
+                    title: "Confirmée",
+                    text: "Votre Commande a été confirmée.",
+                    type: "success",
+                    confirmButtonColor: "#007AFF"
+
+                });
+            } else {
+                SweetAlert.swal({
+                    title: "Annulée!",
+                    text: "Votre commande a été annulée",
+                    type: "error",
+                    confirmButtonColor: "#007AFF"
+                });
+            }
+        });
+
+
+    }
 
 
     // PANIER : 
@@ -241,7 +328,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
             // alert($scope.cmdacollects[1].NOM_CLIENT);
             // alert(data);
 
-        }).error(function(data) {  })
+        }).error(function(data) {})
     };
 
     // ETAPE 2 : INSERTION DES PRODUITS DANS LA CARTE 
@@ -345,7 +432,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                             // alert(data);
 
 
-                        }).error(function(data) {  })
+                        }).error(function(data) {})
 
 
                     }
@@ -356,7 +443,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                         // alert(data);
 
 
-                    }).error(function(data) {  })
+                    }).error(function(data) {})
 
                     // $scope.cart=[];
 

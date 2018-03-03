@@ -10,10 +10,10 @@
 </section> -->
 <!-- end: PAGE TITLE -->
 <!-- start: PAGE TITLE -->
-<section id="page-title" class="page-title-center" ng-controller="MyCtrl" >
-    <div class="row" >
+<section id="page-title" class="page-title-center" ng-controller="MyCtrl">
+    <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-            <h1 class="mainTitle" >MA COMMANDE </h1>
+            <h1 class="mainTitle">MA COMMANDE </h1>
             <!-- <span class="mainDescription">Themify Icons is a complete set of icons for use in web design and apps, consisting of 320+ pixel-perfect, hand-crafted icons that draw inspiration from Apple iOS 7</span>
             <input ng-model="search" class="form-control text-center margin-top-15" type="text" placeholder="Search {{icons.name}} icons...">
             <div ncy-breadcrumb></div> -->
@@ -22,18 +22,18 @@
 </section>
 <!-- start: YOUR CONTENT HERE -->
 <!-- start: TABLE WITH FILTERS -->
-<div class="container"  ng-controller="MyCtrl"  >
-<!-- start: YOUR CONTENT HERE -->
-<!-- <div class="row">
+<div class="container" ng-controller="MyCtrl">
+    <!-- start: YOUR CONTENT HERE -->
+    <!-- <div class="row">
     <div class="col-md-12"> -->
-        <!-- <h5 class="over-title margin-bottom-15">Responsive <span class="text-bold">Table</span></h5>
+    <!-- <h5 class="over-title margin-bottom-15">Responsive <span class="text-bold">Table</span></h5>
         <p>
             Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.
         </p>
         <div class="alert alert-info">
             Please try to re-size your browser window in order to see the tables in responsive mode.
         </div> -->
-        <!-- <div class="table-responsive">
+    <!-- <div class="table-responsive">
             <table class="table table-bordered table-hover" id="sample-table-1" ng-init="MyAllBasketsX()">
                 <thead>
                     <tr>
@@ -59,73 +59,78 @@
                 Print All
             </button>
         </div> -->
-        <div ng-init="MyAllBasketsX()" id="allInvoices" >
-            <div class="row">
-                <div class="col-sm-12 invoice-block">
-                    <ul class="list-unstyled amounts text-small">
-                        <li>
-                            <strong>Client:</strong> {{Myname}}
-                        </li>
-                        <li>
-                            <strong>Nb Articles:</strong> {{MyNbArticles}}
-                        </li>
-                        <li>
-                            <strong>TVA:</strong> 20%
-                        </li>
-                        <li class="text-extra-large text-dark margin-top-15">
-                            <strong >Total:</strong> {{MyTotal}} DH
-                        </li>
-                    </ul>
-                    <br>
-                   <!--  <a onclick="pdfToHTML1()" class="btn btn-lg btn-primary hidden-print">
+    <div ng-init="MyAllBasketsX()" id="allInvoices">
+        <div class="row">
+            <div class="col-sm-12 invoice-block">
+                <ul class="list-unstyled amounts text-small">
+                    <li>
+                        <strong>Client:</strong> {{Myname}}
+                    </li>
+                    <li>
+                        <strong>Nb Articles:</strong> {{MyNbArticles}}
+                    </li>
+                    <li>
+                        <strong>TVA:</strong> 20%
+                    </li>
+                    <li class="text-extra-large text-dark margin-top-15">
+                        <strong>Total:</strong> {{MyTotal}} DH
+                    </li>
+                </ul>
+                <br>
+                <!--  <a onclick="pdfToHTML1()" class="btn btn-lg btn-primary hidden-print">
                         Imprimer <i class="fa fa-print"></i>
                     </a> -->
-                    <!-- <a class="btn btn-lg btn-primary btn-o hidden-print">
+                <!-- <a class="btn btn-lg btn-primary btn-o hidden-print">
                         Submit Your Invoice <i class="fa fa-check"></i>
                     </a> -->
-                </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <table class="table table-striped"  >
-                        <thead>
-                            <tr>
-                                <th> # </th>
-                                <th> Produit </th>
-                                <th class="hidden-480"> Quantity </th>
-                                <th> Total </th>
-                                <th> Recu</th>
-                                <th>Modifier</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="p in MyAllBasketsX track by $index">
-                                <td> {{p.ID_PRODUIT}} </td>
-                                <td> {{p.DESIGNATION}} </td>
-                                <td class="hidden-480"> {{p.QUANITE}} </td>
-                                <td> {{p.MONTANT}} DH</td>
-                                <td>
-                                    <button class="btn btn-success" ng-click="imprimer('lg',p);">
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> # </th>
+                            <th> Produit </th>
+                            <th class="hidden-480"> Quantity </th>
+                            <th> Total </th>
+                            <th> Recu</th>
+                            <th>Modifier</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="p in MyAllBasketsX track by $index">
+                            <td> {{p.ID_PRODUIT}} </td>
+                            <td> {{p.DESIGNATION}} </td>
+                            <td class="hidden-480"> {{p.QUANITE}} </td>
+                            <td> {{p.MONTANT}} DH</td>
+                            <td>
+                                <button class="btn btn-success" ng-click="imprimer('lg',p);">
                                         Imprimer
                                     </button>
-                                </td>
-                                <td>
-                                    <button ng-if=" p.MONTANT ==  '0'" class="btn btn-success" ng-click="EditPrice('left',p)" >
+                            </td>
+                            <td>
+                                <button ng-if=" p.MONTANT ==  '0'" class="btn btn-success" ng-click="EditPrice('left',p)">
                                         Modifier
                                     </button>
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div align="right">
+                    <button type="submit" ui-sref="app.cmdp" class="btn btn-o btn-danger">Retour</button>
+                    <button type="submit" ng-click="SP_Prete()" class="btn btn-o btn-info">Confirmer</button>
+
                 </div>
             </div>
-            
         </div>
-        <script type="text/ng-template" id="invoice.html" ng-controller="MyCtrl" >
-            <div class="row" ng-init="MyAllBasketsY()" id="contentPdf" >
-                <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-                  <!--   <div class="row">
+
+    </div>
+    <script type="text/ng-template" id="invoice.html" ng-controller="MyCtrl">
+        <div class="row" ng-init="MyAllBasketsY()" id="contentPdf">
+            <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+                <!--   <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <address>
                                 <strong>{{Myname}} </strong>
@@ -142,18 +147,18 @@
                                 <em>Ref Produit: {{MyProductInfo.ID_PRODUIT}}</em>
                             </p> -->
 
-                           <!--  <p>
+                <!--  <p>
                                 <em>Reçu #: {{MyProductInfo.ID_COMMANDE}}</em>
                             </p>
                         </div>
                     </div>  -->
-                    <div class="row">
-                        <div class="text-center">
-                            <h2 > Reçu #: {{MyProductInfo.ID_COMMANDE}} </h2>
-                            <h1>{{cpta}} / {{cptq}}</h1>
-                        </div>
-                        </span>
-                        <!-- <table class="table table-hover">
+                <div class="row">
+                    <div class="text-center">
+                        <h2> Reçu #: {{MyProductInfo.ID_COMMANDE}} </h2>
+                        <h1>{{cpta}} / {{cptq}}</h1>
+                    </div>
+                    </span>
+                    <!-- <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>Produit</th>
@@ -195,43 +200,42 @@
                                 </tr>
                             </tbody>
                         </table> -->
-                        <button type="button" class="btn btn-success btn-lg btn-block" onclick="pdfToHTML()" >
+                    <button type="button" class="btn btn-success btn-lg btn-block" onclick="pdfToHTML()">
                             <a href="javascript:pdfFromHTML()">Imprimer </a>
                             <span class="fa fa-print">
                             </span>
                         </button>
                     </td>
-                    </div>
                 </div>
-            
+            </div>
+
     </script>
 
 
     <script type="text/ng-template" id="asideContent.html" ng-controller="MyCtrl">
-                    <div class="modal-header">
-                    <h3 class="modal-title">Modification du prix</h3>
-                    </div>
-                    <div class="panel-body">
-                            <p class="margin-bottom-30">
-                                Use the <code>
-                                    data-prefix</code>
-                                attribute to add a prefix.
-                            </p>
-                            <div class="form-group">
-                                <label> With prefix </label>
-                                <input id="demo1" type="text"  ng-model="mon" name="demo1" touchspin data-min="-1000000000" data-max="1000000000" data-stepinterval="50" data-maxboostedstep="10000000" data-prefix="MAD">
-                            </div>
-                        </div>
-                    <div class="modal-footer">
-                    <button class="btn btn-primary" ng-click="ok($event)">OK</button>
-                    <button class="btn btn-primary" ng-click="cancel($event)">Cancel</button>
-                    </div>
-                </script>
+        <div class="modal-header">
+            <h3 class="modal-title">Modification du prix</h3>
+        </div>
+        <div class="panel-body">
+            <p class="margin-bottom-30">
+                Use the <code>
+                                    data-prefix</code> attribute to add a prefix.
+            </p>
+            <div class="form-group">
+                <label> With prefix </label>
+                <input id="demo1" type="text" ng-model="mon" name="demo1" touchspin data-min="-1000000000" data-max="1000000000" data-stepinterval="50" data-maxboostedstep="10000000" data-prefix="MAD">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok($event)">OK</button>
+            <button class="btn btn-primary" ng-click="cancel($event)">Cancel</button>
+        </div>
+    </script>
     </div>
-<!-- </div>
+    <!-- </div>
 </div> -->
-<!-- end: YOUR CONTENT HERE -->
-<!-- <div class="container-fluid container-fullw" ng-controller="MyCtrl">
+    <!-- end: YOUR CONTENT HERE -->
+    <!-- <div class="container-fluid container-fullw" ng-controller="MyCtrl">
 <div class="row">
     <div class="col-md-12">
         <h5 class="over-title margin-bottom-15">Table <span class="text-bold">with filters</span></h5>
@@ -252,4 +256,4 @@
     </div>
 </div>
 </div> -->
-<!-- end: TABLE WITH FILTERS
+    <!-- end: TABLE WITH FILTERS
