@@ -466,9 +466,11 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
 
     //  Impression Items : 
     $scope.MyAllBasketsX = function() {
-        // alert(IdUser);
-        // alert(" ID COMMANDE" + user.getTempRecu());
-        // alert(" ID CLIENT " + user.getTempIDC());
+
+
+        alert(IdUser);
+        alert(" ID COMMANDE" + user.getTempRecu());
+        alert(" ID CLIENT " + user.getTempIDC());
 
 
         // $http({
@@ -517,11 +519,11 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
             'IdUser': IdUser,
             'IDCMD': user.getTempRecu()
         }).success(function(data) {
-            $scope.MyAllBasketsX = data;
-            $scope.MyTotal = $scope.MyAllBasketsX[0].MyTotal;
-            $scope.Myname = $scope.MyAllBasketsX[0].Myname;
-            $scope.MyNbArticles = $scope.MyAllBasketsX[0].NbProduits;
-            // alert($scope.MyAllBasketsX[0].MyTotal);
+            // $scope.MyAllBasketsX = data;
+            // $scope.MyTotal = $scope.MyAllBasketsX[0].MyTotal;
+            // $scope.Myname = $scope.MyAllBasketsX[0].Myname;
+            // $scope.MyNbArticles = $scope.MyAllBasketsX[0].NbProduits;
+            // // alert($scope.MyAllBasketsX[0].MyTotal);
 
         });
     };
@@ -548,6 +550,50 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
         if ($scope.cpta >= $scope.cptq) {
             user.setRecuProdCpt(0);
         }
+
+        // SweetAlert.swal({
+
+        //     title: "Voulez-vous confirmer la commande?",
+        //     text: "",
+        //     type: "warning",
+        //     showCancelButton: true,
+        //     confirmButtonColor: "#DD6B55",
+        //     confirmButtonText: "Oui, Confirmez!",
+        //     cancelButtonText: "Non, Annulez!",
+        //     closeOnConfirm: false,
+        //     closeOnCancel: false
+        // }, function(isConfirm) {
+        //     if (isConfirm) {
+        //         $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmeralivr.php", {
+        //                 'id': $scope.cmdid
+        //             })
+        //             .success(function(data) {
+        //                 //$scope.reload();
+        //                 //$scope.show_cmdaprep();
+        //                 setTimeout(function() {
+
+        //                     window.location.reload();
+
+        //                 }, 500);
+        //             });
+        //         SweetAlert.swal({
+        //             title: "Confirmée",
+        //             text: "Votre Commande a été confirmée.",
+        //             type: "success",
+        //             confirmButtonColor: "#007AFF"
+
+        //         });
+        //     } else {
+        //         SweetAlert.swal({
+        //             title: "Annulée!",
+        //             text: "Votre commande a été annulée",
+        //             type: "error",
+        //             confirmButtonColor: "#007AFF"
+        //         });
+        //     }
+        // });
+
+
         // IMPRIMABLE
         $aside.open({
             templateUrl: 'invoice.html',
