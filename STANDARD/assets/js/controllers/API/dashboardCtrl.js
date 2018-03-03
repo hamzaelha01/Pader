@@ -42,6 +42,8 @@ app.controller('SparklineCtrl', ["$scope", "user", "$window", function($scope, u
         } else if ($scope.userR === "Client") {
             var i;
             // var x = document.getElementsByTagName("*");
+            // document.querySelector("#lockscreen").style.display = "none";
+            document.querySelector("#lockscreen").style.display = "none";
             var admin = document.querySelectorAll("#admin");
             for (i = 0; i < admin.length; i++) {
                 admin[i].style.display = "none";

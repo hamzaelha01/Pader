@@ -60,51 +60,53 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
 
         if ($scope.liv === "") {
             alert("good to go!");
+        } else {
+            SweetAlert.swal({
+
+                title: "La commande sera affectée à " + $scope.liv,
+                text: "Voulez-vous confirmer la commande ?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Oui",
+                cancelButtonText: "Non!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function(isConfirm) {
+                if (isConfirm) {
+                    $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/postLivreurCollecte.php", {
+                            'id': $scope.cmdid,
+                            'LIVREUR_COLLECTE': $scope.liv,
+
+                        })
+                        .success(function(data) {
+                            // alert(data[index].DD_COMMANDE);
+                            //$scope.show_cmdaprep();
+                            setTimeout(function() {
+
+                                window.location.reload();
+
+                            }, 500);
+                        });
+
+                    // SweetAlert.swal({
+                    //     title: "Confirmée!",
+                    //     text: "Votre Commande a été confirmée.",
+                    //     type: "success",
+                    //     confirmButtonColor: "#007AFF"
+
+                    // });
+                } else {
+                    SweetAlert.swal({
+                        title: "Annulée!",
+                        text: "",
+                        type: "error",
+                        confirmButtonColor: "#007AFF"
+                    });
+                }
+            });
         }
-        // SweetAlert.swal({
 
-        //     title: "La commande sera affectée à " + $scope.liv,
-        //     text: "Voulez-vous confirmer la commande ?",
-        //     type: "warning",
-        //     showCancelButton: true,
-        //     confirmButtonColor: "#DD6B55",
-        //     confirmButtonText: "Oui",
-        //     cancelButtonText: "Non!",
-        //     closeOnConfirm: false,
-        //     closeOnCancel: false
-        // }, function(isConfirm) {
-        //     if (isConfirm) {
-        //         $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Livraison/postLivreurCollecte.php", {
-        //                 'id': $scope.cmdid,
-        //                 'LIVREUR_COLLECTE': $scope.liv,
-
-        //             })
-        //             .success(function(data) {
-        //                 // alert(data[index].DD_COMMANDE);
-        //                 //$scope.show_cmdaprep();
-        //                 setTimeout(function() {
-
-        //                     window.location.reload();
-
-        //                 }, 500);
-        //             });
-
-        //         // SweetAlert.swal({
-        //         //     title: "Confirmée!",
-        //         //     text: "Votre Commande a été confirmée.",
-        //         //     type: "success",
-        //         //     confirmButtonColor: "#007AFF"
-
-        //         // });
-        //     } else {
-        //         SweetAlert.swal({
-        //             title: "Annulée!",
-        //             text: "",
-        //             type: "error",
-        //             confirmButtonColor: "#007AFF"
-        //         });
-        //     }
-        // });
     };
     // FIN : CONFIRMATION DU CHOIX DU LIVREUR DE COLLECTE 
 
