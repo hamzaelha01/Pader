@@ -43,7 +43,7 @@ $query  ="INSERT INTO `PRODUIT` (`ID_PRODUIT`, `DESIGNATION`, `ID_CATEGORIE`, `P
 if (mysqli_query($conn, $query)) {
 echo "Data Inserted Successfully...";
 } else {
-echo 'Failed';
+echo 'Failed'.mysqli_error($conn);;
 }
 }
 

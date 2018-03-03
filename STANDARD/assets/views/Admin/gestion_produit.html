@@ -1,24 +1,24 @@
 <!-- start: PAGE TITLE -->
 <section id="page-title">
-	<div class="row">
-		<div class="col-sm-8">
-			<h1 class="mainTitle" >LISTE DES PRODUITS</h1>
-			<span class="mainDescription">Use this page to start from scratch and put your custom content</span>
-		</div>
-		<div ncy-breadcrumb></div>
-	</div>
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle">LISTE DES PRODUITS</h1>
+            <span class="mainDescription">Use this page to start from scratch and put your custom content</span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
 </section>
 <!-- end: PAGE TITLE -->
 <div ng-controller="produitCtrl">
-    <div  class="container-fluid container-fullw"  >
+    <div class="container-fluid container-fullw">
         <div class="row">
             <div class="col-md-12">
                 <h5 class="over-title margin-bottom-15">Striped <span class="text-bold">rows</span></h5>
                 <p>
                     Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.
                 </p>
-               <!-- <p><strong>Data Length : {{categories.length}}</strong></p> -->
-                <table  class="table table-striped table-hover" id="sample-table-2" ng-if="produits.length > 0" >
+                <!-- <p><strong>Data Length : {{categories.length}}</strong></p> -->
+                <table class="table table-striped table-hover" id="sample-table-2" ng-if="produits.length > 0">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -28,19 +28,19 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody  >
-                        <tr ng-repeat="produit in produits" >
-                            <td  >{{$index+1}}</td>
-                            <td >{{produit.DESIGNATION}}</td>
-                            <td class="hidden-xs"  >{{produit.CATEGORIE}}</td>
+                    <tbody>
+                        <tr ng-repeat="produit in produits">
+                            <td>{{$index+1}}</td>
+                            <td>{{produit.DESIGNATION}}</td>
+                            <td class="hidden-xs">{{produit.DESGINATION_CAT}}</td>
                             <td class="hidden-xs">
-                            <a href="#" rel="nofollow" target="_blank">
+                                <a href="#" rel="nofollow" target="_blank">
                                 {{produit.PRIX}}
                             </a></td>
                             <td class="center">
                                 <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                    <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" uib-tooltip="Modifier" ng-click="edit('left',$index)" ><i class="fa fa-pencil"></i></a>
-                                    <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" uib-tooltip="Supprimer" ng-click="delete($index)" ><i class="fa fa-times fa fa-white"></i></a>
+                                    <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" uib-tooltip="Modifier" ng-click="edit('left',$index)"><i class="fa fa-pencil"></i></a>
+                                    <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" uib-tooltip="Supprimer" ng-click="delete($index)"><i class="fa fa-times fa fa-white"></i></a>
                                 </div>
                                 <div class="visible-xs visible-sm hidden-md hidden-lg">
                                     <div class="btn-group" uib-dropdown>
@@ -49,17 +49,17 @@
                                         </button>
                                         <ul class="dropdown-menu pull-right dropdown-light" role="menu">
                                             <li>
-                                                <a href="#"  >
+                                                <a href="#">
                                                     Edit
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" >
+                                                <a href="#">
                                                     Share
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#"  >
+                                                <a href="#">
                                                     Remove
                                                 </a>
                                             </li>
@@ -85,11 +85,11 @@
                 <!-- Modal -->
                 <!-- Bootstrap Modals -->
                 <!-- Modal - Add New Task -->
-                <script type="text/ng-template" id="editProduit.html" ng-controller="produitCtrl" >
-					<div class="modal-header">
-					<h3 class="modal-title">Produit #{{produit_details.ID_PRODUIT}}</h3>
-					</div>
-					<div class="modal-body">
+                <script type="text/ng-template" id="editProduit.html" ng-controller="produitCtrl">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Produit #{{produit_details.ID_PRODUIT}}</h3>
+                    </div>
+                    <div class="modal-body">
                         <ul class="alert alert-danger" ng-if="errors.length > 0">
                             <li ng-repeat="error in errors">
                                 {{ error }}
@@ -97,61 +97,55 @@
                         </ul>
 
                         <div class="form-group">
-                            <label for="designation">Designation</label>
-                            <input ng-model="produit_details.DESIGNATION" type="text" id="designation" class="form-control"/>
+                            <label for="designation">Designation : {{produit_details.DESIGNATION}} </label>
+                            <input ng-model="EditDESIGNATION" type="text" id="designation" class="form-control" />
                         </div>
                         <div class="form-group">
-                                <label for="prix">Prix</label>
-                                <input ng-model="produit_details.PRIX" type="text" id="prix" class="form-control"/>
+                            <label for="prix">Prix : {{produit_details.PRIX}} </label>
+                            <input ng-model="EditPRIX" type="text" id="prix" class="form-control" />
                         </div>
-                        <div class="form-group">
-                                <label for="categorie">Categorie</label>
-                                <input ng-model="produit_details.CATEGORIE" type="text" id="categorie" class="form-control"/>
-                        </div>
-                        <!-- <div class="form-group" ng-init="loadCategorie()" >
-                                <label for="form-field-select-2">
-                                    Categorie
-                                </label>
-                                <select class="cs-select cs-skin-elastic" ng-model="categorie.ID_CATEGORIE" >
-                                    <option value="" disabled selected>Choisir</option>
-                                    <option ng-repeat="categorie in categories"  value="{{categorie.ID_CATEGORIE}}" >
-                                            {{categorie.DESGINATION_CAT}}
-                                    </option>
-                                    
-                                </select>
-                                
-    
+                        <!-- <div class="form-group">
+                            <label for="categorie">Categorie</label>
+                            <input ng-model="produit_details.CATEGORIE" type="text" id="categorie" class="form-control" />
                         </div> -->
+                        <div class="form-group" ng-init="GetCatg()">
+                            <label class="" for="form-field-select-1">
+									Changez de categorie  
+                                            </label>
 
-                        
+                            <select ng-change="changed(EditMyCatg)" ng-options="categorie.DESGINATION_CAT for categorie in cated track by categorie.ID_CATEGORIE" ng-model="EditMyCatg" class="cs-select cs-skin-slide">
+                                            </select> </div>
+
+
+
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
                         <button type="button" class="btn btn-primary" ng-click="ok()">Save Changes</button>
                     </div>
-					</div>
-                </script>
-                <script type="text/ng-template" id="ajouterProduit.html" ng-controller="produitCtrl" >
-					<div class="modal-header">
-					<h3 class="modal-title">Ajout Produit</h3>
-					</div>
-					<div class="modal-body">
-                        <ul class="alert alert-danger" ng-if="errors.length > 0">
-                            <li ng-repeat="error in errors">
-                                {{ error }}
-                            </li>
-                        </ul>
+            </div>
+            </script>
+            <script type="text/ng-template" id="ajouterProduit.html" ng-controller="produitCtrl">
+                <div class="modal-header">
+                    <h3 class="modal-title">Ajout Produit</h3>
+                </div>
+                <div class="modal-body">
+                    <ul class="alert alert-danger" ng-if="errors.length > 0">
+                        <li ng-repeat="error in errors">
+                            {{ error }}
+                        </li>
+                    </ul>
 
-                        <div class="form-group">
-                            <label for="designation">Designation</label>
-                            <input ng-model="produit.DESIGNATION" type="text" id="designation" ng-init="produit.DESIGNATION ='MyDesignation'" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                                <label for="categorie">Categorie</label>
-                                <input ng-model="produit.CATEGORIE" type="text"  ng-init="produit.CATEGORIE ='MyCategorie'" id="categorie" class="form-control"/>
-                        </div>
-                        <!-- <div class="form-group" ng-init="loadCategorie()" >
+                    <div class="form-group">
+                        <label for="designation">Designation Produit</label>
+                        <input ng-model="DESIGNATION" type="text" id="designation" ng-init="DESIGNATION ='MyDesignation'" class="form-control" />
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="categorie">Categorie</label>
+                        <input ng-model="produit.CATEGORIE" type="text" ng-init="produit.CATEGORIE ='MyCategorie'" id="categorie" class="form-control" />
+                    </div> -->
+                    <!-- <div class="form-group" ng-init="loadCategorie()" >
                             <label for="form-field-select-2">
                                 Categorie
                             </label>
@@ -163,20 +157,30 @@
                                 
                             </select>
                         </div> -->
-                        <div class="form-group">
-                                <label for="prix">Prix</label>
-                                <input ng-model="produit.PRIX" type="text" ng-init="produit.PRIX ='250'" id="prix" class="form-control"/>
-                        </div>
-                       
 
+                    <div class="form-group" ng-init="GetCatg()">
+                        <label class="invisible" for="form-field-select-1">
+									Skin Slide with Icons
+                                            </label>
+
+                        <select ng-change="changed(MyCatg)" ng-options="categorie.DESGINATION_CAT for categorie in cated track by categorie.ID_CATEGORIE" ng-model="MyCatg" class="cs-select cs-skin-slide">
+                                            </select>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" ng-click="cancel()">Annuler</button>
-                        <button type="button" class="btn btn-primary" ng-click="ok()">Ajouter</button>
+
+                    <div class="form-group">
+                        <label for="prix">Prix</label>
+                        <input ng-model="prix" type="text" ng-init="PRIX ='250'" id="prix" class="form-control" />
                     </div>
-					</div>
-                </script>
-                <!-- <script type="text/ng-template" id="ajouterCategorie.html" ng-controller="produitCtrl" >
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="cancel()">Annuler</button>
+                    <button type="button" class="btn btn-primary" ng-click="ok()">Ajouter</button>
+                </div>
+        </div>
+        </script>
+        <!-- <script type="text/ng-template" id="ajouterCategorie.html" ng-controller="produitCtrl" >
 					<div class="modal-header">
 					<h3 class="modal-title">Ajout Categorie</h3>
 					</div>
@@ -199,7 +203,7 @@
                     </div>
 					</div>
 				</script> -->
-                <!-- <div class="modal fade" id="add_new_task_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="MyCtrl" >
+        <!-- <div class="modal fade" id="add_new_task_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="MyCtrl" >
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -233,9 +237,9 @@
                         </div>
                     </div>
                 </div> -->
-                <!-- // Modal -->
-                    <!-- Modal - Update Task -->
-                <!-- <div class="modal fade" id="modal_update_task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
+        <!-- // Modal -->
+        <!-- Modal - Update Task -->
+        <!-- <div class="modal fade" id="modal_update_task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -270,7 +274,7 @@
                     </div>
                 </div> -->
         <!-- // Modal -->
-            </div>
-        </div>
     </div>
+</div>
+</div>
 </div>
