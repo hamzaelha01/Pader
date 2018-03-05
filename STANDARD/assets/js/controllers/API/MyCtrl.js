@@ -60,6 +60,9 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     };
     // Show Sweet Modal
     $scope.fini = function(index) {
+
+
+        
         $http.get(
             "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdalivr.php"
         ).success(function(data) {

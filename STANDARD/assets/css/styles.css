@@ -484,7 +484,7 @@ h5.over-title {
 .navbar .navbar-collapse {
     border-bottom: 1px solid #c8c7cc;
     border-top: none;
-    background: #ffffff;
+    background: #2a323e;
     padding-left: 15px !important;
     padding-right: 15px !important;
     position: relative;
@@ -12674,7 +12674,7 @@ div.timeline .column_center .timeline_element:after {
 }
 
 .timeline-xs .timeline-item:after {
-    background-color: #fff;
+    background-color: #5F8295;
     border-color: #C62828;
     border-radius: 10px;
     border-style: solid;

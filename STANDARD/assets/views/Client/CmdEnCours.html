@@ -39,7 +39,7 @@
                                             {{x.ID_COMMANDE}}
                                         </td>
                                         <!-- <td>{{x.NBR_ARTICLES}}</td> -->
-                                        <td>{{x.DD_COMMANDE}}</td>
+                                        <td>{{x.DATECOMMANDE}}</td>
                                         <!-- <td>{{x.QUANITE}}</td> -->
                                         <td> <span ng-class="{'label label-sm label-inverse ': (r.STATUS == 'EN ATTENTE'), 'label label-sm label-success': (r.STATUS == 'CONFIRME'),'label label-sm label-warning': (r.STATUS == 'TO COLLECT')}">{{x.STATUS}}</span></td>
                                         <!-- <td>{{arr}}</td> -->
@@ -72,7 +72,7 @@
                                 <tbody>
                                     <tr ng-repeat="r in recu track by $index">
                                         <td>{{r.ID_COMMANDE}}</td>
-                                        <td>{{r.DD_COMMANDE}}</td>
+                                        <td>{{r.DATECOMMANDE}}</td>
                                         <td>{{r.DF_COMMANDE}}</td>
                                         <td>{{r.QUANTITE}}</td>
                                         <td class="hidden">{{r.ID_CLIENT}}</td>
