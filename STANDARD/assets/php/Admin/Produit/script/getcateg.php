@@ -7,7 +7,7 @@ $output = array();
 // $query  ="SELECT COMMANDE.ID_COMMANDE , COMMANDE.NBR_ARTICLES ,COMMANDE.LIVREUR_COLLECTE, COMMANDE.DD_COMMANDE , COMMANDE.DF_COMMANDE
 // FROM COMMANDE
 //   WHERE COMMANDE.STATUS  LIKE '%CONFIRME%'";
-$query ="SELECT  CATEGORIE.ID_CATEGORIE, CATEGORIE.DESGINATION_CAT FROM CATEGORIE";
+$query ="SELECT * FROM CATEGORIE";
 $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
 while ($row = mysqli_fetch_array($result)) {
