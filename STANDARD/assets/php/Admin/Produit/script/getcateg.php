@@ -1,16 +1,18 @@
-<?php  
 
+<?php
 header('Access-Control-Allow-Origin: *');
-
- //load_categories.php  
- $connect = mysqli_connect("localhost", "root", "root", "Pressing");  
- $output = [];  
- $query = "SELECT  CATEGORIE.ID_CATEGORIE, CATEGORIE.DESGINATION_CAT FROM CATEGORIE ";  
- $result = mysqli_query($connect, $query);  
- while($row = mysqli_fetch_array($result))  
- {  
-      $output[] = $row;  
- }  
- echo json_encode($output);  
-// return json_encode(['categories' => $output]);
- ?> 
+$conn = mysqli_connect("localhost","root","root","Pressing");
+$output = array();
+// $query  = "SELECT * FROM users";
+// $query  ="SELECT COMMANDE.ID_COMMANDE , COMMANDE.NBR_ARTICLES ,COMMANDE.LIVREUR_COLLECTE, COMMANDE.DD_COMMANDE , COMMANDE.DF_COMMANDE
+// FROM COMMANDE
+//   WHERE COMMANDE.STATUS  LIKE '%CONFIRME%'";
+$query ="SELECT  CATEGORIE.ID_CATEGORIE, CATEGORIE.DESGINATION_CAT FROM CATEGORIE";
+$result = mysqli_query($conn, $query);
+if (mysqli_num_rows($result) > 0) {
+while ($row = mysqli_fetch_array($result)) {
+$output[] = $row;
+}
+}
+echo json_encode($output);
+?> 
