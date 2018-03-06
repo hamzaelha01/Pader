@@ -168,13 +168,70 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     $scope.preparation = function(position, x) {
 
 
-        user.setQteCmd(x.QTE);
-        // alert($scope.cmdid);
-        user.setTempRecu(x.ID_COMMANDE);
-        user.setTempIDC(x.ID_CLIENT);
-        user.setRecuProdCpt(0);
+        // user.setQteCmd(x.QTE);
+        // // alert($scope.cmdid);
+        // user.setTempRecu(x.ID_COMMANDE);
+        // user.setTempIDC(x.ID_CLIENT);
+        // user.setRecuProdCpt(0);
 
-        $window.location.href = '#/app/RecuProd';
+        // $window.location.href = '#/app/RecuProd';
+
+
+
+        SweetAlert.swal({
+
+            title: "Voulez-vous confirmer la commande?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Oui, Confirmez!",
+            cancelButtonText: "Non, Annulez!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirm) {
+            if (isConfirm) {
+
+
+                $http({
+                    url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmer.php',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: 'id=' + x.ID_COMMANDE
+                }).success(function(response) {
+                    // alert(response);
+                    // alert(user.getTempRecu());
+                    // alert(user.getID());
+                    // alert(IdUser);
+                    SweetAlert.swal({
+                        title: "Confirmée",
+                        text: "Votre Commande a été confirmée.",
+                        type: "success",
+                        confirmButtonColor: "#007AFF"
+
+
+
+                    });
+
+                    setTimeout(function() {
+
+                        $window.location.href = "#/app/cmdl";
+
+                    }, 200);
+                });
+            } else {
+                SweetAlert.swal({
+                    title: "Annulée!",
+                    text: "Votre commande a été annulée",
+                    type: "error",
+                    confirmButtonColor: "#007AFF"
+                });
+            }
+        });
+
+
 
 
         //             // $http({
@@ -284,21 +341,20 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
             closeOnCancel: false
         }, function(isConfirm) {
             if (isConfirm) {
-                $http({
-                    url: 'http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmer.php',
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    data: 'id=' + user.getTempRecu()
-                }).success(function(response) {
-                    setTimeout(function() {
 
-                        $window.location.href = "#/app/cmdl";
 
-                    }, 200);
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmeralivr.php", {
+                        'id': user.getTempRecu()
+                    })
+                    .success(function(data) {
+                        //$scope.reload();
+                        //$scope.show_cmdaprep();
+                        setTimeout(function() {
 
-                });
+                            $window.location.href = '#/app/cmdl';
+
+                        }, 500);
+                    });
                 SweetAlert.swal({
                     title: "Confirmée",
                     text: "Votre Commande a été confirmée.",
