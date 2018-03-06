@@ -92,11 +92,7 @@ class Produit
     public function getCat()
     {
         
-<<<<<<< HEAD
         $query = $this->db->prepare("SELECT ID_CATEGORIE, DESGINATION_CAT FROM CATEGORIE");
-=======
-        $query = $this->db->prepare("SELECT * FROM `CATEGORIE`");
->>>>>>> 243e32ec235cad68bd357dfe6b41fe6b84b71e2c
         $query->execute();
         $data = array();
         
