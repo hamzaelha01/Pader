@@ -1,4 +1,7 @@
 <?php  
+
+header('Access-Control-Allow-Origin: *');
+
  //load_categories.php  
  $connect = mysqli_connect("localhost", "root", "root", "Pressing");  
  $output = array();  
