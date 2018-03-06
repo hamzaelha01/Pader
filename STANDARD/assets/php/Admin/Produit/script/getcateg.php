@@ -14,5 +14,9 @@ while ($row = mysqli_fetch_array($result)) {
 $output[] = $row;
 }
 }
+else 
+{
+  echo "doesnt exist";
+}
 echo json_encode($output);
 ?> 
