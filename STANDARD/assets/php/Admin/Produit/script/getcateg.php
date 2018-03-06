@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
  //load_categories.php  
  $connect = mysqli_connect("localhost", "root", "root", "Pressing");  
  $output = array();  
- $query = "SELECT DISTINCT ID_CATEGORIE, DESGINATION_CAT FROM CATEGORIE ";  
+ $query = "SELECT * FROM CATEGORIE ";  
  $result = mysqli_query($connect, $query);  
  while($row = mysqli_fetch_array($result))  
  {  
