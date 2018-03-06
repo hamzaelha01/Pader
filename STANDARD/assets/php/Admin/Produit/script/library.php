@@ -84,6 +84,39 @@ class Produit
          
     }
 
+    /**
+     * List Tasks
+     *
+     * @return string
+     */
+    public function getCat()
+    {
+        
+        $query = $this->db->prepare("SELECT ID_CATEGORIE, DESGINATION_CAT FROM CATEGORIE");
+        $query->execute();
+        $data = array();
+        
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+            // $data['produit']['ID_PRODUIT']= $row['ID_PRODUIT'];
+            // $data['produit']['DESIGNATION']= $row['DESIGNATION'];
+            // $data['produit']['PRIX']= $row['PRIX'];
+            // // $data['categorie']['ID_CATEGORIE']= $row['ID_CATEGORIE'];
+            // // $data['categorie']['DESGINATION_CAT']= $row['DESGINATION_CAT'];
+            // $data['produit']['categorie']['ID_CATEGORIE']= $row['ID_CATEGORIE'];
+            // $data['produit']['categorie']['DESGINATION_CAT']= $row['DESGINATION_CAT'];
+            // $data['produit'] = $row;
+
+            
+            
+            
+            }
+
+        return json_encode(['produits' => $data]);
+        
+         
+    }
+
 
     /**
      * Update Task
