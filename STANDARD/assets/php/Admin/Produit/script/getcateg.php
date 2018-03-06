@@ -9,16 +9,9 @@ $output = array();
 $query ="SELECT * FROM CATEGORIE ";
 $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
- 
- echo "good to go!";
 while ($row = mysqli_fetch_array($result)) {
-$output[] = $row;
+    $output[] = $row;
 }
- echo $output;
 }
-else 
- {
-   echo " not good to go!";
- }
 echo json_encode($output);
 ?> 
