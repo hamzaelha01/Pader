@@ -59,58 +59,64 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
         });
     };
     // Show Sweet Modal
-    $scope.fini = function(index) {
+    $scope.fini = function(index, x) {
 
 
-        
-        $http.get(
-            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdalivr.php"
-        ).success(function(data) {
-            $scope.cmds = data;
-            $scope.cmdid = data[index].ID_COMMANDE;
-            // alert($scope.cmdid);
-        })
-        SweetAlert.swal({
+        user.setQteCmd(x.QTE);
+        // alert($scope.cmdid);
+        user.setTempRecu(x.ID_COMMANDE);
+        user.setTempIDC(x.ID_CLIENT);
+        user.setRecuProdCpt(0);
 
-            title: "Voulez-vous confirmer la commande?",
-            text: "",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Oui, Confirmez!",
-            cancelButtonText: "Non, Annulez!",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        }, function(isConfirm) {
-            if (isConfirm) {
-                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmeralivr.php", {
-                        'id': $scope.cmdid
-                    })
-                    .success(function(data) {
-                        //$scope.reload();
-                        //$scope.show_cmdaprep();
-                        setTimeout(function() {
+        $window.location.href = '#/app/RecuProd';
+        // $http.get(
+        //     "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/voircmdalivr.php"
+        // ).success(function(data) {
+        //     $scope.cmds = data;
+        //     $scope.cmdid = data[index].ID_COMMANDE;
+        //     // alert($scope.cmdid);
+        // })
+        // SweetAlert.swal({
 
-                            window.location.reload();
+        //     title: "Voulez-vous confirmer la commande?",
+        //     text: "",
+        //     type: "warning",
+        //     showCancelButton: true,
+        //     confirmButtonColor: "#DD6B55",
+        //     confirmButtonText: "Oui, Confirmez!",
+        //     cancelButtonText: "Non, Annulez!",
+        //     closeOnConfirm: false,
+        //     closeOnCancel: false
+        // }, function(isConfirm) {
+        //     if (isConfirm) {
+        //         $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Service Production/confirmeralivr.php", {
+        //                 'id': $scope.cmdid
+        //             })
+        //             .success(function(data) {
+        //                 //$scope.reload();
+        //                 //$scope.show_cmdaprep();
+        //                 setTimeout(function() {
 
-                        }, 500);
-                    });
-                SweetAlert.swal({
-                    title: "Confirmée",
-                    text: "Votre Commande a été confirmée.",
-                    type: "success",
-                    confirmButtonColor: "#007AFF"
+        //                     window.location.reload();
 
-                });
-            } else {
-                SweetAlert.swal({
-                    title: "Annulée!",
-                    text: "Votre commande a été annulée",
-                    type: "error",
-                    confirmButtonColor: "#007AFF"
-                });
-            }
-        });
+        //                 }, 500);
+        //             });
+        //         SweetAlert.swal({
+        //             title: "Confirmée",
+        //             text: "Votre Commande a été confirmée.",
+        //             type: "success",
+        //             confirmButtonColor: "#007AFF"
+
+        //         });
+        //     } else {
+        //         SweetAlert.swal({
+        //             title: "Annulée!",
+        //             text: "Votre commande a été annulée",
+        //             type: "error",
+        //             confirmButtonColor: "#007AFF"
+        //         });
+        //     }
+        // });
     };
 
     // Show Record binded to this index

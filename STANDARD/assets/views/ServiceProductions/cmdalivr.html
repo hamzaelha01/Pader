@@ -11,53 +11,55 @@
 <!-- end: PAGE TITLE -->
 <!-- start: YOUR CONTENT HERE -->
 <!-- start: YOUR CONTENT HERE -->
-    <div class="container" ng-controller="MyCtrl" >
-            <div class="row">
-                <div class="col-md-12">
+<div class="container" ng-controller="MyCtrl">
+    <div class="row">
+        <div class="col-md-12">
 
-                    <div class="table-responsive"  >
-                        <table class="table table-striped table-hover" id="sample-table-2" ng-init="show_cmdalivr()" >
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Date Commande</th>
-                                    <th>Nombre Articles</th>
-                                    <th>Confirmation</th>
-                                </tr>
-                            </thead>
-                            <tbody >
-                                <tr  ng-repeat="x in livrs | filter:searchText ">
-                                    <td>{{x.ID_COMMANDE}}</td>
-                                    <td>{{x.DD_COMMANDE}}</td>
-                                    <td>{{x.QTE}}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-block btn-scroll btn-scroll-top ti-arrow-right" ng-click="fini($index)">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover" id="sample-table-2" ng-init="show_cmdalivr()">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date Commande</th>
+                            <th>Nombre Articles</th>
+                            <th>ID CLIENT </th>
+                            <th>Confirmation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in livrs | filter:searchText ">
+                            <td>{{x.ID_COMMANDE}}</td>
+                            <td>{{x.DD_COMMANDE}}</td>
+                            <td>{{x.QTE}}</td>
+                            <td>{{x.ID_CLIENT}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-block btn-scroll btn-scroll-top ti-arrow-right" ng-click="fini($index,x)">
                                             <span>Confirmer</span>
                                         </button>
-                                    </td>
-                                    
-                                    
-                                    <script type="text/ng-template" id="asideContent.html"  >
-                                        <div class="modal-header">
-                                        <h3 class="modal-title">Confirmation de Commande</h3>
-                                        </div>
-                                        <div   class="modal-body" >
-                                        Voulez Vous Vraiment Confirmer Cette Commande?   
-                                        </div>
-                                        <div class="modal-footer">
-                                        <button class="btn btn-primary" ng-click="ok($event)">Oui</button>
-                                        <button class="btn btn-primary" ng-click="cancel($event)">Annuler</button>
-                                        </div>
-                                    </script>
-                                    
-                                    
-                                    
-                                </tr>   
-    
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                            </td>
+
+
+                            <script type="text/ng-template" id="asideContent.html">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Confirmation de Commande</h3>
+                                </div>
+                                <div class="modal-body">
+                                    Voulez Vous Vraiment Confirmer Cette Commande?
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" ng-click="ok($event)">Oui</button>
+                                    <button class="btn btn-primary" ng-click="cancel($event)">Annuler</button>
+                                </div>
+                            </script>
+
+
+
+                        </tr>
+
+                    </tbody>
+                </table>
             </div>
         </div>
-        <!-- end: YOUR CONTENT HERE
+    </div>
+</div>
+<!-- end: YOUR CONTENT HERE
