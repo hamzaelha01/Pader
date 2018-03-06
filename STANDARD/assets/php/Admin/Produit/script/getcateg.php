@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
 
  //load_categories.php  
  $connect = mysqli_connect("localhost", "root", "root", "Pressing");  
- $output = array();  
+ $output = [];  
  $query = "SELECT  CATEGORIE.ID_CATEGORIE, CATEGORIE.DESGINATION_CAT FROM CATEGORIE ";  
  $result = mysqli_query($connect, $query);  
  while($row = mysqli_fetch_array($result))  
