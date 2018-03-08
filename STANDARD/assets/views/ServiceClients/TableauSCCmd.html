@@ -19,11 +19,11 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th class="hidden-xs" >Ref Client</th>
-                                <th >Nom et Prenom Client</th>
-                                <th class="hidden-xs"  >N° Telephone</th>
-                                <th class="hidden-xs"  >Date Debut Commande</th>
-                                <th class="hidden-xs"  >Adresse Complete </th>
+                                <th class="hidden-xs">Ref Client</th>
+                                <th>Nom et Prenom Client</th>
+                                <th class="hidden-xs">N° Telephone</th>
+                                <th class="hidden-xs">Date Debut Commande</th>
+                                <th class="hidden-xs">Adresse Complete </th>
                                 <!-- <th ><i class="fa fa-time"></i> Modifier </th> -->
                                 <th><i class="fa fa-time"></i> Confirmer </th>
                             </tr>
@@ -36,10 +36,10 @@
 
                                 <td>{{x.ID_COMMANDE}}</td>
                                 <td class="hidden-xs">{{x.ID_CLIENT}}</td>
-                                <td > {{x.NOM_CLIENT}} {{x.PRENOM_CLIENT}}</td>
-                                <td class="hidden-xs"  >{{x.TELEPHONE_CLIENT}}</td>
-                                <td class="hidden-xs"  >{{x.DF_COMMANDE}}</td>
-                                <td class="hidden-xs"  >{{x.Adresse_Complete_Livraison}}</td>
+                                <td> {{x.NOM_CLIENT}} {{x.PRENOM_CLIENT}}</td>
+                                <td class="hidden-xs">{{x.TELEPHONE_CLIENT}}</td>
+                                <td class="hidden-xs">{{x.DF_COMMANDE}}</td>
+                                <td class="hidden-xs">{{x.Adresse_Complete_Livraison}}</td>
                                 <td>
                                     <!-- Script du Modal -->
                                     <script type="text/ng-template" id="asideContent.html">
@@ -57,34 +57,34 @@
 
                                             </div>
                                             <!-- invite du controller dynamictabctrl pour confirmer la modification grace a la fonction UpdateDate() -> OK   -->
-                                            
+
                                             <div class="modal-header">
-                                                     <h3 class="modal-title">Modification de l'adresse</h3>
+                                                <h3 class="modal-title">Modification de l'adresse</h3>
                                             </div>
                                             <div class="modal-body">
-                                                  
+
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" placeholder="Adresse Complete" ng-model="adrz1">
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="input-group">
                                                         <!--  -->
-                                                      
-                                                       <div class="radio clip-radio radio-primary radio-inline">
-                                                            <input type="radio" id="radio1"  name="inline" value="true">
+
+                                                        <div class="radio clip-radio radio-primary radio-inline">
+                                                            <input type="radio" id="radio1" name="inline" value="true">
                                                             <label for="radio1">
                                                                 La meme adresse de collecte
                                                             </label>
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </div>
-                                             </div>
-                                             <div class="modal-footer">
-                                                <button class="btn btn-primary" ng-click="ChangeDateExp($index)">OK</button>
-                                                <button class="btn btn-primary" ng-click="cancel($event)">Cancel</button>
                                             </div>
-                                        <div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary" ng-click="ChangeDateExp($index)">OK</button>
+                                                <button class="btn btn-primary" ng-click="cancel($event)">Annuler</button>
+                                            </div>
+                                            <div>
 
                                     </script>
 
@@ -100,25 +100,25 @@
                                     <div class="visible-md visible-lg visible-sm visible-xs">
                                         <a ng-click="OpenModif('left',x)" class="btn btn-transparent btn-xs" tooltip-placement="top" uib-tooltip="Modifier"><i class="fa fa-gear "></i></a>
                                         <a ng-click="ConfDone('left',x)" class="btn btn-transparent btn-xs" tooltip-placement="top" uib-tooltip="Confirmer"><i class="fa fa-check"></i></a>
-                                     </div>
-                                </td>
-    
                                     </div>
+                                </td>
 
-                                </td> 
+                                </div>
+
+                                </td>
 
 
- 
+
                             </tr>
                         </tbody>
                     </table>
                     </div>
-                    </div>
                 </div>
             </div>
-            <!-- </div> -->
-
         </div>
+        <!-- </div> -->
+
+    </div>
 
 
-        <!-- end: YOUR CONTENT HERE -->-
+    <!-- end: YOUR CONTENT HERE -->-
