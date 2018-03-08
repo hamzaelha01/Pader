@@ -20,6 +20,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Nom et prenom Client</th>
                             <th>Date Commande</th>
                             <th>Nombre Articles</th>
                             <th class="hidden">ID CLIENT </th>
@@ -29,6 +30,7 @@
                     <tbody>
                         <tr ng-repeat="x in livrs | filter:searchText ">
                             <td>{{x.ID_COMMANDE}}</td>
+                            <td>{{x.NOM_CLIENT}} {{x.PRENOM_CLIENT}}</td>
                             <td>{{x.DD_COMMANDE}}</td>
                             <td>{{x.QTE}}</td>
                             <td class="hidden">{{x.ID_CLIENT}}</td>
