@@ -215,9 +215,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                     },
                     scripts: loadSequence('moment', 'dynamicTableCtrl', 'mwl.calendar', 'calendarCtrl', 'dashboardCtrl').deps
                 },
-                title: 'Liste des commandes a livré',
+                title: 'Liste des commandes prêtes',
                 ncyBreadcrumb: {
-                    label: 'Liste des commandes à livrer'
+                    label: 'Liste des commandes prêtes'
                 }
             }).state('app.ToCollecte', {
                 url: "/ToCollecte",
@@ -290,9 +290,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                     },
                     scripts: loadSequence('moment', 'dynamicTableCtrl', 'mwl.calendar', 'calendarCtrl', 'dashboardCtrl').deps
                 },
-                title: 'Liste des commandes a preparer',
+                title: 'Liste des commandes reçus',
                 ncyBreadcrumb: {
-                    label: 'Liste des commandes à preparer'
+                    label: 'Liste des commandes reçus'
                 }
             }).state('app.RecuClient', {
                 url: "/RecuClient",

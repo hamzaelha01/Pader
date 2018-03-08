@@ -141,21 +141,7 @@
         </a>
     </li>
     <!-- Fin : Service Livraisons : Calendrier  -->
-    <!-- Debut : Commandes a livrer -->
-    <li ui-sref-active="active">
-        <a id="serviceProductions" ui-sref="app.cmdl">
-            <!-- ng-if="userR === 'Service Production'" -->
-            <div class="item-content">
-                <div class="item-media">
-                    <i class="fa fa-check-square" aria-hidden="true"></i>
-                </div>
-                <div class="item-inner">
-                    <span class="title"> Commandes a livrer  </span>
-                </div>
-            </div>
-        </a>
-    </li>
-    <!-- Fin : Commandes a livrer  -->
+
     <!-- Debut : Commandes a collecter -->
     <li ui-sref-active="active">
         <a id="livreur" ui-sref="app.ToCollecte">
@@ -216,6 +202,21 @@
         </a>
     </li>
     <!-- Fin : Historiques des clients  -->
+    <!-- Debut : Commandes a livrer -->
+    <li ui-sref-active="active">
+        <a id="serviceProductions" ui-sref="app.cmdl">
+            <!-- ng-if="userR === 'Service Production'" -->
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title"> Commandes Prêtes  </span>
+                </div>
+            </div>
+        </a>
+    </li>
+    <!-- Fin : Commandes a livrer  -->
     <!-- Debut : Commandes a preparer -->
     <li ui-sref-active="active">
         <a id="serviceProductions" ui-sref="app.cmdp">
@@ -225,7 +226,7 @@
                     <i class="fa fa-tasks" aria-hidden="true"></i>
                 </div>
                 <div class="item-inner">
-                    <span class="title"> Commandes a preparer </span>
+                    <span class="title"> Commandes Reçus </span>
                 </div>
             </div>
         </a>
