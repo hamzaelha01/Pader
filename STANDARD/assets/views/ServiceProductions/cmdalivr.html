@@ -29,8 +29,8 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="x in livrs | filter:searchText ">
-                            <td>{{x.ID_COMMANDE}}</td>
-                            <td>{{x.NOM_CLIENT}} {{x.PRENOM_CLIENT}}</td>
+                            <td>{{x.ID_COMMANDE }}</td>
+                            <td>{{x.NOM_CLIENT | uppercase }} {{x.PRENOM_CLIENT | uppercase }}</td>
                             <td>{{x.DD_COMMANDE}}</td>
                             <td>{{x.QTE}}</td>
                             <td class="hidden">{{x.ID_CLIENT}}</td>
