@@ -1498,7 +1498,7 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
         SweetAlert.swal({
 
-            title: "Voulez-vous supprimer ce client?",
+            title: "Voulez-vous annuler cette commande?",
             text: "",
             type: "warning",
             showCancelButton: true,
