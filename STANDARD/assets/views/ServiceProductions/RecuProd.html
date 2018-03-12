@@ -96,6 +96,7 @@
                             <th> Total </th>
                             <th> Recu</th>
                             <th>Modifier</th>
+                            <th>Supprimer</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,13 +106,19 @@
                             <td class="hidden-480"> {{p.QUANITE}} </td>
                             <td> {{p.MONTANT}} DH</td>
                             <td>
-                                <button class="btn btn-success" ng-click="imprimer('lg',p);">
+                                <button class="btn btn-primary" ng-click="imprimer('lg',p);">
                                         Imprimer
                                     </button>
                             </td>
                             <td>
-                                <button ng-if=" p.MONTANT ==  '0'" class="btn btn-success" ng-click="EditPrice('left',p)">
+                                <!-- ng-if=" p.MONTANT ==  '0'" -->
+                                <button class="btn btn-success" ng-click="EditPrice('left',p)">
                                         Modifier
+                                    </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" ng-click="RemoveItem(p)">
+                                        Supprimer
                                     </button>
                             </td>
                         </tr>
@@ -121,6 +128,7 @@
                 <div align="right">
                     <button type="submit" ui-sref="app.cmdl" class="btn btn-o btn-danger">Retour</button>
                     <button type="submit" ng-click="SP_Prete()" class="btn btn-o btn-info">Confirmer</button>
+
 
                 </div>
             </div>
@@ -217,12 +225,12 @@
             <h3 class="modal-title">Modification du prix</h3>
         </div>
         <div class="panel-body">
-            <p class="margin-bottom-30">
+            <!-- <p class="margin-bottom-30">
                 Use the <code>
                                     data-prefix</code> attribute to add a prefix.
-            </p>
+            </p> -->
             <div class="form-group">
-                <label> With prefix </label>
+                <label> Nouveau Prix </label>
                 <input id="demo1" type="text" ng-model="mon" name="demo1" touchspin data-min="-1000000000" data-max="1000000000" data-stepinterval="50" data-maxboostedstep="10000000" data-prefix="MAD">
             </div>
         </div>
