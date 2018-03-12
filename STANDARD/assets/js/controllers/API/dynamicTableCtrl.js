@@ -294,6 +294,36 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     };
 
 
+    // To Check if time is bigger than date.now
+    // $scope.check = function(x) {
+
+    //     // var d = new Date().toLocaleString();
+    //     // var d = moment().format();
+
+    //     var d = moment().format('YYYY-MM-DD H:mm:ss');
+    //     // var currentdate = new Date();
+    //     // var datetime = "Last Sync: " + currentdate.getDate() + "/" +
+    //     //     (currentdate.getMonth() + 1) + "/" +
+    //     //     currentdate.getFullYear() + " @ " +
+    //     //     currentdate.getHours() + ":" +
+    //     //     currentdate.getMinutes() + ":" +
+    //     //     currentdate.getSeconds();
+
+    //     // alert(d);
+    //     if (d > x.DD_COMMANDE) {
+
+    //         alert(d);
+    //         alert(x.DD_COMMANDE);
+    //         // alert(xl);
+    //         alert("good to go!");
+    //     } else {
+    //         alert(d);
+    //         alert(x.DD_COMMANDE);
+    //         alert("not good to go!");
+    //     }
+
+    // }
+
     $scope.getCmdWait = function() {
         $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/getCmdWait.php", {
 
@@ -301,6 +331,10 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         }).success(function(data) {
             $scope.CmdWait = data;
             // alert($scope.historique);
+
+            // if (data.DATE_C_RES > data.DD_COMMANDE) {
+            //     alert("good to go!");
+            // }
         });
 
 
@@ -1141,6 +1175,9 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
                         // alert(user.getIdLocalTempclient());
                         if ($scope.dateID != null) {
                             // L'AJOUT DE LA COMMANDE
+
+
+
                             $http.post(
                                 "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /InsertCommande.php", {
                                     'DD': $scope.dt,
