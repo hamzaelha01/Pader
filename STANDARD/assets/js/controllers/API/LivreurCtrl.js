@@ -230,22 +230,22 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
         // FIN : REDIRECTION VERS LE PANIEr 
 
 
-    $scope.ConfirmationD = function(index) {
+    $scope.ConfirmationD = function(x) {
 
 
-        $http.post(
-            "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/getDeliver.php", {
-                'NOM_LIVREUR': nomLivreur
-            }).success(function(data) {
-            $scope.getD = data;
-            // alert(data);
+        // $http.post(
+        //     "http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/getDeliver.php", {
+        //         'NOM_LIVREUR': nomLivreur
+        //     }).success(function(data) {
+        //     $scope.getD = data;
+        //     // alert(data);
 
-            $scope.IDD = data[index].ID_COMMANDE;
-            // alert(data);
-            // alert(data[index].ID_COMMANDE);
+        //     $scope.IDD = data[index].ID_COMMANDE;
+        //     // alert(data);
+        //     // alert(data[index].ID_COMMANDE);
 
 
-        })
+        // })
         SweetAlert.swal({
 
             title: "Voulez Vous Vraiment Confirmer La Commande ?",
@@ -260,7 +260,8 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
         }, function(isConfirm) {
             if (isConfirm) {
                 $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Livreur/UpdateFinal.php", {
-                        'id': $scope.IDD
+                        // 'id': $scope.IDD
+                        'id': x.ID_COMMANDE
                     })
                     .success(function(data) {
                         //$scope.reload();
@@ -269,16 +270,17 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
 
                 setTimeout(function() {
 
-                    window.location.reload();
+                    // window.location.reload();
+                    $window.location.href = '#/app/ToCollecte';
 
                 }, 500);
-                // SweetAlert.swal({
-                //     title: "Confirmée!",
-                //     text: "Votre Commande a été confirmée.",
-                //     type: "success",
-                //     confirmButtonColor: "#007AFF"
+                SweetAlert.swal({
+                    title: "Confirmée!",
+                    text: "Votre Commande a été confirmée.",
+                    type: "success",
+                    confirmButtonColor: "#007AFF"
 
-                // });
+                });
             } else {
                 SweetAlert.swal({
                     title: "Annulée!",
