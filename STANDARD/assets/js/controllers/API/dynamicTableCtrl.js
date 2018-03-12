@@ -1491,4 +1491,66 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
     }
 
 
+
+    $scope.RemoveCmd = function(x) {
+
+        // user.setQteCmd(p.QTE);
+
+        SweetAlert.swal({
+
+            title: "Voulez-vous supprimer ce client?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Oui, Confirmez!",
+            cancelButtonText: "Non, Annulez!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirm) {
+            if (isConfirm) {
+
+
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/RemoveCmd.php", {
+                    'idCommande': x.ID_COMMANDE
+
+
+
+                }).success(function(response) {
+                    // alert(response);
+                    // alert(user.getTempRecu());
+                    // alert(user.getID());
+                    // alert(IdUser);
+                    SweetAlert.swal({
+                        title: "Confirmée",
+                        text: "La Commande a été annulé.",
+                        type: "success",
+                        confirmButtonColor: "#007AFF"
+
+
+
+                    });
+
+                    setTimeout(function() {
+
+
+
+                        window.location.reload();
+
+
+
+                    }, 200);
+                });
+            } else {
+                SweetAlert.swal({
+                    title: "Annulée!",
+                    text: "Action Annulé",
+                    type: "error",
+                    confirmButtonColor: "#007AFF"
+                });
+            }
+        });
+
+    }
+
 }]);
