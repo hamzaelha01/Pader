@@ -592,6 +592,10 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
     };
 
+    // Remove a Client 
+
+
+
 
     // COnfirmation de la commande SC : 
     $scope.ConfDone = function(position, x) {
@@ -1422,5 +1426,65 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
         //     $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/Client /",{}).success(function(resp){}) 
     };
     //  FIN : RESERVATION CLIENT APRES REDIRECTION *SERVICE CLIENT*
+
+
+
+    $scope.RemoveClient = function(y) {
+
+        // user.setQteCmd(p.QTE);
+
+        SweetAlert.swal({
+
+            title: "Voulez-vous supprimer ce client?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Oui, Confirmez!",
+            cancelButtonText: "Non, Annulez!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirm) {
+            if (isConfirm) {
+
+
+                $http.post("http://ec2-18-218-197-120.us-east-2.compute.amazonaws.com/Pader/STANDARD/assets/php/ServiceClients/RemoveClient.php", {
+                    'idClient': y.ID_CLIENT
+
+
+
+                }).success(function(response) {
+                    // alert(response);
+                    // alert(user.getTempRecu());
+                    // alert(user.getID());
+                    // alert(IdUser);
+                    SweetAlert.swal({
+                        title: "Confirmée",
+                        text: "Le Client a été supprimé.",
+                        type: "success",
+                        confirmButtonColor: "#007AFF"
+
+
+
+                    });
+
+                    setTimeout(function() {
+
+                        $window.location.href = "#/app/cmdl";
+
+                    }, 200);
+                });
+            } else {
+                SweetAlert.swal({
+                    title: "Annulée!",
+                    text: "Votre commande a été annulée",
+                    type: "error",
+                    confirmButtonColor: "#007AFF"
+                });
+            }
+        });
+
+    }
+
 
 }]);
