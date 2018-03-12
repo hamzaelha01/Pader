@@ -1470,7 +1470,11 @@ app.controller("dynamicTableCtrl", ['$scope', 'SweetAlert', '$http', '$rootScope
 
                     setTimeout(function() {
 
-                        $window.location.href = "#/app/cmdl";
+
+
+                        window.location.reload();
+
+
 
                     }, 200);
                 });
