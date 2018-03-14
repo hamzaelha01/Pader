@@ -67,6 +67,23 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 ncyBreadcrumb: {
                     label: 'Panier'
                 }
+            })
+            // Panier version 2 
+            .state('app.Panier2', {
+                url: "/Panier2",
+                templateUrl: "assets/views/Livreur/panierV2.html",
+                resolve: {
+                    check: function($window, user) {
+                        if (!user.isUserLoggedIn()) {
+                            $window.location.href = '#/login/error';
+                        }
+                    },
+                    scripts: loadSequence('jquery-sparkline', 'touchspin-plugin', 'MyCtrl', 'vAccordionCtrl', 'dashboardCtrl').deps
+                },
+                title: 'Panier ',
+                ncyBreadcrumb: {
+                    label: 'Panier'
+                }
             }).state('app.GestPers', {
                 url: "/GestPers",
                 templateUrl: "assets/views/Admin/gestion_personnel.html",

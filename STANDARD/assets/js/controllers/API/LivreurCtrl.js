@@ -220,7 +220,8 @@ app.controller('LivreurCtrl', ["$scope", "$http", "SweetAlert", "user", "$window
                 // alert(data[index].ID_COMMANDE);
                 user.cmdTemp(data[index].ID_COMMANDE);
                 // alert("COMMANDE TEMP " + user.getCmdTemp());
-                $window.location.href = "#/app/Panier";
+                $window.location.href = "#/app/Panier2";
+                // $window.location.href = "#/app/Panier";
 
             })
 
