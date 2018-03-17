@@ -557,7 +557,11 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
             'IDCMD': user.getTempRecu()
         }).success(function(data) {
             $scope.MyAllBasketsX = data;
-            $scope.MyTotal = $scope.MyAllBasketsX[0].MyTotal;
+            $scope.MyTotal = data.MyTotal;
+            // alert(data);
+            // $scope.MyTotal = $scope.MyAllBasketsX[0].MyTotal;
+            $scope.MyTotal = $scope.MyAllBasketsX[0].SUMNEW;
+            alert($scope.MyTotal)
             $scope.Myname = $scope.MyAllBasketsX[0].Myname;
             $scope.MyNbArticles = $scope.MyAllBasketsX[0].NbProduits;
             // alert($scope.MyAllBasketsX[0].MyTotal);
