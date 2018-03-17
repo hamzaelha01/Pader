@@ -13,7 +13,8 @@ $HT    = mysqli_real_escape_string($conn, $info->HT);
 echo "//////";
 
 
-  $time = date("H:i:s",strtotime($HT)-3600);
+  // $time = date("H:i:s",strtotime($HT)-3600);
+  $time = date("H:i:s",strtotime($HT));
 //   echo $time;
 
   $day = date("Y-m-d",strtotime($DD));
