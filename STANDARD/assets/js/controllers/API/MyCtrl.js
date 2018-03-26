@@ -1,6 +1,6 @@
 'use strict';
 //var app = angular.module("myapp");
-app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $cookies, user) {
+app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $cookies, user, $localStorage) {
 
 
     //modifier l'horaire 
@@ -58,6 +58,23 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
             }
         });
     };
+
+    // Try Printers 
+
+    // $scope.findPrinter = function(name) {
+    //     qz.findPrinter("foobar");
+    // }
+
+    // function qzDoneFinding() {
+    //     if (qz.getPrinter()) {
+    //         alert("Printer " + qz.getPrinter() + " found.");
+    //     } else {
+    //         alert("Printer foobar not found.");
+    //     }
+    // }
+
+
+
     // Show Sweet Modal
     $scope.fini = function(index, x) {
 
@@ -429,13 +446,21 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                 $scope.cart.push(product);
             }
         }
+
+        // Cookies Noraml 
         var expireDate = new Date();
         expireDate.setDate(expireDate.getDate() + 1);
-        $cookies.putObject('cart', $scope.cart, { 'expires': expireDate });
-        $scope.cart = $cookies.getObject('cart');
+        // $cookies.putObject('cart', $scope.cart, { 'expires': expireDate });
+        // $scope.cart = $cookies.getObject('cart');
 
         $scope.total += parseFloat(product.PRIX);
         $cookies.put('total', $scope.total, { 'expires': expireDate });
+
+        // Bouhdha
+        // window.localStorage.set("MyObj", JSON.stringify($scope.cart));
+
+        $localStorage.panier = $scope.cart;
+
     };
 
     // ETAPE 3 : INSERTION 
@@ -461,23 +486,41 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                     $scope.total = parseFloat($cookies.get('total'));
                 }
                 //Sepetimiz daha önceden tanımlıysa onu çekelim
-                if (!angular.isUndefined($cookies.get('cart'))) {
-                    $scope.cart = $cookies.getObject('cart');
+                // if (!angular.isUndefined($cookies.get('cart'))) {
+                //     $scope.cart = $cookies.getObject('cart');
+                // }
+                if (!angular.isUndefined($localStorage.panier)) {
+
+                    $scope.cart = $localStorage.panier;
+
                 }
+
                 $scope.removeItemCart = function(product) {
+                        $scope.cart = $localStorage.panier;
+
+
                         if (product.count > 1) {
                             product.count -= 1;
                             var expireDate = new Date();
                             expireDate.setDate(expireDate.getDate() + 1);
-                            $cookies.putObject('cart', $scope.cart, { 'expires': expireDate });
-                            $scope.cart = $cookies.getObject('cart');
+                            // $cookies.putObject('cart', $scope.cart, { 'expires': expireDate });
+                            // $scope.cart = $cookies.getObject('cart');
+                            $localStorage.panier = $scope.cart;
                         } else if (product.count === 1) {
+
                             var index = $scope.cart.indexOf(product);
                             $scope.cart.splice(index, 1);
+                            $localStorage.panier = $scope.cart;
+
+
+
+
                             expireDate = new Date();
                             expireDate.setDate(expireDate.getDate() + 1);
-                            $cookies.putObject('cart', $scope.cart, { 'expires': expireDate });
-                            $scope.cart = $cookies.getObject('cart');
+                            // $cookies.putObject('cart', $scope.cart, { 'expires': expireDate });
+                            // $scope.cart = $cookies.getObject('cart');
+
+
 
                         }
 
@@ -487,11 +530,23 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                     }
                     // $rootScope.mycartsDB = cartService.getProducts();
                 $scope.ok = function(e) {
-                    for (var i = 0; i < $scope.cart.length; i++) {
+                    $scope.message = $localStorage.panier;
+                    //     // for (var i = 0; i < $scope.cart.length; i++) {
+                    //     //     $scope.formData = {
+                    //     //         'produiti': $scope.cart[i],
+                    //     //         'quantitei': $scope.cart[i].count,
+                    //     //         'totali': $scope.cart[i].PRIX * $scope.cart[i].count,
+                    //     //         // 'idClient':user.getClientTempCmd(),
+                    //     //         'idCmd': user.getCmdTemp()
+                    //     //     };
+
+                    // alert('good to go ');
+
+                    for (var i = 0; i < $scope.message.length; i++) {
                         $scope.formData = {
-                            'produiti': $scope.cart[i],
-                            'quantitei': $scope.cart[i].count,
-                            'totali': $scope.cart[i].PRIX * $scope.cart[i].count,
+                            'produiti': $scope.message[i],
+                            'quantitei': $scope.message[i].count,
+                            'totali': $scope.message[i].PRIX * $scope.message[i].count,
                             // 'idClient':user.getClientTempCmd(),
                             'idCmd': user.getCmdTemp()
                         };
@@ -525,6 +580,13 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
                     $uibModalInstance.dismiss();
                     e.stopPropagation();
                 };
+
+
+                $scope.FetchPanier = function() {
+
+                    // alert('good to go!');
+                    $scope.message = $localStorage.panier;
+                }
             }
         });
 
@@ -539,8 +601,8 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
 
 
         // alert(IdUser);
-        alert(" ID COMMANDE" + user.getTempRecu());
-        alert(" ID CLIENT " + user.getTempIDC());
+        // alert(" ID COMMANDE" + user.getTempRecu());
+        // alert(" ID CLIENT " + user.getTempIDC());
 
 
         // $http({
@@ -566,7 +628,7 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
             // alert(data);
             // $scope.MyTotal = $scope.MyAllBasketsX[0].MyTotal;
             $scope.MyTotal = $scope.MyAllBasketsX[0].SUMNEW;
-            alert($scope.MyTotal)
+            // alert($scope.MyTotal)
             $scope.Myname = $scope.MyAllBasketsX[0].Myname;
             $scope.MyNbArticles = $scope.MyAllBasketsX[0].NbProduits;
             // alert($scope.MyAllBasketsX[0].MyTotal);

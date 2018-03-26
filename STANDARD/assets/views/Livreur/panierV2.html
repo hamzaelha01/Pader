@@ -62,7 +62,7 @@
                         <h3 class="modal-title">Mon Panier</h3>
                     </div>
                     <div class="modal-body">
-                        <table ng-table="tableParams" class="table">
+                        <table ng-table="tableParams" class="table" ng-init="FetchPanier()">
                             <tr>
                                 <td>#</td>
                                 <td>Designation</td>
@@ -71,7 +71,9 @@
                                 <td>Total</td>
                                 <td>Effacer</td>
                             </tr>
-                            <tr ng-repeat="c in cart">
+                            <!-- <tr ng-repeat="c in cart"> -->
+                            <tr ng-repeat="c in message">
+
                                 <td>{{c.ID_PRODUIT}}</td>
                                 <td> {{c.DESIGNATION}} </td>
                                 <td> {{c.PRIX}} </td>
@@ -90,7 +92,9 @@
                         </table>
                     </div>
                     <div class="modal-footer">
+                        <!-- <button class="btn btn-primary" ng-click="ok($event)">Ajouter Au Panier</button> -->
                         <button class="btn btn-primary" ng-click="ok($event)">Ajouter Au Panier</button>
+
                         <button class="btn btn-primary" ng-click="cancel($event)">Annuler</button>
                     </div>
                 </script>
