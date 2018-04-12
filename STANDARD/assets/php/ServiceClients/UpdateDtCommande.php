@@ -14,7 +14,7 @@ echo "//////";
 
 
   // $time = date("H:i:s",strtotime($HT)-3600);
-  $time = date("H:i:s",strtotime($HT));
+  $time = date("H:i:s",strtotime($HT)+3600);
 //   echo $time;
 
   $day = date("Y-m-d",strtotime($DD));
