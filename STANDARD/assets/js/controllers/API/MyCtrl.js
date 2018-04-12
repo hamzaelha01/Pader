@@ -10,35 +10,35 @@ app.controller("MyCtrl", function($scope, $http, $window, $aside, SweetAlert, $c
     // var cpt;
 
 
-    $scope.goEpson = function() {
+    // $scope.goEpson = function() {
 
-        var builder = new epson.ePOSBuilder();
+    //     var builder = new epson.ePOSBuilder();
 
-        builder.addPageBegin();
-        builder.addPageArea(100, 50, 200, 100);
-        builder.addPagePosition(0, 42);
-        builder.addTextLang('en');
-        builder.addTextSmooth(true);
-        builder.addTextFont(builder.FONT_A);
-        builder.addTextSize(4, 4);
-        builder.addTextStyle(false, false, true, undefined);
-        builder.addText('Hello');
-        builder.addPageEnd();
-        builder.addCut(builder.CUT_FEED);
+    //     builder.addPageBegin();
+    //     builder.addPageArea(100, 50, 200, 100);
+    //     builder.addPagePosition(0, 42);
+    //     builder.addTextLang('en');
+    //     builder.addTextSmooth(true);
+    //     builder.addTextFont(builder.FONT_A);
+    //     builder.addTextSize(4, 4);
+    //     builder.addTextStyle(false, false, true, undefined);
+    //     builder.addText('Hello');
+    //     builder.addPageEnd();
+    //     builder.addCut(builder.CUT_FEED);
 
-        var request = builder.toString();
+    //     var request = builder.toString();
 
-        // alert(request);
+    //     // alert(request);
 
-        var address = 'http://192.168.192.168/cgi-bin/epos/service.cgi?devid=local_printer&timeout-10000';
-        var epos = new epson.ePOSPrint(address);
-        epos.send(request);
-        epos.onrecieve = function(res) {
-            if (!res.success) {
-                alert('not good to go!');
-            }
-        }
-    };
+    //     var address = 'http://192.168.192.168/cgi-bin/epos/service.cgi?devid=local_printer&timeout-10000';
+    //     var epos = new epson.ePOSPrint(address);
+    //     epos.send(request);
+    //     epos.onrecieve = function(res) {
+    //         if (!res.success) {
+    //             alert('not good to go!');
+    //         }
+    //     }
+    // };
 
     // Show All records 
     $scope.show_cmdaprep = function() {

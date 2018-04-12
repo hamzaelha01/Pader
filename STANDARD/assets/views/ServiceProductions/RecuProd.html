@@ -110,12 +110,6 @@
                                         Imprimer
                                     </button>
                             </td>
-                            <!-- <td>
-                                <button class="btn btn-primary" ng-click="findPrinter()">
-
-                                        Imprimer
-                                    </button>
-                            </td> -->
                             <td>
                                 <!-- ng-if=" p.MONTANT ==  '0'" -->
                                 <button class="btn btn-success" ng-click="EditPrice('left',p)">
@@ -152,8 +146,8 @@
                     </div>
                     </span>
 
-                    <button type="button" class="btn btn-success btn-lg btn-block" ng-click="goEpson()">
-                            <a href="javascript:pdfFromHTML()">Imprimer </a>
+                    <button type="button" class="btn btn-success btn-lg btn-block" onclick="pdfToHTML()">
+                            <a href="javascript:pdfFromHTML()">Imprimer </a>
                             <span class="fa fa-print">
                             </span>
                         </button>
